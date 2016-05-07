@@ -1,0 +1,3 @@
+## TODO
+- [ ] FFT
+- [ ] VU meter

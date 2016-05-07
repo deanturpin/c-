@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Create main from all cpp files in the current directory
+# Use a different extension so it's not added to the list
+main_file=main.cpp
+
+# Delete existing file if there is one
+rm -f $main_file
+
+for file in *.cpp
+do
+	prototypes+="void ${file%.cpp}();\n"
+	function_calls+="${file%.*} "
+done
+
+# Write top bit
+cat <<TOP > $main_file
+#include <iostream>
+
+// Prototypes
+TOP
+
+# Write prototypes
+echo -e $prototypes >> $main_file
+
+# Write middle bit
+cat <<MIDDLE >> $main_file
+
+int main()
+{
+	using namespace std;
+
+MIDDLE
+
+# Write function calls
+for func in $function_calls
+do
+	echo -e "\tcout << \"### ${func//_/ }() \" << endl;" >> $main_file
+	echo -e "\t$func();" >> $main_file
+	echo -e "\tcout << endl;\n" >> $main_file
+done
+
+# Write end bit
+cat <<BOTTOM >> $main_file
+	return 0;
+}
+BOTTOM
