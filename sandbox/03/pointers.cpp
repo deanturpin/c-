@@ -1,6 +1,7 @@
 #include <iostream>
 
-void pointers() {
+void pointers()
+{
 
 	int foo = 5;
 	int bah = 5;
