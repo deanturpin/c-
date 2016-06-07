@@ -26,9 +26,11 @@ void lambda_functions()
 	int blah = 2;
 
 	// Lambda capture
-	auto doubleit = [blah](){ return blah * blah; };
-
+	auto doubleit = [blah]{ return blah * blah; };
 	auto doubled = doubleit();
-
 	cout << doubled << endl;
+
+	auto doubleit2 = [blah] () -> double{ return blah * blah; };
+	auto doubled2 = doubleit2();
+	cout << doubled2 << endl;
 }
