@@ -21,6 +21,14 @@ void lambda_functions()
 		cout << v << endl;
 
 	auto square_and_print = [](int n) { cout << n * n << endl; };
+	square_and_print(4);
 
-	square_and_print(5);
+	int blah = 2;
+
+	// Lambda capture
+	auto doubleit = [blah](){ return blah * blah; };
+
+	auto doubled = doubleit();
+
+	cout << doubled << endl;
 }
