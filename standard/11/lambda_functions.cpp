@@ -20,7 +20,7 @@ void lambda_functions()
 	for (const auto &v:vec)
 		cout << v << endl;
 
-	auto square_and_print = [](int n) {cout << n * n << endl;};
+	auto square_and_print = [](int n) { cout << n * n << endl; };
 
 	square_and_print(5);
 }

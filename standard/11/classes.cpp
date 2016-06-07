@@ -18,6 +18,7 @@ void classes()
 
 		A(1);
 		B(1);
+
 		// Error - candidate constructor (the implicit copy constructor) not
 		// viable:
 		// B("blah");
