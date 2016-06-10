@@ -1,9 +1,10 @@
 #include <iostream>
 
-// Order of contruction/destruction
-void construction_order()
+void order()
 {
 	using namespace std;
+
+	cout << "order" << endl;
 
 	class A
 	{
@@ -27,4 +28,33 @@ void construction_order()
 	cout << "Dynamic allocation - leak (A has non-virtual destructor)" << endl;
 	A* a = new B();
 	delete a;
+}
+
+void overload()
+{
+	using namespace std;
+
+	cout << "overload" << endl;
+
+	class A
+	{
+		public:
+		void foo() { cout << "foo" << endl; }
+	};
+
+	class B : public A
+	{
+		public:
+		void foo() { A::foo(); cout << "bar" << endl; }
+	};
+
+	class B b;
+	b.foo();
+}
+
+// Order of contruction/destruction
+void classes_construction_order()
+{
+	order();
+	overload();
 }
