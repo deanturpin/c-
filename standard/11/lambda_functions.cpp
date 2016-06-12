@@ -20,17 +20,17 @@ void lambda_functions()
 	for (const auto &v:vec)
 		cout << v << endl;
 
-	auto square_and_print = [](int n) { cout << n * n << endl; };
+	auto square_and_print = [] (int n) { cout << n * n << endl; };
 	square_and_print(4);
 
 	int blah = 2;
 
 	// Lambda capture
-	auto doubleit = [blah]{ return blah * blah; };
+	auto doubleit = [blah] { return blah * blah; };
 	auto doubled = doubleit();
 	cout << doubled << endl;
 
-	auto doubleit2 = [blah] () -> double{ return blah * blah; };
+	auto doubleit2 = [blah] () -> double { return blah * blah; };
 	auto doubled2 = doubleit2();
 	cout << doubled2 << endl;
 }

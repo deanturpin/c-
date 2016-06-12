@@ -27,6 +27,7 @@ void function_pointers()
 	void (*f)(void) = foo;
 	int (*b)(const double &) = bar;
 
+	(*f)();
 	f();
 	b(0.0);
 
