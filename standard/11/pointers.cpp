@@ -9,12 +9,12 @@ namespace wood
 	class Animal
 	{
 		public:
-			Animal() : name("default")
-				{ cout << "Animal ctor" << endl; }
+			Animal(string n) : name(n)
+				{ cout << "Animal ctor " << name << endl; }
 
-			~Animal() { cout << "Animal dtor" << endl; }
+			~Animal() { cout << "Animal dtor " << name << endl; }
 
-			string name;
+			const string name;
 	};
 }
 
@@ -23,11 +23,14 @@ void pointers()
 	using namespace std;
 	using namespace wood;
 
-	auto a = unique_ptr<Animal>(new Animal);
-	cout << "name " << a->name << endl;
+	auto a = unique_ptr<Animal>(new Animal("a"));
 
 	// Using reset
 	unique_ptr<Animal> b;
-	b.reset(new Animal);
+	b.reset(new Animal("b"));
 	b.reset();
+
+	// Using release - destructor is not called
+	auto c = unique_ptr<Animal>(new Animal("c"));
+	c.release();
 }
