@@ -21,7 +21,13 @@ namespace wood
 void pointers()
 {
 	using namespace std;
+	using namespace wood;
 
-	auto a = unique_ptr<wood::Animal>(new wood::Animal);
+	auto a = unique_ptr<Animal>(new Animal);
 	cout << "name " << a->name << endl;
+
+	// Using reset
+	unique_ptr<Animal> b;
+	b.reset(new Animal);
+	b.reset();
 }
