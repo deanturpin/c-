@@ -1,4 +1,7 @@
-all: main.cpp
+clean:
+	rm -f *.o
 
-include ../rules.mak
-STANDARD=c++11
+# Compile and run
+%.o: %.cpp
+	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++11 -o $@ $<
+	./$@
