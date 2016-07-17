@@ -23,7 +23,7 @@ namespace
 	};
 }
 
-int relational_operators()
+int main()
 {
 	using namespace std;
 

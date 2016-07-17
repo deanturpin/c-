@@ -18,8 +18,8 @@ int main()
 
 		A(1);
 		B(1);
-		// Error - candidate constructor (the implicit copy constructor) not
-		// viable:
+
+		// Error - candidate constructor (the implicit copy constructor) not viable:
 		// B("blah");
 	}
 
@@ -28,19 +28,13 @@ int main()
 		class A
 		{
 			public:
-				void foo()
-				{
-					cout << "foo" << endl;
-				}
+				void foo() { cout << "foo" << endl; }
 		};
 
 		class B : public A
 		{
 			public:
-				void foo() const
-				{
-					cout << "bar" << endl;
-				}
+				void foo() const { cout << "bar" << endl; }
 		};
 
 		cout << "Overload not override" << endl;
@@ -51,20 +45,5 @@ int main()
 		b.foo();
 	}
 
-	// override keyword
-	{
-		class A
-		{
-			void foo();
-			// virtual void bar();
-		};
-
-		class B : public A
-		{
-			void foo(){};
-		};
-
-		// A a;
-		// B b;
-	}
+	return 0;
 }

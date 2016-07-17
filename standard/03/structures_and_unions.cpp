@@ -24,4 +24,6 @@ int main()
 	cout << "Address of a - " << hex << reinterpret_cast<unsigned int>(&a) << endl;
 
 	cout << "Does b equal a? " << boolalpha << (b == a) << endl;
+
+	return 0;
 }

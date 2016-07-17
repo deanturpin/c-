@@ -1,6 +1,6 @@
 #include <iostream>
 
-void bitwise_operators()
+int main()
 {
 	using namespace std;
 
@@ -22,4 +22,6 @@ void bitwise_operators()
 	// Shift 
 	cout << (left << 1) << endl;
 	cout << (left >> 1) << endl;
+
+	return 0;
 }

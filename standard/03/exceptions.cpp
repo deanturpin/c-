@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-void exceptions()
+int main()
 {
 	using namespace std;
 
@@ -24,4 +24,6 @@ void exceptions()
 	{
 		cout << "Standard exception " << e.what() << endl;
 	}
+
+	return 0;
 }
