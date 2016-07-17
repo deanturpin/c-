@@ -30,11 +30,17 @@ void segments()
 	// Dynamic variables
 	int *dynamic_local = new int(4);
 
-	cout << "dynamic_local\t" << hex << reinterpret_cast<unsigned
-	int>(dynamic_local) << endl;
+	cout << "dynamic_local\t" << hex << reinterpret_cast<unsigned int>(dynamic_local) << endl;
 
 	delete dynamic_local;
 
 	// Function
 	cout << "function\t" << hex << reinterpret_cast<unsigned int>(&segments) << endl;
+}
+
+int main()
+{
+	segments();
+
+	return 0;
 }

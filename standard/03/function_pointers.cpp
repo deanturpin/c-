@@ -21,7 +21,7 @@ int operation(int a, int b, int (*func)(int, int))
 	return func(a, b);
 }
 
-void function_pointers()
+int main()
 {
 	// Function pointer as an alias
 	void (*f)(void) = foo;
@@ -34,4 +34,5 @@ void function_pointers()
 	// Pass into a function
 	std::cout << operation(4, 5, multiply) << std::endl;
 
+	return 0;
 }

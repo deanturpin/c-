@@ -23,7 +23,9 @@ class B
 		}
 };
 
-void friends()
+int main()
 {
 	class B b;
+
+	return 0;
 }
