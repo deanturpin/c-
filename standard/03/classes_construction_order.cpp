@@ -45,7 +45,7 @@ void overload()
 	class B : public A
 	{
 		public:
-		void foo() { A::foo(); cout << "bar" << endl; }
+		void foo() { cout << "bar" << endl; }
 	};
 
 	class B b;
@@ -53,7 +53,7 @@ void overload()
 }
 
 // Order of contruction/destruction
-void classes_construction_order()
+int main()
 {
 	order();
 	overload();

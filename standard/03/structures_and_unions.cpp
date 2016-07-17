@@ -1,6 +1,6 @@
 #include <iostream>
 
-void structures_and_unions()
+int main()
 {
 	using namespace std;
 

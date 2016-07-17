@@ -1,6 +1,6 @@
 #include <iostream>
 
-void classes()
+int main()
 {
 	using namespace std;
 
