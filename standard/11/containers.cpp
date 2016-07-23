@@ -15,6 +15,9 @@
 #include <unordered_set>
 #include <unordered_map>
 
+// For container functionality see:
+// http://www.cplusplus.com/reference/stl/
+
 int main()
 {
 	using namespace std;
@@ -32,9 +35,11 @@ int main()
 	queue<int> p;
 	priority_queue<int> pq;
 
+	// Associative containers
+
 	// C++11
 
-	// array<int> a;
+	array<int, 10> a;
 	forward_list<int> f;
 
 	unordered_set<int> us;

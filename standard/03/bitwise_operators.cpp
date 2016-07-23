@@ -11,7 +11,7 @@ int main()
 	cout << left << endl;
 	cout << right << endl;
 
-	// Bitwise not
+	// Bitwise inversion
 	cout << ~left << endl;
 
 	// And, or, xor
