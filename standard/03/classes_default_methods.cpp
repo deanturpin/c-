@@ -1,7 +1,7 @@
 #include <iostream>
 
-int main()
-{
+int main() {
+
 	using namespace std;
 
 	// Class to monitor consstruction/destruction
