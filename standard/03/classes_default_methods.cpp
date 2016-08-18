@@ -16,12 +16,34 @@ int main() {
 	class A {
 
 		B b;
+
+		public:
+
+			// Prefix
+			A& operator++() {
+				cout << "++A" << endl;
+				return *this;
+			}
+
+			// Postfix
+			A& operator++(int) {
+				cout << "A++" << endl;
+				return *this;
+			}
 	};
 
 	// Create some instances
+	cout << "Implicit constructors" << endl;
+	{
 	A a;
 	A b(a);
 	A c = a;
+	}
+
+	cout << "\nOperator overloading" << endl;
+	A d;
+	++d;
+	d++;
 
 	return 0;
 }
