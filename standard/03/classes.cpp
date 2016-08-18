@@ -29,6 +29,7 @@ int main()
 		{
 			public:
 				void foo() { cout << "foo" << endl; }
+				void foo() const { cout << "foo" << endl; }
 		};
 
 		class B : public A

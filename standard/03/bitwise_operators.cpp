@@ -1,7 +1,7 @@
 #include <iostream>
 
-int main()
-{
+int main() {
+
 	using namespace std;
 
 	const unsigned int left = 0x0101;

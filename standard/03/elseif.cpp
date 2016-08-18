@@ -12,7 +12,7 @@ void elseif()
 
 	std::cout << "b is " << b << std::endl;
 
-	// Is comparable to 
+	// Is equivalent to 
 
 	int c = 0;
 

@@ -1,23 +1,23 @@
 #include <iostream>
 
-void order()
-{
+void order() {
+
 	using namespace std;
 
-	cout << "order" << endl;
+	cout << "Order" << endl;
 
-	class A
-	{
+	class A {
+
 		public:
-			A() { cout << "A ctor" << endl; }
-			~A() { cout << "A dtor" << endl; }
+			A() { cout << "A" << endl; }
+			~A() { cout << "~A" << endl; }
 	};
 
-	class B : public A
-	{
+	class B : public A {
+
 		public:
-			B() { cout << "B ctor" << endl; }
-			~B() { cout << "B dtor" << endl; }
+			B() { cout << "B" << endl; }
+			~B() { cout << "~B" << endl; }
 	};
 
 	cout << "Static allocation" << endl;
@@ -28,24 +28,30 @@ void order()
 	cout << "Dynamic allocation - leak (A has non-virtual destructor)" << endl;
 	A* a = new B();
 	delete a;
+
+	cout << "Array of pointers" << endl;
+
+	A* b = new A[4];
+
+	delete [] b;
 }
 
-void overload()
-{
+void overload() {
+
 	using namespace std;
 
-	cout << "overload" << endl;
+	cout << "Overload" << endl;
 
-	class A
-	{
+	class A {
+
 		public:
 		void foo() { cout << "foo" << endl; }
 	};
 
-	class B : public A
-	{
+	class B : public A {
+
 		public:
-		void foo() { cout << "bar" << endl; }
+		void foo() const { cout << "bar" << endl; }
 	};
 
 	class B b;
@@ -53,8 +59,8 @@ void overload()
 }
 
 // Order of contruction/destruction
-int main()
-{
+int main() {
+
 	order();
 	overload();
 
