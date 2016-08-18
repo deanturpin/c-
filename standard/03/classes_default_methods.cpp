@@ -18,18 +18,10 @@ int main()
 		B b;
 	};
 
-
-	cout << "On its own" << endl;
-	{
-		A a;
-	}
-
-	cout << "Default constructors" << endl;
-	{
-		A a;
-		A b(a);
-		A c = a;
-	}
+	// Create some instances
+	A a;
+	A b(a);
+	A c = a;
 
 	return 0;
 }
