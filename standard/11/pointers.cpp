@@ -18,7 +18,7 @@ namespace wood
 	};
 }
 
-void pointers()
+int main()
 {
 	using namespace std;
 	using namespace wood;
@@ -33,4 +33,6 @@ void pointers()
 	// Using release - destructor is not called
 	auto c = unique_ptr<Animal>(new Animal("c"));
 	c.release();
+
+	return 0;
 }
