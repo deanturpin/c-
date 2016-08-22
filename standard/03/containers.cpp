@@ -3,9 +3,10 @@
 #include <deque>
 #include <list>
 
-void containers()
-{
+int main() {
+
 	using namespace std;
+	cout << "Containers" << endl;
 
 	// Basic containers
 	vector<int> v; // Contiguous
@@ -14,4 +15,5 @@ void containers()
 
 	// Adapters
 
+	return 0;
 }

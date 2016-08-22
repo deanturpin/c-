@@ -1,0 +1,19 @@
+#!/bin/bash
+
+[[ $# != 1 ]] && echo need a source file && exit
+
+source=$1
+target=${source%.cpp}.o
+
+echo source $source
+echo target $target
+
+while :; do
+
+	# Wait for file to be written to
+	inotifywait -e modify $source -q
+
+	# Build and run
+	clear
+	make -j $target
+done
