@@ -58,22 +58,24 @@ int main() {
 	m.emplace(make_pair(0, 2));
 	m.emplace(make_pair(0, 3));
 	cout << "map size " << m.size() << endl;
-	// for (const auto &_m : m)
-		// cout << "\t" << m.first << endl;
+	for (const auto &_m : m)
+		cout << "\t" << _m.first << ", " << _m.second << endl;
 
 	multimap<int, int> mm;
 	mm.emplace(make_pair(0, 1));
 	mm.emplace(make_pair(0, 2));
 	mm.emplace(make_pair(0, 3));
 	cout << "multimap size " << mm.size() << endl;
+	for (const auto &_m : mm)
+		cout << "\t" << _m.first << ", " << _m.second << endl;
 
 	// Sets
-	set<int> s = {1, 2, 3, 4};
+	set<int> s = {1, 2, 3, 4, 4, 4, 4};
 	cout << "set size " << s.size() << endl;
 	for (const auto &_s : s)
 		cout << "\t" << _s << endl;
 
-	multiset <int, int> ms;
+	multiset<int> ms = {1, 2, 3, 4, 4, 4, 4};
 	cout << "multiset size " << ms.size() << endl;
 	for (const auto &_s : ms)
 		cout << "\t" << _s << endl;
