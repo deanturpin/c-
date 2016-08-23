@@ -83,12 +83,41 @@ int main() {
 	//////////
 	// Container adapters
 
-	// Queues
+	// Queue
 	queue<int> q;
+	q.emplace(1);
+	q.emplace(0);
+	q.emplace(3);
+	q.emplace(2);
+	cout << "queue size " << q.size() << endl;
+	while (!q.empty()) {
+		cout << "\t" << q.front() << endl;
+		q.pop();
+	}
+
+	// Priority queue
 	priority_queue<int> pq;
+	pq.emplace(1);
+	pq.emplace(0);
+	pq.emplace(3);
+	pq.emplace(2);
+	cout << "priority_queue size " << pq.size() << endl;
+	while (!pq.empty()) {
+		cout << "\t" << pq.top() << endl;
+		pq.pop();
+	}
 
 	// Stack
 	stack<int> st;
+	st.emplace(1);
+	st.emplace(0);
+	st.emplace(3);
+	st.emplace(2);
+	cout << "stack size " << st.size() << endl;
+	while (!st.empty()) {
+		cout << "\t" << st.top() << endl;
+		st.pop();
+	}
 
 	return 0;
 }
