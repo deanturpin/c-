@@ -54,7 +54,16 @@ int main() {
 
 	// Maps
 	map<int, int> m;
-	multimap <int, int> mm;
+	m.insert(pair<int, int>(0, 1));
+	m.insert(pair<int, int>(0, 2));
+	m.insert(pair<int, int>(0, 3));
+	cout << "map size " << m.size() << endl;
+
+	multimap<int, int> mm;
+	mm.insert(pair<int, int>(0, 1));
+	mm.insert(pair<int, int>(0, 2));
+	mm.insert(pair<int, int>(0, 3));
+	cout << "multimap size " << mm.size() << endl;
 
 	// Sets
 	set<int, int> s;
