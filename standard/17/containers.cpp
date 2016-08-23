@@ -54,20 +54,29 @@ int main() {
 
 	// Maps
 	map<int, int> m;
-	m.insert(make_pair(0, 1));
-	m.insert(make_pair(0, 2));
-	m.insert(make_pair(0, 3));
+	m.emplace(make_pair(0, 1));
+	m.emplace(make_pair(0, 2));
+	m.emplace(make_pair(0, 3));
 	cout << "map size " << m.size() << endl;
+	// for (const auto &_m : m)
+		// cout << "\t" << m.first << endl;
 
 	multimap<int, int> mm;
-	mm.insert(make_pair(0, 1));
-	mm.insert(make_pair(0, 2));
-	mm.insert(make_pair(0, 3));
+	mm.emplace(make_pair(0, 1));
+	mm.emplace(make_pair(0, 2));
+	mm.emplace(make_pair(0, 3));
 	cout << "multimap size " << mm.size() << endl;
 
 	// Sets
-	set<int, int> s;
+	set<int> s = {1, 2, 3, 4};
+	cout << "set size " << s.size() << endl;
+	for (const auto &_s : s)
+		cout << "\t" << _s << endl;
+
 	multiset <int, int> ms;
+	cout << "multiset size " << ms.size() << endl;
+	for (const auto &_s : ms)
+		cout << "\t" << _s << endl;
 
 	//////////
 	// Container adapters
