@@ -83,12 +83,10 @@ int main() {
 	//////////
 	// Container adapters
 
+	const deque<int> init = {1, 0, 3, 2, 2, 5, 6, 7};
+
 	// Queue
-	queue<int> q;
-	q.emplace(1);
-	q.emplace(0);
-	q.emplace(3);
-	q.emplace(2);
+	queue<int> q(init);
 	cout << "queue size " << q.size() << endl;
 	while (!q.empty()) {
 		cout << "\t" << q.front() << endl;
@@ -108,16 +106,19 @@ int main() {
 	}
 
 	// Stack
-	stack<int> st;
-	st.emplace(1);
-	st.emplace(0);
-	st.emplace(3);
-	st.emplace(2);
+	stack<int> st(init);
 	cout << "stack size " << st.size() << endl;
 	while (!st.empty()) {
 		cout << "\t" << st.top() << endl;
 		st.pop();
 	}
+
+	// array<int, 10> a;
+	// forward_list<int> f;
+	// unordered_set<int> us;
+	// unordered_multiset<int> um;
+	// unordered_map<int> us;
+	// unordered_multimap<int> um;
 
 	return 0;
 }

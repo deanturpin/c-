@@ -11,9 +11,11 @@ echo target $target
 while :; do
 
 	# Wait for file to be written to
+	echo Wait...
 	inotifywait -e modify $source -q
 
 	# Build and run
+	echo Go!
 	clear
 	make -j $target
 done
