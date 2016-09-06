@@ -7,13 +7,13 @@ int main() {
 
 	cout << "Random noise" << endl;
 
+	// Source of random data
 	const string randomFile = "/dev/urandom";
 	cout << "Using " << randomFile << endl;
 
-	// stringstream oui;
+	// Read some
 	int blah;
-	auto is = ifstream(randomFile);
-	is.read(reinterpret_cast<char *>(&blah), sizeof blah);
+	ifstream(randomFile).read(reinterpret_cast<char *>(&blah), sizeof blah);
 
 	cout << "Read " << blah << endl;
 
