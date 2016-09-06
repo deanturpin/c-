@@ -18,5 +18,4 @@ while :; do
 	echo Go!
 	clear
 	make -j $target
-	./target
 done
