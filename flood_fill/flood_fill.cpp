@@ -44,14 +44,14 @@ namespace flood {
 		cout << border << endl;
 	}
 
-	bool fill(const unsigned int x, const unsigned int y) {
+	bool fill(const int x, const int y) {
 
 		// cout << "Start point " << x << ", " << y << endl;
 
 		// Check range
-		if (x > bitmap.front().size() || y > bitmap.size()) {
+		if (x < 0 || y < 0 || x > bitmap.front().size() || y > bitmap.size()) {
 			
-			cout << "Start point out of range" << endl;
+			cout << "Start point out of range: " << x << ", " << y << endl;
 			return false; 
 		}
 
@@ -62,11 +62,14 @@ namespace flood {
 
 			fill(x + 1, y + 1);
 			fill(x + 1, y);
-			fill(x + 1, y - 1);
+			// fill(x + 1, y - 1);
 
 			fill(x - 1, y + 1);
 			fill(x - 1, y);
 			fill(x - 1, y - 1);
+
+			fill(x, y + 1);
+			fill(x, y - 1);
 		}
 
 		return true;
@@ -79,7 +82,7 @@ int main() {
 	flood::dump();
 
 	// Print if flood fill is successful
-	if (flood::fill(2, 12))
+	if (flood::fill(2, 15))
 		flood::dump();
 	
 	return 0;
