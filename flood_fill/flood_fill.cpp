@@ -6,8 +6,7 @@ namespace flood {
 	using namespace std;
 
 	std::vector<std::string> bitmap = {
-
-		"                                ",
+		"x                               ",
 		"        xxxxxxxxxxxxxxx         ",
 		"        x              x        ",
 		"        x              x        ",
@@ -24,9 +23,15 @@ namespace flood {
 	};
 
 	void dump() {
-		
+	
+		// Top and bottom border
+		const string border = string(bitmap.front().size() + 2, '.');
+		cout << border << endl;
+
 		for (const auto &raster : bitmap)
-			cout << raster << endl;
+			cout << '.' << raster << '.' << endl;
+
+		cout << border << endl;
 	}
 
 	bool fill(const unsigned int x, const unsigned int y) {
@@ -53,8 +58,7 @@ namespace flood {
 int main() {
 
 	flood::dump();
-	flood::fill(10, 10);
-	flood::fill(8, 1);
+	flood::fill(8, 0);
 	flood::dump();
 	
 	return 0;
