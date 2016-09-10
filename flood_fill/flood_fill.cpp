@@ -25,11 +25,18 @@ namespace flood {
 	void dump() {
 	
 		// Top and bottom border
-		const string border = string(bitmap.front().size() + 2, '.');
+		const string border = string(bitmap.front().size() + 2, '_');
 		cout << border << endl;
 
-		for (const auto &raster : bitmap)
-			cout << '.' << raster << '.' << endl;
+		for (const auto &raster : bitmap) {
+
+			cout << "|";
+
+			for (const auto &c : raster)
+				cout << c;
+
+			cout << "|" << endl;
+		}
 
 		cout << border << endl;
 	}
