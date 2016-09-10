@@ -36,7 +36,7 @@ namespace flood {
 
 	bool fill(const unsigned int x, const unsigned int y) {
 
-		cout << "Start at " << x << ", " << y << endl;
+		cout << "Start point " << x << ", " << y << endl;
 
 		// Check range
 		if (x > bitmap.front().size() || y > bitmap.size()) {
@@ -46,10 +46,8 @@ namespace flood {
 		}
 
 		// Check start point
-		if (bitmap[x][y] == 'x')
-			cout << "Bad start point" << endl;
-		else
-			cout << "Good start point" << endl;
+		cout << (bitmap[x][y] == 'x' ? "Bad " : "Good") << " start" << endl;
+		cout << '\"' << bitmap[x][y] << '\"' << endl;
 
 		return true;
 	}
@@ -57,9 +55,12 @@ namespace flood {
 
 int main() {
 
+	// Print starting state
 	flood::dump();
-	flood::fill(8, 0);
-	flood::dump();
+
+	// Print if flood fill is successful
+	if (flood::fill(8, 0))
+		flood::dump();
 	
 	return 0;
 }
