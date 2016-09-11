@@ -9,16 +9,20 @@ namespace flood {
 
 		"                          ",
 		"                          ",
-		"  xxxxxxxxxxxxxxx         ",
-		"  x              x        ",
-		"  x              x        ",
-		"   xx            x        ",
-		"     x    xxxxxxx         ",
-		"      x    x              ",
-		"       x    x             ",
-		"        xxxxx             ",
 		"                          ",
-		"             xxxx         ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
+		"                          ",
 	};
 
 	const unsigned int width = bitmap.front().size();
@@ -32,7 +36,11 @@ namespace flood {
 			cout << raster << endl;
 	}
 
+	unsigned int callCounter = 0;
+
 	bool fill(const unsigned int x, const unsigned int y) {
+
+		++callCounter;
 
 		// Check range
 		if (x >= width || y >= height) {
@@ -63,8 +71,11 @@ int main() {
 	flood::dump();
 
 	// Print if flood fill is successful
-	if (flood::fill(2, 10))
+	if (flood::fill(0, 0))
 		flood::dump();
+
+	std::cout << "Point " << flood::width * flood::height << std::endl;
+	std::cout << "Calls " << flood::callCounter << std::endl;
 	
 	return 0;
 }
