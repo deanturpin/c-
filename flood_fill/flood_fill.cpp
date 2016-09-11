@@ -6,70 +6,51 @@ namespace flood {
 	using namespace std;
 
 	std::vector<std::string> bitmap = {
-		"x       xxxxxxxxxxxxxxx         ",
-		"        x              x        ",
-		"        x              x        ",
-		"        x              x        ",
-		"         x             x        ",
-		"          xxxxxx       x        ",
-		"                x      x        ",
-		"                 x     x        ",
-		"                  x    x        ",
-		"                   xxxx         ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                   xxxx         ",
+
+		"                          ",
+		"                          ",
+		"  xxxxxxxxxxxxxxx         ",
+		"  x              x        ",
+		"  x              x        ",
+		"   xx            x        ",
+		"     x    xxxxxxx         ",
+		"      x    x              ",
+		"       x    x             ",
+		"        xxxxx             ",
+		"                          ",
+		"             xxxx         ",
 	};
 
+	const unsigned int width = bitmap.front().size();
+	const unsigned int height = bitmap.size();
+
 	void dump() {
-	
-		// Top and bottom border
-		const string border = "\t" + string(bitmap.front().size() + 1, '_');
-		cout << border << endl;
 
-		const unsigned int width = bitmap.size();
-		const unsigned int height = bitmap.front().size();
+		cout << width << ", " << height << endl;
 
-		for (unsigned int w = 0; w < width; ++w) {
-			cout << w << "\t|";
-
-			for (unsigned int h = 0; h < height; ++h)
-				cout << bitmap[w][h];
-
-			cout << "|" << endl;
-		}
-				
-		cout << border << endl;
+		for (const auto &raster : bitmap)
+			cout << raster << endl;
 	}
 
-	bool fill(const int x, const int y) {
-
-		// cout << "Start point " << x << ", " << y << endl;
+	bool fill(const unsigned int x, const unsigned int y) {
 
 		// Check range
-		if (x < 0 || y < 0 || x > bitmap.front().size() || y > bitmap.size()) {
+		if (x >= width || y >= height) {
 			
-			cout << "Start point out of range: " << x << ", " << y << endl;
+			// cout << "Start point out of range: " << x << ", " << y << endl;
 			return false; 
 		}
 
-		// Check start point
-		if (bitmap[x][y] != 'x') {
+		// Check start point and set it
+		if (bitmap[y][x] != 'x') {
 
-			bitmap[x][y] = 'x';
+			bitmap[y][x] = 'x';
 
-			fill(x + 1, y + 1);
-			fill(x + 1, y);
-			// fill(x + 1, y - 1);
-
-			fill(x - 1, y + 1);
-			fill(x - 1, y);
-			fill(x - 1, y - 1);
-
+			// Fill surrounding points
 			fill(x, y + 1);
 			fill(x, y - 1);
+			fill(x + 1, y);
+			fill(x - 1, y);
 		}
 
 		return true;
@@ -82,7 +63,7 @@ int main() {
 	flood::dump();
 
 	// Print if flood fill is successful
-	if (flood::fill(2, 15))
+	if (flood::fill(2, 10))
 		flood::dump();
 	
 	return 0;
