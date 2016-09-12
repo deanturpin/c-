@@ -3,5 +3,5 @@ clean:
 
 # Compile and run
 %.o: %.cpp
-	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++1z -o $@ $<
+	clang++ -Weverything -Wno-c++98-compat -std=c++1z -o $@ $<
 	./$@
