@@ -8,24 +8,43 @@ namespace pet {
 
 	class animal {
 
-
-		const int legs;
+		const string name = "animal";
 
 		public:
-			animal(const int l) : legs(l) { }
-			void print() {
-				cout << "legs " << legs << endl;
-			}
+
+			animal() { cout << "+ " << name << endl; }
+			~animal() { cout << "- " << name << endl; }
+
+			// explicit
+			// animal(const int l) : legs(l) { }
+			// animal() { }
+
+			void print() { cout << "\tanimal" << endl; }
 	};
 
+	/*
+
 	class dog : public animal {
+
+		public:
+
+			// dog(const int l) { }
+			dog() { cout << "+ dog" << endl; }
+			~dog() { cout << "- dog" << endl; }
+
+			void print() { cout << "\tdog" << endl; }
 	};
+	*/
 }
 
 int main() {
 
-	pet::animal a(2);
+	// pet::animal a(2);
+	pet::animal a;
 	a.print();
+
+	// pet::dog d;
+	// d.print();
 
 	return 0;
 }
