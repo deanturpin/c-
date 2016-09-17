@@ -1,6 +1,7 @@
 #include<iostream>
 
 namespace pet {
+
 	using namespace std;
 
 	class animal;
@@ -28,7 +29,8 @@ namespace pet {
 
 		public:
 
-			// dog(const int l) { }
+			dog() { }
+
 			// dog() { cout << "+ dog" << endl; }
 			// ~dog() { cout << "- dog" << endl; }
 
