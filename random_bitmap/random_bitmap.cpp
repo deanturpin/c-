@@ -14,6 +14,10 @@ int main() {
 	// Initialise bitmap
 	vector<vector<bool>> bitmap(Y, raster);
 
+	// Scribble
+	for (int i = 0; i < 10; ++i)
+		bitmap[i][i] = 1;
+
 	const string rule(X + 2, '-');
 	cout << rule << endl;
 
@@ -23,7 +27,7 @@ int main() {
 		cout << '|';
 
 		for (const auto &x : y)
-			cout << (0 == x ? ' ' : 'x');
+			cout << (0 == x ? ' ' : '0');
 
 		cout << '|' << endl;
 	}
