@@ -1,28 +1,34 @@
 #include <iostream>
 #include <vector>
 
-/*
-std::vector<std::vector<bool>> bitmap = {
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-};
-*/
-
 int main() {
 
 	using namespace std;
 
+	const unsigned int X = 50;
+	const unsigned int Y = 20;
+
+	// Create an empty raster
+	vector<bool> raster(X, false);
+
+	// Initialise bitmap
+	vector<vector<bool>> bitmap(Y, raster);
+
+	const string rule(X + 2, '-');
+	cout << rule << endl;
+
 	// Print bitmap
 	for (const auto &y : bitmap) {
 
-		for (const auto &x : y)
-			cout << x;
+		cout << '|';
 
-		cout << endl;
+		for (const auto &x : y)
+			cout << (0 == x ? ' ' : 'x');
+
+		cout << '|' << endl;
 	}
+
+	cout << rule << endl;
 
 	return 0;
 }
