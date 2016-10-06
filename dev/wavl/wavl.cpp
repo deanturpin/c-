@@ -5,8 +5,8 @@
 #include "riff.h"
 #include "pxl.h"
 
-int main()
-{
+int main() {
+
 	using namespace std;
 
 	// Read header
@@ -26,8 +26,8 @@ int main()
 	const int x_bin_size = samples.size() / x;
 
 	// Populate
-	for (const auto &s:samples)
-	{
+	for (const auto &s:samples) {
+
 		static int i = 0;
 		p.set(i++ / x_bin_size, p.height() / 2 + s / 1000);
 	}
