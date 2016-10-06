@@ -3,7 +3,8 @@
 trap "exit" SIGINT
 
 #dir=/usr/share/sounds/alsa
-dir=/usr/lib/libreoffice/share/gallery/sounds
+
+dir=/usr/lib/libreoffice/share/gallery/sounds/
 
 for wav in $dir/*.wav
 do
