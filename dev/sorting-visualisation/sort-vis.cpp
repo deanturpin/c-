@@ -7,19 +7,29 @@ int main() {
 	using namespace std;
 
 	// A sequence to sort
-	std::vector<unsigned int> sequence = {
+	const std::vector<unsigned int> sequence = {
 		13, 6, 30, 17, 6, 28, 25, 22, 13, 24, 29, 9, 6, 21, 12, 16, 11, 16, 11, 12,
 		1, 31, 3, 15, 12, 10, 18, 11, 13, 28, 10, 28, 21, 5, 27, 22, 12, 26, 24, 8
 	};
 
+	// Max element in the sequence
+	const auto max = *max_element(sequence.cbegin(), sequence.cend());
+
 	// Print sequence
-	const auto print = [](const auto& s) {
+	const auto print = [&max](const auto& s) {
 
-		// Clear screen
-		cout << "\033[2J";
+		static unsigned int calls = 1;
 
+		// Jump to top of screen
+		cout << "\033[1;1H";
+
+		// Print sequence
 		for_each (s.cbegin(), s.cend(),
-			[](auto &n) { cout << string(n, '-') << endl; });
+			[&max](auto &n) { cout << string(n, '-') << string(max - n, ' ') << endl; });
+
+		// Print some stats
+		cout << "\nIterations " << calls << string(max, ' ') << endl;
+		++calls;
 	};
 
 	// Fill the screen with an empty list to move the cursor to the bottom
@@ -30,7 +40,6 @@ int main() {
 	// Insert sort
 
 	// Define the algorithm
-	auto is(sequence);
 	auto insertionSort = [&print](auto &is) {
 
 		for (auto i = is.begin(); i != is.end() - 1; ++i) {
@@ -53,8 +62,9 @@ int main() {
 		}
 	};
 
-	// And call it
-	insertionSort(is);
+	// Create a copy and sort
+	auto fs(sequence);
+	insertionSort(fs);
 
 	return 0;
 }
