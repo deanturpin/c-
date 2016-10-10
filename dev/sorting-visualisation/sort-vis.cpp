@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <unistd.h>
 
 int main() {
 
@@ -13,19 +14,28 @@ int main() {
 	};
 
 	// Print sequence
-	auto print = [](const auto& s) {
-		for_each (s.cbegin(), s.cend(), [](auto &n) { cout << string(n, '-') << endl; });
+	const auto print = [](const auto& s) {
+
+		usleep(500000);
+
+		// Clear screen
+		cout << "\033[2J";
+
+		for_each (s.cbegin(), s.cend(),
+			[](auto &n) { cout << string(n, '-') << endl; });
 	};
 
+	// Fill the screen with an empty list to move the cursor to the bottom
+	print(vector<unsigned int>(sequence.size()));
 	print(sequence);
 
-	// Jump to beginning of line?
-	// cout << "\x1b[A";
+	// Sort it
+	sort(sequence.begin(), sequence.end());
+	print(sequence);
 
-	// Clear screen
-	// cout << "\033[2J";
-
-	// usleep(500000);
+	// Reverse it
+	reverse(sequence.begin(), sequence.end());
+	print(sequence);
 
 	return 0;
 }
