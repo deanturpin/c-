@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include <unistd.h>
 
 int main() {
 
@@ -16,8 +15,6 @@ int main() {
 	// Print sequence
 	const auto print = [](const auto& s) {
 
-		usleep(500000);
-
 		// Clear screen
 		cout << "\033[2J";
 
@@ -29,13 +26,35 @@ int main() {
 	print(vector<unsigned int>(sequence.size()));
 	print(sequence);
 
-	// Sort it
-	sort(sequence.begin(), sequence.end());
-	print(sequence);
+	////////////////////
+	// Insert sort
 
-	// Reverse it
-	reverse(sequence.begin(), sequence.end());
-	print(sequence);
+	// Define the algorithm
+	auto is(sequence);
+	auto insertionSort = [&print](auto &is) {
+
+		for (auto i = is.begin(); i != is.end() - 1; ++i) {
+
+			auto now = i;
+			auto next = (now + 1);
+
+			if (*now > *next) {
+
+				// Swap element
+				auto t = *now;
+				*now = *next;
+				*next = t;
+
+				// Return to start
+				i = is.begin();
+			}
+
+			print(is);
+		}
+	};
+
+	// And call it
+	insertionSort(is);
 
 	return 0;
 }
