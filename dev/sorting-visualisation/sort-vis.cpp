@@ -25,7 +25,7 @@ int main() {
 
 		// Print sequence
 		for_each (s.cbegin(), s.cend(),
-			[&max](auto &n) { cout << string(n, '-') << string(max - n, ' ') << endl; });
+			[&max](auto &n) { cout << string(n, ' ') << '|' << string(max - n, ' ') << endl; });
 
 		// Print some stats
 		cout << "\nIterations " << calls << string(max, ' ') << endl;
@@ -40,31 +40,31 @@ int main() {
 	// Insert sort
 
 	// Define the algorithm
-	auto insertionSort = [&print](auto &is) {
+	const auto insertionSort = [&print](auto &s) {
 
-		for (auto i = is.begin(); i != is.end() - 1; ++i) {
+		for (auto i = s.begin(); i != s.end() - 1; ++i) {
 
 			auto now = i;
 			auto next = (now + 1);
 
-			if (*now > *next) {
+			if (*next < *now) {
 
 				// Swap element
-				auto t = *now;
+				const auto t = *now;
 				*now = *next;
 				*next = t;
 
 				// Return to start
-				i = is.begin();
+				i = s.begin();
 			}
 
-			print(is);
+			print(s);
 		}
 	};
 
 	// Create a copy and sort
-	auto fs(sequence);
-	insertionSort(fs);
+	auto s1(sequence);
+	insertionSort(s1);
 
 	return 0;
 }
