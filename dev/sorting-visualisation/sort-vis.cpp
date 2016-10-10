@@ -12,11 +12,20 @@ int main() {
 		1, 31, 3, 15, 12, 10, 18, 11, 13, 28, 10, 28, 21, 5, 27, 22, 12, 26, 24, 8
 	};
 
-	cout << "Sequence length " << sequence.size() << endl;
-
 	// Print sequence
-	for_each (sequence.cbegin(), sequence.cend(), [](auto &n)
-		{ cout << string(n, '-') << endl; });
+	auto print = [](const auto& s) {
+		for_each (s.cbegin(), s.cend(), [](auto &n) { cout << string(n, '-') << endl; });
+	};
+
+	print(sequence);
+
+	// Jump to beginning of line?
+	// cout << "\x1b[A";
+
+	// Clear screen
+	// cout << "\033[2J";
+
+	// usleep(500000);
 
 	return 0;
 }
