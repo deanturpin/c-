@@ -1,6 +1,6 @@
 #!/usr/bin/lua5.3
 
-require "histogram"
+require "utils"
 
 -- A random sequence
 sequence = {
