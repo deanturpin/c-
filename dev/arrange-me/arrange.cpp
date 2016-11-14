@@ -28,7 +28,10 @@ int main() {
 		[](auto &n){ return n < 4; });
 
 	// Truncate the end bit
-	filtered.resize(distance(filtered.begin(), it));
+	filtered.resize(
+		distance(
+		filtered.begin(),
+		it));
 
 	// Print the result
 	cout << "filtered " << filtered.size() << endl;
