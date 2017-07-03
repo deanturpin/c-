@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 
-namespace deck {
+namespace deck
+{
 
 	using namespace std;
 
