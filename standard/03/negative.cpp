@@ -4,5 +4,6 @@ int main() {
 
 	using namespace std;
 
-	cout << boolalpha << (-0xffffffff == 1) << endl;
+	cout << -0xfffffff << endl;
+	cout << -0xffffffff << endl;
 }
