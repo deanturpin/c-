@@ -1,21 +1,22 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	cout << "Random noise" << endl;
+    cout << "Random noise" << endl;
 
-	// Source of random data
-	const string randomFile = "/dev/urandom";
-	cout << "Using " << randomFile << endl;
+    // Source of random data
+    const string randomFile = "/dev/urandom";
+    cout << "Using " << randomFile << endl;
 
-	// Read some
-	int blah;
-	ifstream(randomFile).read(reinterpret_cast<char *>(&blah), sizeof blah);
+    // Read some
+    int blah;
+    ifstream(randomFile).read(reinterpret_cast<char*>(&blah), sizeof blah);
 
-	cout << "Read " << blah << endl;
+    cout << "Read " << blah << endl;
 
-	return 0;
+    return 0;
 }

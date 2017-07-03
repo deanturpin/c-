@@ -1,13 +1,14 @@
 #include <iostream>
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	bool once = false;
+    bool once = false;
 
-	while (!once++)
-		cout << "Hello" << endl;
+    while (!once++)
+        cout << "Hello" << endl;
 
-	return 0;
+    return 0;
 }

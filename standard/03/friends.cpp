@@ -1,31 +1,30 @@
 #include <iostream>
 
-class A
-{
-	public:
+class A {
+public:
+    A()
+        : foo(1)
+    {
+        ;
+    }
 
-		A() : foo(1) { ; }
-
-	private:
-
-		int foo;
-		friend class B;
+private:
+    int foo;
+    friend class B;
 };
 
-class B
-{
-	public:
-
-		B()
-		{
-			class A a;
-			std::cout << "Access A's foo " << a.foo << std::endl;
-		}
+class B {
+public:
+    B()
+    {
+        class A a;
+        std::cout << "Access A's foo " << a.foo << std::endl;
+    }
 };
 
 int main()
 {
-	class B b;
+    class B b;
 
-	return 0;
+    return 0;
 }

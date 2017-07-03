@@ -10,39 +10,47 @@
 
 namespace wrk {
 
-	using namespace std;
+using namespace std;
 
-	class Employee {
+class Employee {
 
-		// Pimpl
-		struct Impl {
+    // Pimpl
+    struct Impl {
 
-			Impl(string n) : name(n) { cout << "Impl ctor" << endl; }
-			~Impl() { cout << "Impl dtor" << endl; }
+        Impl(string n)
+            : name(n)
+        {
+            cout << "Impl ctor" << endl;
+        }
+        ~Impl() { cout << "Impl dtor" << endl; }
 
-			string name;
-		};
+        string name;
+    };
 
-		unique_ptr<Impl> pimpl;
+    unique_ptr<Impl> pimpl;
 
-		public:
+public:
+    Employee(string n)
+        : pimpl(new Impl(n))
+    {
+    }
 
-		Employee(string n) : pimpl(new Impl(n)) {}
+    string getName()
+    {
 
-		string getName() {
-
-			return pimpl->name;
-		}
-	};
+        return pimpl->name;
+    }
+};
 }
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	wrk::Employee e("blah");
+    wrk::Employee e("blah");
 
-	cout << "Name is " << e.getName() << endl;
+    cout << "Name is " << e.getName() << endl;
 
-	return 0;
+    return 0;
 }

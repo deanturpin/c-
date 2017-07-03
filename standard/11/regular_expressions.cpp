@@ -1,19 +1,20 @@
 #include <iostream>
 #include <regex>
 
-void regular_expressions() {
+void regular_expressions()
+{
 
-	using namespace std;
+    using namespace std;
 
-	string search("blah yes blah no");
-	regex expression("blah");
+    string search("blah yes blah no");
+    regex expression("blah");
 
-	if (regex_match(search, expression))
-		cout << "Match yes" << endl;
-	else
-		cout << "Match no" << endl;
+    if (regex_match(search, expression))
+        cout << "Match yes" << endl;
+    else
+        cout << "Match no" << endl;
 
-	// mark_count()
+    // mark_count()
 }
 
 /*

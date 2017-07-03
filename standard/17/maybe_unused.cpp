@@ -1,6 +1,7 @@
-int main() {
+int main()
+{
 
-	[[maybe_unused]] int i = 0;
+    [[maybe_unused]] int i = 0;
 
-	return 0;
+    return 0;
 }

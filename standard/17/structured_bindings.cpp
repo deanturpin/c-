@@ -2,13 +2,14 @@
 
 struct S {
 
-	int i = 4;
-	int j = 5;
+    int i = 4;
+    int j = 5;
 };
 
-int main() {
+int main()
+{
 
-	auto [i, j] = S();
+    auto[i, j] = S();
 
-	return 0;
+    return 0;
 }

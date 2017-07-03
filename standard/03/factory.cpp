@@ -1,36 +1,40 @@
-#include <string>
 #include <iostream>
+#include <string>
 
 namespace aml {
 
-	using namespace std;
+using namespace std;
 
-	class animal {
+class animal {
 
-		// private:
-			// int legs;
-			// bool fur;
-			string myName;
-		public:
-			animal() : myName("animal") {
-				cout << "My name is " << myName << endl;
-			}
+    // private:
+    // int legs;
+    // bool fur;
+    string myName;
 
-			~animal() {
-				cout << "Goodbye " << myName << endl;
-			}
+public:
+    animal()
+        : myName("animal")
+    {
+        cout << "My name is " << myName << endl;
+    }
 
-	};
+    ~animal()
+    {
+        cout << "Goodbye " << myName << endl;
+    }
+};
 
-	class squirrel : public animal {
-		public:
-		squirrel() {
-			myName = "squirrel";
-		}
-		// string myName;
-	};
+class squirrel : public animal {
+public:
+    squirrel()
+    {
+        myName = "squirrel";
+    }
+    // string myName;
+};
 
-	/*
+/*
 	class goat : public animal {
 	};
 
@@ -49,17 +53,18 @@ namespace aml {
 #endif
 }
 
-int main() {
+int main()
+{
 
-	// Factory
-	// aml::animalFactory fac;
-	// aml::animal* a = fac.createAnimal();
+    // Factory
+    // aml::animalFactory fac;
+    // aml::animal* a = fac.createAnimal();
 
-	aml::animal* a = new aml::animal();
-	delete a;
+    aml::animal* a = new aml::animal();
+    delete a;
 
-	aml::animal* s = new aml::squirrel();
-	delete s;
+    aml::animal* s = new aml::squirrel();
+    delete s;
 
-	return 0;
+    return 0;
 }

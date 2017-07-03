@@ -1,9 +1,10 @@
 #include <iostream>
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	cout << -0xfffffff << endl;
-	cout << -0xffffffff << endl;
+    cout << -0xfffffff << endl;
+    cout << -0xffffffff << endl;
 }

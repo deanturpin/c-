@@ -1,13 +1,13 @@
 int main()
 {
-	struct A {
-		// Variable is increment despite being a const method
-		void constMemberFunction() const { ++m; }
-		mutable int m;
-	};
+    struct A {
+        // Variable is increment despite being a const method
+        void constMemberFunction() const { ++m; }
+        mutable int m;
+    };
 
-	A a;
-	a.constMemberFunction(); 
+    A a;
+    a.constMemberFunction();
 
-	return 0;
+    return 0;
 }

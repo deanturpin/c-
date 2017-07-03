@@ -1,58 +1,60 @@
-#include<iostream>
+#include <iostream>
 
 namespace pet {
 
-	using namespace std;
+using namespace std;
 
-	class animal;
-	class dog;
+class animal;
+class dog;
 
-	class animal {
+class animal {
 
-		const string name = "animal";
+    const string name = "animal";
 
-		public:
+public:
+    animal() { cout << "+" << name << endl; }
+    ~animal() { cout << "-" << name << endl; }
 
-			animal() { cout << "+" << name << endl; }
-			~animal() { cout << "-" << name << endl; }
+    // explicit
+    // animal(const int l) : legs(l) { }
+    // animal() { }
 
-			// explicit
-			// animal(const int l) : legs(l) { }
-			// animal() { }
+    void print() { cout << ">"
+                        << "animal" << endl; }
+};
 
-			void print() { cout << ">" << "animal" << endl; }
-	};
+class dog : public animal {
 
-	class dog : public animal {
+    const string name = "dog";
 
-		const string name = "dog";
+public:
+    dog() {}
 
-		public:
+    // dog() { cout << "+ dog" << endl; }
+    // ~dog() { cout << "- dog" << endl; }
 
-			dog() { }
-
-			// dog() { cout << "+ dog" << endl; }
-			// ~dog() { cout << "- dog" << endl; }
-
-			void print() { cout << ">" << name << endl; }
-	};
+    void print() { cout << ">" << name << endl; }
+};
 }
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	{
-		cout << "\nANIMAL\n" << endl;
-		pet::animal a;
-		a.print();
-	}
+    {
+        cout << "\nANIMAL\n"
+             << endl;
+        pet::animal a;
+        a.print();
+    }
 
-	{
-		cout << "\nDOG\n" << endl;
-		pet::dog d;
-		d.print();
-	}
+    {
+        cout << "\nDOG\n"
+             << endl;
+        pet::dog d;
+        d.print();
+    }
 
-	return 0;
+    return 0;
 }

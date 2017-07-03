@@ -1,42 +1,42 @@
 #include <iostream>
 #include <vector>
 
-namespace deck
-{
+namespace deck {
 
-	using namespace std;
+using namespace std;
 
-	class cards {
+class cards {
 
-		const vector<string> suit = {"hearts", "spades", "clubs", "diamonds"};
-		const vector<string> face = {"1", "2", "J", "Q", "K"};
+    const vector<string> suit = { "hearts", "spades", "clubs", "diamonds" };
+    const vector<string> face = { "1", "2", "J", "Q", "K" };
 
-		vector<pair<string, string>> c;
+    vector<pair<string, string> > c;
 
-		public:
+public:
+    // Initialise deck
+    cards()
+    {
 
-		// Initialise deck
-		cards() {
+        for (const auto& f : face)
+            for (const auto& s : suit)
+                c.push_back(make_pair(f, s));
+    }
 
-			for (const auto &f : face)
-				for (const auto &s : suit)
-					c.push_back(make_pair(f, s));
-		}
+    // Print each card
+    void dump()
+    {
 
-		// Print each card
-		void dump() {
-
-			for (const auto &card : c)
-				cout << card.first << " " << card.second << endl;
-		}
-
-	};
+        for (const auto& card : c)
+            cout << card.first << " " << card.second << endl;
+    }
+};
 }
 
-int main() {
+int main()
+{
 
-	deck::cards d;
-	d.dump();
+    deck::cards d;
+    d.dump();
 
-	return 0;
+    return 0;
 }

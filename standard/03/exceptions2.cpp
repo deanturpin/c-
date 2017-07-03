@@ -2,24 +2,26 @@
 
 #include <iostream>
 
-void toss(const std::string &name) {
+void toss(const std::string& name)
+{
 
-	throw name;
+    throw name;
 }
 
-int main() {
+int main()
+{
 
-	using namespace std;
+    using namespace std;
 
-	try {
+    try {
 
-		toss("ball");
-	}
+        toss("ball");
+    }
 
-	catch(string name) {
+    catch (string name) {
 
-		cout << "Caught " << name << endl;
-	}
+        cout << "Caught " << name << endl;
+    }
 
-	return 0;
+    return 0;
 }
