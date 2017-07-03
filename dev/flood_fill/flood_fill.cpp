@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 
-namespace flood {
+namespace flood
+
+{
 
 	using namespace std;
 
