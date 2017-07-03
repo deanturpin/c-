@@ -17,7 +17,7 @@ clean:
 	$(RM) foo $(objects)
 
 iwyu:
-	$(foreach cpp, $(wildcard *.cpp), echo iwyu $(cpp) && iwyu -std=$(STANDARD) $(cpp) 2>&1 | grep -- '- #include' || true;)
+	$(foreach cpp, $(wildcard *.cpp), echo iwyu $(cpp) && iwyu -std=$(STANDARD) $(cpp) |& grep -- '- #include' || true;)
 
 fresh: clean foo
 
