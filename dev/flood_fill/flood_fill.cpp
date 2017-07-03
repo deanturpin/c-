@@ -44,7 +44,7 @@ namespace flood {
 
 		// Check range
 		if (x >= width || y >= height) {
-			
+
 			// cout << "Start point out of range: " << x << ", " << y << endl;
 			return false; 
 		}
@@ -76,6 +76,6 @@ int main() {
 
 	std::cout << "Point " << flood::width * flood::height << std::endl;
 	std::cout << "Calls " << flood::callCounter << std::endl;
-	
+
 	return 0;
 }
