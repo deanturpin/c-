@@ -1,6 +1,4 @@
-#C++ refresher
-
-## Containers
+# Containers
 _Sequence containers_
 
 array 
@@ -23,7 +21,7 @@ _Associative containers (unordered)_
 
 unordered_set unordered_multiset unordered_map unordered_multimap
 
-## Keywords
+# Keywords
 static_cast reinterpret_cast dynamic_cast const_cast
 
 using(1) namespace
@@ -66,7 +64,7 @@ _Concepts TS_
 
 requires concept
 
-##Issues
+#Issues
 - Data races, deadlocks and livelocks - unsynchonised access to shared memory can introduce race conditions and undefined behaviour (program results depend nondeterministcially on the relative timings of two or more threads)
 - Threads versus processes
 - Too few threads - alogorithm is sub-optimal
