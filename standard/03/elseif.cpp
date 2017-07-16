@@ -1,6 +1,6 @@
 #include <iostream>
 
-void elseif()
+int main()
 {
     int i = -1;
 
@@ -28,4 +28,6 @@ void elseif()
         c = 5;
 
     std::cout << "c is " << b << std::endl;
+
+		return 0;
 }
