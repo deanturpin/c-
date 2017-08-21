@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <memory>
 
 int main() {
 
@@ -13,6 +14,13 @@ int main() {
 
   cout << "Rows " << a.size() << endl;
   cout << "Cols " << a.front().size() << endl;
+
+  // 1D array on the heap
+  auto b = unique_ptr<array<int, 5>>(new array<int, 5>);
+  cout << b.get()->at(0) << endl;
+
+  // 2D array on the heap
+  auto c = unique_ptr<array<array<int, 5>, 5>>(new array<array<int, 5>, 5>);
 
   return 0;
 }
