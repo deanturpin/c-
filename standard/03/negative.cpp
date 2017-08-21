@@ -1,10 +1,20 @@
+#include <cmath>
 #include <iostream>
 
-int main()
-{
+// https://en.wikipedia.org/wiki/Double-precision_floating-point_format
 
-    using namespace std;
+int main() {
 
-    cout << -0xfffffff << endl;
-    cout << -0xffffffff << endl;
+  using namespace std;
+
+  cout << -0xfffffff << endl;
+  cout << -0xffffffff << endl;
+
+  const unsigned int a = 0u;
+  std::cout << -a << std::endl;
+  std::cout << 0.0 << std::endl;
+  std::cout << -0.0 << std::endl;
+  std::cout << boolalpha << (0.0 == 0) << std::endl;
+  std::cout << boolalpha << (-0.0 == 0) << std::endl;
+  std::cout << signbit(0.0) << std::endl; // Returns a number
 }
