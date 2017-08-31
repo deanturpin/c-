@@ -1,12 +1,11 @@
+# Build objects for each cpp
 all: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-# Compile and run
 %.o: %.cpp
-	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++14 -o $@ $<
-	# ./$@
+	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++1y -o $@ $<
 
 wait:
-	while :; do inotifywait -qe modify *.cpp; make; done
+	while :; do inotifywait -qe modify *.cpp; make -j; done
 
 clean:
 	rm -f *.o
