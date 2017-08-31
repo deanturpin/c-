@@ -1,4 +1,3 @@
-# TODO
 - [ ] IO manipulation
 - [ ] C++ keywords - http://en.cppreference.com/w/cpp/keyword
 - [ ] https://en.wikipedia.org/wiki/C%2B%2B11
@@ -14,8 +13,14 @@
 - [ ] http://www.codeproject.com/Articles/570638/Ten-Cplusplus-Features-Every-Cplusplus-Developer#movesemantics
 - [ ] Move semantics
 
-# URLS
+# C++11
+- [ ] value_type (templates)
+- [ ] c++11 attributes [[ noreturn ]]
+- [ ] regex capture and grouping p12
+
+# References
 - [ ] http://www.cplusplus.com/forum/general/74020/
 - [ ] http://stackoverflow.com/questions/1030567/threading-issues-in-c
 - [ ] http://www.informit.com/articles/article.aspx?p=2079020
 - [ ] http://www.drdobbs.com/tools/avoiding-classic-threading-problems/231000499
+

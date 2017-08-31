@@ -1,7 +1,0 @@
-clean:
-	rm -f *.o
-
-# Compile and run
-%.o: %.cpp
-	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++03 -o $@ $<
-	./$@
