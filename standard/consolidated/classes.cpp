@@ -1,45 +1,22 @@
 #include <iostream>
 
-int main() {
-  using namespace std;
+void classes()
+{
+    using namespace std;
 
-  // Explicit
-  {
+    // is_final
     struct A {
-      A(int) { ; }
+        virtual void foo() final;
+        void bar();
     };
 
-    struct B {
-      explicit B(int) { ; }
+    struct B final : public A {
+        // Error - A::foo is final
+        // void foo();
+
+        void bar(){};
     };
 
-    A(1);
-    B(1);
-
-    // Error - candidate constructor (the implicit copy constructor) not viable:
-    // B("blah");
-  }
-
-  // Overload not override
-  {
-    class A {
-    public:
-      void foo() { cout << "foo" << endl; }
-      void foo() const { cout << "foo" << endl; }
-    };
-
-    class B : public A {
-    public:
-      void foo() const { cout << "bar" << endl; }
-    };
-
-    cout << "Overload not override" << endl;
-    A a;
-    B b;
-
-    a.foo();
-    b.foo();
-  }
-
-  return 0;
+    cout << "Is A final? " << boolalpha << is_final<A>::value << endl;
+    cout << "Is B final? " << boolalpha << is_final<B>::value << endl;
 }
