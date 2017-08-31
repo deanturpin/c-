@@ -1,71 +1,26 @@
-# Containers
-_Sequence containers_
+- [ ] IO manipulation
+- [ ] C++ keywords - http://en.cppreference.com/w/cpp/keyword
+- [ ] https://en.wikipedia.org/wiki/C%2B%2B11
+- [ ] Deadlocks and livelocks
+- [ ] Threads versus processes
+- [ ] String manipulation - toupper
+- [ ] Implicit members - shallow/deep copy
+- [ ] Reimplement template loop with algorithm::for_each
+- [ ] Exceptions - explore standard exceptions
+- [ ] http://www.drdobbs.com/tools/avoiding-classic-threading-problems/231000499
+- [ ] http://www.codeproject.com/Articles/570638/Ten-Cplusplus-Features-Every-Cplusplus-Developer#smartpointers
+- [ ] Static assert and type traits
+- [ ] http://www.codeproject.com/Articles/570638/Ten-Cplusplus-Features-Every-Cplusplus-Developer#movesemantics
+- [ ] Move semantics
 
-array 
-vector
-deque
-forward_list 
-list
+# C++11
+- [ ] value_type (templates)
+- [ ] c++11 attributes [[ noreturn ]]
+- [ ] regex capture and grouping p12
 
-_Container adapters_
+# References
+- [ ] http://www.cplusplus.com/forum/general/74020/
+- [ ] http://stackoverflow.com/questions/1030567/threading-issues-in-c
+- [ ] http://www.informit.com/articles/article.aspx?p=2079020
+- [ ] http://www.drdobbs.com/tools/avoiding-classic-threading-problems/231000499
 
-stack
-queue
-priority_queue
-
-_Associative containers (ordered)_
-
-set multiset map multimap 
-
-_Associative containers (unordered)_
-
-unordered_set unordered_multiset unordered_map unordered_multimap
-
-# Keywords
-static_cast reinterpret_cast dynamic_cast const_cast
-
-using(1) namespace
-
-struct class union friend
-
-private protected public 
-
-inline mutable operator virtual explicit 
-
-switch case break default(1) continue
-
-catch throw try
-
-typedef typeid typename
-
-true false
-
-while for if do else
-
-new delete(1)
-
-unsigned signed const long
-
-auto(1) void bool char wchar_t float double short int
-
-xor xor_eq and and_eq bitand bitor not not_eq or or_eq compl
-
-export(1) extern static
-
-volatile register 
-
-sizeof this template asm enum goto return
-
-_C++11_
-
-decltype constexpr lignas alignof char16_t char32_t static_assert thread_local nullptr noexcept override final
-
-_Concepts TS_
-
-requires concept
-
-#Issues
-- Data races, deadlocks and livelocks - unsynchonised access to shared memory can introduce race conditions and undefined behaviour (program results depend nondeterministcially on the relative timings of two or more threads)
-- Threads versus processes
-- Too few threads - alogorithm is sub-optimal
-- Too many threads - overhead of creating/managing and partitioning the data is greater than processing advantage; software threads outnumber the available hardware threads and the OS must intervene
