@@ -19,5 +19,4 @@ int main() {
   using namespace wood;
 
   const auto a = shared_ptr<Animal>(new Animal("a"));
-
 }

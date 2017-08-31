@@ -9,3 +9,6 @@ wait:
 
 clean:
 	rm -f *.o
+
+clang-format:
+	$(foreach file, $(wildcard *.cpp), clang-format $(file) > blah; mv blah $(file) || true;)

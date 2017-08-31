@@ -1,9 +1,8 @@
 #include <iostream>
 
-int main()
-{
-    if (int blah = 0 == 0)
-        std::cout << blah << std::endl;
+int main() {
+  if (int blah = 0 == 0)
+    std::cout << blah << std::endl;
 
-    return 0;
+  return 0;
 }
