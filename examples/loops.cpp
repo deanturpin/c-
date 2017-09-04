@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 
-void loops() {
+int main() {
+
   using namespace std;
 
   vector<int> vec = {
@@ -14,4 +15,6 @@ void loops() {
 
   for (const auto &i : {5, 4, 3})
     cout << "iter " << i << endl;
+
+  return 0;
 }

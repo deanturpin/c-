@@ -3,7 +3,8 @@
 #include <vector>
 
 // Lambda - anonymous functions
-void lambda_functions() {
+int main() {
+
   using namespace std;
 
   vector<int> vec{1, 2, 3};

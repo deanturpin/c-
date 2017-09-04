@@ -1,7 +1,7 @@
 #include <iostream>
 #include <regex>
 
-void regular_expressions() {
+int main() {
 
   using namespace std;
 
@@ -14,6 +14,8 @@ void regular_expressions() {
     cout << "Match no" << endl;
 
   // mark_count()
+
+  return 0;
 }
 
 /*

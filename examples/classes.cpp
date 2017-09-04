@@ -1,6 +1,7 @@
 #include <iostream>
 
-void classes() {
+int main() {
+
   using namespace std;
 
   // is_final
@@ -18,4 +19,6 @@ void classes() {
 
   cout << "Is A final? " << boolalpha << is_final<A>::value << endl;
   cout << "Is B final? " << boolalpha << is_final<B>::value << endl;
+
+  return 0;
 }

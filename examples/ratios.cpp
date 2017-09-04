@@ -1,7 +1,8 @@
 #include <iostream>
 #include <ratio>
 
-void ratios() {
+int main() {
+
   using namespace std;
 
   cout << "Nano is " << nano::num << " / " << nano::den << endl;
@@ -9,4 +10,6 @@ void ratios() {
        << endl;
   // cout << "Ratio add " << 1.0 * ratio_add(ratio<1,3>, ratio<1,3>)::den <<
   // endl;
+
+  return 0;
 }

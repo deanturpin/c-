@@ -1,6 +1,7 @@
 #include <iostream>
 
-void strongly_typed_enums() {
+int main() {
+
   using namespace std;
 
   enum nmb1 { one, two };
@@ -16,4 +17,6 @@ void strongly_typed_enums() {
 
   // Error - no known conversion
   // cout << nmb2::one << endl;
+
+  return 0;
 }

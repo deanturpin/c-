@@ -1,7 +1,9 @@
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 
-void string_manipulation() {
+int main() {
+
   using namespace std;
 
   stringstream s;
@@ -9,4 +11,6 @@ void string_manipulation() {
   s << quoted(string(blah));
 
   cout << "Quoted: " << s.str() << endl;
+
+  return 0;
 }

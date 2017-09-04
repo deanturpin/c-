@@ -1,6 +1,7 @@
 #include <iostream>
 
-void align() {
+int main() {
+
   using namespace std;
 
   class A {};
@@ -14,4 +15,6 @@ void align() {
   cout << alignof(B) << endl;
   cout << alignof(int) << endl;
   cout << alignof(double) << endl;
+
+  return 0;
 }

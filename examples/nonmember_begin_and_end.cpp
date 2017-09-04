@@ -1,6 +1,7 @@
 #include <iostream>
 
-void nonmember_begin_and_end() {
+int main() {
+
   using namespace std;
 
   // Create lambda to square a parameter
@@ -13,6 +14,8 @@ void nonmember_begin_and_end() {
     cout << square(a) << endl;
 
   // Non-member
-  for (auto i = begin(array); i != end(array); ++i)
+  for (auto i = cbegin(array); i != cend(array); ++i)
     cout << *i << endl;
+
+  return 0;
 }
