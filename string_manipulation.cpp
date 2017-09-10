@@ -8,9 +8,9 @@ int main() {
 
   stringstream s;
   string blah(to_string(1234));
-  s << quoted(string(blah));
+  s << quoted(blah);
 
-  cout << "Quoted: " << s.str() << endl;
+  cout << s.str() << endl;
 
   return 0;
 }
