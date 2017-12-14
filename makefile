@@ -2,7 +2,7 @@
 all: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 %.o: %.cpp
-	clang++ -Wall -Wextra -pedantic -pedantic-errors -std=c++1y -lpthread -o $@ $<
+	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=c++1z -lpthread -o $@ $<
 
 wait:
 	while :; do inotifywait -qe modify *.cpp; make -j; done
@@ -10,5 +10,5 @@ wait:
 clean:
 	rm -f *.o
 
-clang-format:
-	$(foreach file, $(wildcard *.cpp), clang-format $(file) > blah; mv blah $(file) || true;)
+format:
+	$(foreach file, $(wildcard *.cpp), clang-format -i $(file) || true;)

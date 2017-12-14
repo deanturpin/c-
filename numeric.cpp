@@ -10,5 +10,5 @@ int main() {
 
   iota(vec.begin(), vec.end(), 100);
 
-  copy(vec.cbegin(), vec.cend(), ostream_iterator<long>(cout, "\n"));
+  // copy(vec.cbegin(), vec.cend(), ostream_iterator<long>(cout, "\n"));
 }
