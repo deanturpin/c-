@@ -10,14 +10,12 @@ public:
   chain() { cout << "ctor" << endl; }
   ~chain() { cout << "dtor" << endl; }
 
-  chain& strength(const bool s)
-  {
+  chain &strength(const bool s) {
     strong = s;
     return *this;
   }
 
-  chain& length(const unsigned int l)
-  {
+  chain &length(const unsigned int l) {
     links = l;
     return *this;
   }
@@ -30,8 +28,6 @@ private:
 
 int main() {
   my::chain c;
-
   c.length(10).strength(false);
-
   return 0;
 }
