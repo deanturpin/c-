@@ -15,5 +15,10 @@ int main() {
   for (const auto &v : vec)
     cout << "cont " << v << endl;
 
+  // Can't do this, tho...
+  // int i;
+  // for (i : vec)
+  //   cout << "cont " << i << endl;
+
   return 0;
 }
