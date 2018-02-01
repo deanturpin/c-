@@ -1,5 +1,6 @@
 # Build objects for each cpp
-all: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+all:
+	make -k --silent -j 4 $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 %.o: %.cpp
 	g++-6 -g -Wall -Wextra -pedantic -pedantic-errors -std=c++17 -lpthread -o $@ $<
