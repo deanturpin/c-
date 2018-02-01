@@ -2,7 +2,7 @@
 all: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 %.o: %.cpp
-	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=c++1z -lpthread -o $@ $<
+	g++-6 -g -Wall -Wextra -pedantic -pedantic-errors -std=c++17 -lpthread -o $@ $<
 
 wait:
 	while :; do inotifywait -qe modify *.cpp; make -j; done
