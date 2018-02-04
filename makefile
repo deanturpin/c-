@@ -1,12 +1,12 @@
 # Build objects for each cpp
 all:
-	make -k --silent -j 4 $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+	make -k -j 4 $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 %.o: %.cpp
-	g++-6 -g -Wall -Wextra -pedantic -pedantic-errors -std=c++17 -lpthread -o $@ $<
+	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=c++11 -lpthread -o $@ $<
 
 wait:
-	while :; do inotifywait -qe modify *.cpp; make -j; done
+	while :; do inotifywait -qe modify *.cpp; make; done
 
 clean:
 	rm -f *.o

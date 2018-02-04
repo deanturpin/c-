@@ -1,52 +1,36 @@
-// http://www.cplusplus.com/reference/thread/thread/
-
 #include <iostream>
+#include <fstream>
 #include <thread>
 #include <vector>
 
-std::vector<double> arr(1e8); // = new int[1e6];
+void process_file(const std::string name) {
 
-const unsigned int threads = 4;
-
-void foo1() {
-
-  for (unsigned int i = 0; i < arr.size(); i += threads) {
-    arr.at(i) *= arr.at(i);
-    arr.at(i) *= arr.at(i);
-  }
-}
-
-void foo2() {
-
-  for (unsigned int i = 1; i < arr.size(); i += threads)
-    arr.at(i) *= arr.at(i);
-}
-
-void foo3() {
-
-  for (unsigned int i = 2; i < arr.size(); i += threads)
-    arr.at(i) *= arr.at(i);
-}
-
-void foo4() {
-
-  for (unsigned int i = 3; i < arr.size(); i += threads)
-    arr.at(i) *= arr.at(i);
+  std::ofstream out(name);
+  if (out)
+    out << name;
 }
 
 int main() {
 
-  using namespace std;
+  // std::thread first(foo1);
+  // std::thread second(foo2);
+  // std::thread third(foo3);
+  // std::thread fourth(foo4);
 
-  thread first(foo1);
-  thread second(foo2);
-  thread third(foo3);
-  thread fourth(foo4);
+  std::vector<std::string> files = {
+    "file1",
+    "file2",
+    "file3",
+    "file4",
+    "file5",
+  };
 
-  first.join();
-  second.join();
-  third.join();
-  fourth.join();
+  std::thread blah(process_file, "blah.txt");
+
+  blah.join();
+  // second.join();
+  // third.join();
+  // fourth.join();
 
   return 0;
 }
