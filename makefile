@@ -3,7 +3,7 @@ all:
 	make -k -j 4 $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 %.o: %.cpp
-	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=c++11 -lpthread -o $@ $<
+	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=c++14 -lpthread -o $@ $<
 
 wait:
 	while :; do inotifywait -qe modify *.cpp; make; done
