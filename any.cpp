@@ -1,6 +1,6 @@
-#include <vector>
-#include <iostream>
 #include <experimental/any>
+#include <iostream>
+#include <vector>
 
 int main() {
 
@@ -14,36 +14,38 @@ int main() {
   martini.at(7) = "place";
   martini.at(8) = "where";
 
-    // simple example 
-    /*
- 
-    auto a = std::any(12);
- 
-    std::cout << std::any_cast<int>(a) << '\n'; 
- 
-    try {
-        std::cout << std::any_cast<std::string>(a) << '\n';
-    }
-    catch(const std::bad_any_cast& e) {
-        std::cout << e.what() << '\n';
-    }
- 
-    // advanced example
- 
-    a = std::string("hello");
- 
-    auto& ra = std::any_cast<std::string&>(a); //< reference
-    ra[1] = 'o';
- 
-    std::cout << "a: " << std::any_cast<const std::string&>(a) << '\n'; //< const reference
- 
-    auto b = std::any_cast<std::string&&>(a); //< rvalue reference (no need for std::move)
- 
-    // Note, 'b' is a move-constructed std::string, 'a' is now empty
- 
-    std::cout << "a: " << *std::any_cast<std::string>(&a) //< pointer
-        << "b: " << b << '\n';
-  */
+  // simple example
+  /*
+
+  auto a = std::any(12);
+
+  std::cout << std::any_cast<int>(a) << '\n';
+
+  try {
+      std::cout << std::any_cast<std::string>(a) << '\n';
+  }
+  catch(const std::bad_any_cast& e) {
+      std::cout << e.what() << '\n';
+  }
+
+  // advanced example
+
+  a = std::string("hello");
+
+  auto& ra = std::any_cast<std::string&>(a); //< reference
+  ra[1] = 'o';
+
+  std::cout << "a: " << std::any_cast<const std::string&>(a) << '\n'; //< const
+  reference
+
+  auto b = std::any_cast<std::string&&>(a); //< rvalue reference (no need for
+  std::move)
+
+  // Note, 'b' is a move-constructed std::string, 'a' is now empty
+
+  std::cout << "a: " << *std::any_cast<std::string>(&a) //< pointer
+      << "b: " << b << '\n';
+*/
 
   return 0;
 }

@@ -11,5 +11,5 @@ wait:
 clean:
 	rm -f *.o
 
-format:
+tidy:
 	$(foreach file, $(wildcard *.cpp), clang-format -i $(file) || true;)
