@@ -5,42 +5,64 @@
 #include <string>
 #include <vector>
 
-// A template strategy
 struct turbo {
 
   const std::string name = "turbo_20";
 
-  // Rule of five
-  turbo() { std::cout << "turbo() " << std::quoted(name) << "\n"; }
-  turbo(const turbo &c) : name(c.name) {}
-  turbo(turbo &&) = default;
-  turbo &operator=(const turbo &) = default;
-  turbo &operator=(turbo &&) = default;
-  ~turbo() { std::cout << "\t~turbo() " << std::quoted(name) << "\n"; }
+  turbo() { std::cout << "turbo()\n"; }
+  turbo(const turbo &c) { std::cout << "turbo(const turbo&)\n"; }
+  turbo(const turbo &&) { std::cout << "turbo(turbo&&)\n"; }
+  turbo &operator=(const turbo &) = delete;
+  turbo &operator=(turbo &&) = delete;
+  virtual ~turbo() { std::cout << "~turbo()\n"; }
 
-  // Buy
-  bool buy(const std::vector<double> &p) const { 
-    std::cout << "turbo buy\n";
-    return true;
-  }
-
-  // Sell
-  bool sell(const std::vector<double> &series, const double &buy_price)
-  const {
-    std::cout << "turbo sell\n";
-    return true;
-  }
+  virtual void buy() const { std::cout << "turbo buy\n"; }
+  virtual void sell() const { std::cout << "turbo sell\n"; }
 };
 
-// Let's trade
+struct turbonew : public turbo {
+
+  const std::string name = "turbonew";
+
+  turbonew() { std::cout << "turbonew()\n"; }
+  turbonew(const turbonew &c) { std::cout << "turbonew(const turbonew&)\n"; }
+  turbonew(const turbonew &&) { std::cout << "turbonew(turbonew&&)\n"; }
+  turbonew &operator=(const turbonew &) = delete;
+  turbonew &operator=(turbonew &&) = delete;
+  virtual ~turbonew() { std::cout << "~turbonewnew()\n"; }
+
+  void buy() const override { std::cout << "turbonew buy\n"; }
+};
+
 int main() {
 
-  std::vector<turbo> s = {turbo()};
+  {
+    // not vector
+    std::cout << "\n## not vector\n";
+    turbo a;
+    turbonew b;
 
-  std::for_each(s.cbegin(), s.cend(), [](const auto &i) {
+    a.buy();
+    a.sell();
+    b.buy();
+    b.sell();
 
-                const std::vector<double> series {1, 23, 4, 5, 6};
-                i.buy(series);
-                i.sell(series, 1.0);
-                });
+    // vector
+    std::cout << "\n## vector\n";
+    // std::vector<turbo> s {
+    //   turbo(),
+    //   turbonew()
+    // };
+
+    std::vector<turbo> s;
+    s.push_back(a);
+    s.push_back(b);
+
+    for (const auto &i : s) {
+      i.buy();
+      i.sell();
+    }
+
+    std::cout << "\n## clear\n";
+  }
 }
