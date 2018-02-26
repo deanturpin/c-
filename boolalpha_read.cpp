@@ -6,7 +6,6 @@
 int main() {
 
   using namespace std;
-  cout << "main" << endl;
 
   const std::string name("/tmp/blah.txt");
 
@@ -15,25 +14,53 @@ int main() {
   bool three = false;
   bool four = true;
 
-  cout << "OUT\t" << std::setprecision(10) << one << " "
-    << two << " "
-    << std::boolalpha << three << " "
-    << four << "\n";
+  {
+    cout << "FIXED\n";
+    cout << "OUT\t" << std::setprecision(10) << one << " "
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
 
-  ofstream out(name);
-  out.precision(10);
-  out << one << " "
-    << two << " "
-    << std::boolalpha << three << " "
-    << four << "\n";
-  out.close();
+    ofstream out(name);
+    out.precision(10);
+    out << one << " "
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
+    out.close();
 
-  // Don't need to set precision on way in
-  ifstream in(name);
-  in >> one >> two >> three >> four;
+    // Don't need to set precision on way in
+    ifstream in(name);
+    in >> one >> two >> three >> four;
 
-  cout << "IN\t" << std::setprecision(10) << one << " "
-    << two << " "
-    << std::boolalpha << three << " "
-    << four << "\n";
+    cout << "IN\t" << std::setprecision(10) << one << " "
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
+  }
+
+  {
+    cout << "\nSCIENTIFIC\n";
+    cout << "OUT\t" << std::scientific << one << " "
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
+
+    ofstream out(name);
+    // out.precision(10);
+    out << one << " " << std::scientific
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
+    out.close();
+
+    // Don't need to set precision on way in
+    ifstream in(name);
+    in >> std::scientific >> one >> two >> three >> four;
+
+    cout << "IN\t" << std::setprecision(10) << one << " "
+      << two << " "
+      << std::boolalpha << three << " "
+      << four << "\n";
+  }
 }
