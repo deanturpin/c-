@@ -1,0 +1,15 @@
+language: c++
+script: make
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-4.0
+            - ubuntu-toolchain-r-test
+          packages:
+            - clang-4.0
+            - g++-6
+      env:
+        - MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
