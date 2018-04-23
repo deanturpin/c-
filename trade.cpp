@@ -1,9 +1,9 @@
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
-#include <numeric>
-#include <algorithm>
-#include <string>
 #include <memory>
+#include <numeric>
+#include <string>
 #include <vector>
 
 struct turbo {
@@ -34,7 +34,9 @@ struct turbonew : public turbo {
   turbonew &operator=(turbonew &&) = default;
   virtual ~turbonew() { std::cout << "~turbonewnew()\n"; }
 
-  void buy() const override { std::cout << "turbonew buy << " << threshold << "\n"; }
+  void buy() const override {
+    std::cout << "turbonew buy << " << threshold << "\n";
+  }
 };
 
 int main() {
@@ -50,9 +52,9 @@ int main() {
 
   std::cout << "\n## vector dynamic\n";
   {
-    std::vector<std::shared_ptr<turbo>> s {
-         std::move(std::shared_ptr<turbo>(new turbo())),
-         std::move(std::shared_ptr<turbo>(new turbonew())),
+    std::vector<std::shared_ptr<turbo>> s{
+        std::move(std::shared_ptr<turbo>(new turbo())),
+        std::move(std::shared_ptr<turbo>(new turbonew())),
     };
 
     for (const auto &i : s)

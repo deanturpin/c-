@@ -14,6 +14,9 @@ clean:
 tidy:
 	$(foreach file, $(wildcard *.cpp), clang-format -i $(file) || true;)
 
+format:
+	clang-format -i *.cpp
+
 #	Run kcov manually
 #
 #	for file in *.o; do kcov --exclude-path=/usr/include/ \

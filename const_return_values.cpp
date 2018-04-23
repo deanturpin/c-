@@ -1,14 +1,10 @@
 #include <iostream>
 
-const bool return_builtin() {
-  return true;
-}
+const bool return_builtin() { return true; }
 
 struct rah {};
 
-const rah return_userdefined() {
-  return rah();
-}
+const rah return_userdefined() { return rah(); }
 
 int main() {
 
