@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/deanturpin/cpp.svg?branch=master)](https://travis-ci.org/deanturpin/cpp)
+
 - [ ] IO manipulation
 - [ ] C++ keywords - http://en.cppreference.com/w/cpp/keyword
 - [ ] https://en.wikipedia.org/wiki/C%2B%2B11
