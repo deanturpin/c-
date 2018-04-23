@@ -14,5 +14,8 @@ clean:
 tidy:
 	$(foreach file, $(wildcard *.cpp), clang-format -i $(file) || true;)
 
-# coverage:
-#	for file in *.o; do kcov /tmp/results ./$file; done
+#	Run kcov manually
+#
+#	for file in *.o; do kcov --exclude-path=/usr/include/ \
+#	--coveralls-id=X /tmp/results ./$file; \
+#	done
