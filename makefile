@@ -1,9 +1,11 @@
+objects=$(patsubst %.cpp, %.o, $(wildcard *.cpp))
+
 # Build objects for each cpp
-all:
-	make $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+all: $(objects)
 
 %.o: %.cpp
-	clang++ -g -Wall -Wextra -pedantic -pedantic-errors -std=gnu++14 -lpthread -o $@ $<
+	clang++ -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=gnu++14 -lpthread -o $@ $<
+	./$@
 
 wait:
 	while :; do inotifywait -qe modify *.cpp; make; done
@@ -16,9 +18,3 @@ tidy:
 
 format:
 	clang-format -i *.cpp
-
-#	Run kcov manually
-#
-#	for file in *.o; do kcov --exclude-path=/usr/include/ \
-#	--coveralls-id=X /tmp/results ./$file; \
-#	done

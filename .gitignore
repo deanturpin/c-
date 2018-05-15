@@ -3,3 +3,5 @@ main.cpp
 foo
 .*.swp
 *.txt
+*.gcno
+*.gcda

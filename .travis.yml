@@ -1,5 +1,7 @@
 language: c++
-script: make
+script:
+  - make --jobs 8
+  - bash <(curl -s https://codecov.io/bash)
 matrix:
   include:
     - os: linux
