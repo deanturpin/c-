@@ -3,8 +3,9 @@ objects=$(patsubst %.cpp, %.o, $(wildcard *.cpp))
 # Build objects for each cpp
 all: $(objects)
 
+CXX=g++-6
 %.o: %.cpp
-	clang++ -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=gnu++14 -lpthread -o $@ $<
+	$(CXX) -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=c++14 -lpthread -o $@ $<
 	./$@
 
 wait:
