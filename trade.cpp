@@ -19,7 +19,6 @@ struct turbo {
   virtual ~turbo() { std::cout << "~turbo()\n"; }
 
   virtual void buy() const { std::cout << "turbo buy " << threshold << "\n"; }
-  virtual void sell() const { std::cout << "turbo sell\n"; }
 };
 
 struct turbonew : public turbo {
