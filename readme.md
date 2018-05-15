@@ -1,6 +1,6 @@
-[![Build
-Status](https://travis-ci.org/deanturpin/cpp.svg?branch=master)](https://travis-ci.org/deanturpin/cpp)
-[![Coverage Status](https://coveralls.io/repos/github/deanturpin/cpp/badge.svg?branch=)](https://coveralls.io/github/deanturpin/cpp?branch=)
+[![Build Status](https://travis-ci.org/deanturpin/cpp.svg?branch=master)](https://travis-ci.org/deanturpin/cpp)
+[![codecov](https://codecov.io/gh/deanturpin/cpp/branch/master/graph/badge.svg)](https://codecov.io/gh/deanturpin/cpp)
+
 
 - [ ] C++ keywords - http://en.cppreference.com/w/cpp/keyword
 - [ ] https://en.wikipedia.org/wiki/C%2B%2B11
