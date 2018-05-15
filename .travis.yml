@@ -1,19 +1,18 @@
 dist: trusty
 sudo: false
 language: c++
+
+addons:
+  apt:
+    update: true
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-4.0
+    packages:
+      - clang-4.0
+      - g++-6
+      - ggcov
+
 script:
   - make --jobs 8
   - bash <(curl -s https://codecov.io/bash)
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - llvm-toolchain-trusty-4.0
-            - ubuntu-toolchain-r-test
-          packages:
-            - clang-4.0
-            - g++-6
-      env:
-        - MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
