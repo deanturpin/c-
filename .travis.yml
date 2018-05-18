@@ -9,5 +9,5 @@ addons:
       - ggcov
 
 script:
-  - make --jobs 8
+  - make --jobs 2
   - bash <(curl -s https://codecov.io/bash)
