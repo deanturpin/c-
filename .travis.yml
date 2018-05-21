@@ -1,7 +1,7 @@
 language: cpp
 
 script:
-  - make --jobs 2
+  - make
   - bash <(curl -s https://codecov.io/bash)
 
 matrix:
