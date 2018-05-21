@@ -3,7 +3,6 @@ language: cpp
 script:
   - make --jobs 2
   - bash <(curl -s https://codecov.io/bash)
-  - date | cowsay
 
 matrix:
   include:
@@ -14,7 +13,6 @@ matrix:
           packages:
             - g++-6
             - cppcheck
-            - cowsay
       env: MATRIX_EVAL="CXX=g++-6"
 
     - os: linux
@@ -26,7 +24,6 @@ matrix:
           packages:
             - clang-4.0
             - g++-6 # installing clang alone doesn't pull in all the libraries
-            - cowsay
             - cppcheck
       env: MATRIX_EVAL="CXX=clang++-4.0"
 
