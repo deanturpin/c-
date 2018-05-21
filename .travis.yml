@@ -20,9 +20,3 @@ matrix:
             - g++-6
             - cppcheck
             - clang-tidy-4.0
-
-    - os: osx
-      osx_image: xcode8
-
-before_install:
-  - [[ $TRAVIS_OS_NAME == "osx" ]] && brew install llvm --with-clang --with-clang-extra-tools && brew update && brew install gcc6 
