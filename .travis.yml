@@ -1,7 +1,7 @@
 language: cpp
 
 script:
-  - make CXX=clang-4.0
+  - make CXX=clang++-4.0
   - make clean
   - make CXX=g++-6
   - bash <(curl -s https://codecov.io/bash)
@@ -16,7 +16,7 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-4.0
           packages:
-            - clang-4.0
+            - clang++-4.0
             - g++-6
             - cppcheck
             - clang-tidy-4.0
