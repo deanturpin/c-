@@ -23,3 +23,7 @@ matrix:
 
     - os: osx
       osx_image: xcode8
+      env: BEFORE_INSTALL="install llvm --with-clang --with-clang-extra-tools"
+
+before_install:
+  - eval "${BEFORE_INSTALL}"
