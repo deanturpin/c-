@@ -1,19 +1,13 @@
 language: cpp
 
 script:
-  - make
+  - make CXX=clang-4.0
+  - make clean
+  - make CXX=g++-6
   - bash <(curl -s https://codecov.io/bash)
 
 matrix:
   include:
-    - os: linux
-      addons:
-        apt:
-          sources: ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - cppcheck
-      env: MATRIX_EVAL="CXX=g++-6"
 
     - os: linux
       addons:
@@ -23,13 +17,9 @@ matrix:
             - llvm-toolchain-trusty-4.0
           packages:
             - clang-4.0
-            - g++-6 # installing clang alone doesn't pull in all the libraries
+            - g++-6
             - cppcheck
-      env: MATRIX_EVAL="CXX=clang++-4.0"
+            - clang-tidy
 
     - os: osx
       osx_image: xcode8
-      env: MATRIX_EVAL="CXX=g++-6"
-
-before_install:
-    - eval "${MATRIX_EVAL}"
