@@ -19,7 +19,7 @@ matrix:
             - clang-4.0
             - g++-6
             - cppcheck
-            - clang-tidy
+            - clang-tidy-4.0
 
     - os: osx
       osx_image: xcode8
