@@ -8,7 +8,6 @@ script:
 
 matrix:
   include:
-
     - os: linux
       addons:
         apt:
@@ -19,4 +18,3 @@ matrix:
             - clang++-4.0
             - g++-6
             - cppcheck
-            - clang-tidy-4.0
