@@ -5,6 +5,7 @@ script:
   - make clean
   - make CXX=g++-6
   - bash <(curl -s https://codecov.io/bash)
+  - cppcheck --enable=all .
 
 matrix:
   include:
