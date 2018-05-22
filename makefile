@@ -10,6 +10,3 @@ FLAGS = -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=c++14
 
 clean:
 	rm -f *.o
-
-format:
-	clang-format -i *.cpp
