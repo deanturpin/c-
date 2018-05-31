@@ -4,11 +4,13 @@
 #include <vector>
 
 int main() {
-  std::istringstream iss("Don't look at the finger.");
 
-  const std::vector<std::string> tokens{std::istream_iterator<std::string>{iss},
-                                        std::istream_iterator<std::string>{}};
+  using namespace std;
+
+  istringstream iss("Don't look at the finger.");
+  const vector<string> tokens{istream_iterator<string>{iss},
+                              istream_iterator<string>{}};
 
   for (const auto &t : tokens)
-    std::cout << t << '\n';
+    cout << t << '\n';
 }
