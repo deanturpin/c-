@@ -1,7 +1,4 @@
-main.cpp
 *.o
-foo
-.*.swp
-*.txt
+*.swp
 *.gcno
 *.gcda
