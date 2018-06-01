@@ -1,5 +1,6 @@
 objects = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-all: $(objects)
+all:
+	make --jobs $(shell nproc) $(objects)
 
 CXX ?= g++
 
