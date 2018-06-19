@@ -4,53 +4,51 @@
 #include <numeric>
 #include <vector>
 
-void read_chars() {
+size_t read_chars() {
+
+  using word = char;
 
   // Create container of ascending numbers to write to the file
-  const std::vector<char> v{0, 1, 2, 3, 4};
+  const std::vector<word> v{0, 1, 2, 3, 4};
   const std::string file_name{"ascending.bin"};
 
   // Write
   std::ofstream out(file_name, std::ios::binary);
-  std::copy(std::cbegin(v), std::cend(v), std::ostream_iterator<char>(out));
+  std::copy(std::cbegin(v), std::cend(v), std::ostream_iterator<word>(out));
   out.close();
 
   // Read
-  const std::vector<char> numbers{
-      std::istreambuf_iterator<char>(std::ifstream(file_name).rdbuf()), {}};
+  const std::vector<word> numbers{
+      std::istreambuf_iterator<word>(std::ifstream(file_name).rdbuf()), {}};
 
-  std::cout << numbers.size() << " elements\n";
-
-  for (const auto &i : numbers)
-    std::cout << std::to_string(i) << '\n';
+  return numbers.size();
 }
 
-void read_doubles() {
+size_t read_doubles() {
+
+  using word = unsigned int;
 
   // Create container of ascending numbers to write to the file
-  std::vector<double> v(30);
-  std::iota(std::begin(v), std::end(v), 0.0);
+  std::vector<word> v(30);
+  std::iota(std::begin(v), std::end(v), word{});
   const std::string file_name{"ascending.txt"};
 
   // Write
   std::ofstream out(file_name);
   std::copy(std::cbegin(v), std::cend(v),
-            std::ostream_iterator<int>(out, "\n"));
+            std::ostream_iterator<word>(out, "\n"));
   out.close();
 
   // Read
-  std::vector<double> numbers;
-
+  std::vector<word> numbers;
   std::ifstream in(file_name);
-  std::copy(std::istream_iterator<double>(in), {}, std::back_inserter(numbers));
+  std::copy(std::istream_iterator<word>(in), {}, std::back_inserter(numbers));
 
-  std::cout << numbers.size() << " elements\n";
-
-  for (const auto &i : numbers)
-    std::cout << i << '\n';
+  return numbers.size();
 }
 
 int main() {
-  read_doubles();
-  read_chars();
+
+  for (const auto &f : {read_doubles(), read_chars()})
+    std::cout << f << " elements\n";
 }
