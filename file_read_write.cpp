@@ -21,9 +21,9 @@ int main() {
   out.close();
 
   // Read
-  std::ifstream in(file_name);
   std::vector<double> numbers;
 
+  std::ifstream in(file_name);
   std::copy(std::istream_iterator<double>(in), {}, std::back_inserter(numbers));
 
   std::cout << numbers.size() << " elements\n";
