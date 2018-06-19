@@ -2,3 +2,5 @@
 *.swp
 *.gcno
 *.gcda
+*.txt
+*.bin

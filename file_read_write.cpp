@@ -7,24 +7,24 @@
 int main() {
 
   // Create container of ascending numbers to write to the file
-  std::vector<int> v(30);
-  std::iota(std::begin(v), std::end(v), 0);
+  std::vector<double> v(30);
+  std::iota(std::begin(v), std::end(v), 0.0);
 
   // File we're reading from and writing to
-  const std::string file_name{"random.bin"};
+  const std::string file_name{"numbers.txt"};
 
   // Write
-  std::ofstream out(file_name, std::ios::binary);
-  std::copy(std::cbegin(v), std::cend(v), std::ostream_iterator<int>(out));
+  std::ofstream out(file_name);
+  std::copy(std::cbegin(v), std::cend(v),
+            std::ostream_iterator<int>(out, "\n"));
 
   out.close();
 
-  using word = char;
-
   // Read
   std::ifstream in(file_name);
-  in.flags(std::ios::skipws);
-  const std::vector<word> numbers{std::istream_iterator<word>(in), {}};
+  std::vector<double> numbers;
+
+  std::copy(std::istream_iterator<double>(in), {}, std::back_inserter(numbers));
 
   std::cout << numbers.size() << " elements\n";
 
