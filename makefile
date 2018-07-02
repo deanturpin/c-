@@ -6,8 +6,7 @@ CXX ?= g++
 
 FLAGS = -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=c++14
 %.o: %.cpp
-	$(CXX) $(FLAGS) -o $@ $<
-	./$@
+	$(CXX) $(FLAGS) -o $@ $< && ./$@
 
 clean:
 	rm -f *.o
