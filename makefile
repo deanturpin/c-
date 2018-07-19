@@ -4,7 +4,7 @@ all:
 
 CXX ?= g++
 
-FLAGS = -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=c++14
+FLAGS = -g --coverage -Wall -Wextra -pedantic -pedantic-errors -std=c++17
 %.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< && ./$@
 
