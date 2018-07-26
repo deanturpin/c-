@@ -1,8 +1,5 @@
-#include <algorithm>
-#include <iostream>
-#include <memory>
-#include <numeric>
 #include <vector>
+#include <cstdio>
 
 struct A {
   A() { puts("1. A()"); }
@@ -20,5 +17,5 @@ struct A {
 };
 
 int main() {
-  std::vector<A>().emplace_back(A()) = [a = A()]() mutable { return (a = a); }();
+  std::vector<A>().emplace_back(A()) = [a = A()]() mutable { return a = a; }();
 }
