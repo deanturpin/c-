@@ -1,12 +1,15 @@
 language: cpp
+
 script:
   - make CXX=clang++-6.0
   - make clean
   - make CXX=g++-8 debug='-g --coverage'
   - cppcheck --enable=all .
   - bash <(curl -s https://codecov.io/bash)
+
 matrix:
   include:
+    allow_failures:
     - os: linux
       addons:
         apt:
