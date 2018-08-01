@@ -5,7 +5,7 @@ all:
 CXX ?= g++-8
 
 FLAGS = -g --coverage \
-	-std=c++17 --all-warnings --extra-warnings -pedantic-errors \
+	-std=c++17 --all-warnings --extra-warnings \
 	-Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor
 
 %.o: %.cpp

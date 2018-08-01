@@ -3,10 +3,17 @@
 
 int main() {
 
-  using namespace std;
+  const auto stats = [](const auto &container) {
+    std::cout << container.size() << " size\n";
+  };
 
-  vector<int> vec = {1, 2, 3, 4, 5, 6, 7};
-  cout << "Size " << vec.size() << endl;
+  {
+    std::vector<int> vec = {1, 2, 3, 4, 5, 6, 7};
+    stats(vec);
+  }
 
-  return 0;
+  {
+    std::vector<int> vec{1, 2, 3, 4, 5, 6, 7};
+    stats(vec);
+  }
 }
