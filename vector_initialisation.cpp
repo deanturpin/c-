@@ -3,7 +3,7 @@
 
 int main() {
 
-  const auto stats = [](const auto &container) {
+  const auto stats = [](const auto &container) -> void {
     std::cout << container.size() << " size\n";
   };
 
