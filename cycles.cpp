@@ -5,62 +5,41 @@
 
 int main() {
 
-  const std::vector<std::string> test_cases = {
-      /*
-      "0___1___2___3___4___5___6___7___8___9___"
-      */
-      "-___-___-___-___-___-___-___-___-___-___",
-      "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_",
-      "__________-----------------------_______"};
-
-  // 0b0000'1000'1000
-  //
-  const std::vector<std::bitset<20>> test{
-      0b1000'1000'1000'1000'1000, 0b0001'1111'1111'1100'1000,
-      0b1010'1010'1010'1010'1010, 0b0000'0010'0000'0000'1000,
+  // A test consists of a pair of input and output bitsets
+  using test = std::pair<std::bitset<20>, std::bitset<4>>;
+  const std::vector<test> test_cases{
+      {0b00000'00000'00000'00000, 0b0000}, // No bits set
+      {0b11111'11111'11111'11111, 0b1111}, // All bits set
+      {0b10101'01010'10101'01010, 0b1111}, // Alternate
+      {0b00011'11111'11110'00000, 0b0000}, // Block
+      {0b10001'00000'00000'01000, 0b1100}, // Random
   };
 
-  std::cout << test_cases.size() << " test cases\n\n";
+  // Register used by both low- and high-frequency readers
+  bool shared_register = false;
 
-  // Variable shared by both readers
-  bool reg = false;
+  // Iterate over each test pair
+  for (const auto & [ input, output ] : test_cases) {
+    std::cout << input << '\n' << output << '\n';
 
-  // Low frequency reader
-  const auto low_frequency_reader = [&reg]() {
+    std::bitset<4> results;
 
-    // Local copy of the register
-    static auto reported_value = reg;
+    // Iterate over each bit in the input sequence
+    for (size_t i = 0; i < input.size(); ++i) {
 
-    if (reg)
-      reported_value = true;
+      // The high-frequency reader sets the shared register for each input bit
+      if (input.test(i))
+        shared_register = true;
 
-    // Report change
-    std::cout << reported_value;
-
-    // Clear local copy
-    reported_value = false;
-  };
-
-  // High frequency reader
-  const auto high_frequency_reader = [&reg](const auto r) {
-    // Just copy the value passed in
-    reg = r == '-' ? true : false;
-  };
-
-  // Iterate over all test cases
-  for (const auto &test : test_cases) {
-
-    unsigned int iteration = 0;
-    for (const auto &hw_read : test) {
-
-      // High frequency reader
-      high_frequency_reader(hw_read);
-
-      // Low frequency reader
-      if (!(iteration++ % 5))
-        low_frequency_reader();
+      // The low-frequency reader checks the shared register less often
+      if (!(i % 5)) {
+        results.set(i / 5, shared_register);
+        shared_register = false;
+      }
     }
 
-    std::cout << "\ntest complete\n";
+    // Print results
+    std::cout << results << '\n';
+    std::cout << (results == output ? "PASS" : "FAIL") << "\n\n";
   }
 }
