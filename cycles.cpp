@@ -20,14 +20,17 @@ int main() {
 
     // Register used by both low- and high-frequency readers
     bool shared_register = false;
+    bool copy_of_hw_register = false;
 
     // The high frequency reader process every state change
     const auto high_frequency_reader =
-        [&shared_register](const bool hw_register) {
+        [&shared_register, &copy_of_hw_register](const bool hw_register) {
 
-          // Latch the shared register high
-          if (hw_register)
-            shared_register = true;
+          // Transmit changes only when the register copy differs
+          if (hw_register != copy_of_hw_register) {
+            copy_of_hw_register = hw_register;
+            shared_register = hw_register;
+          }
         };
 
     // The low frequency reader is called less often
