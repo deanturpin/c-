@@ -21,12 +21,14 @@ int main() {
     // Register used by both low- and high-frequency readers
     bool shared_register = false;
 
-    // Lambda is called less often than shared_register is set
+    // The high frequency reader process every state change
+    const auto high_frequency_reader = [&shared_register]() {
+      shared_register = true;
+    };
+
+    // The low frequency reader is called less often
     const auto low_frequency_reader = [&shared_register]() {
 
-      // TODO
-      // EDIT THIS BIT
-      // TODO
       const auto value = shared_register;
       shared_register = false;
 
@@ -44,7 +46,7 @@ int main() {
 
       // The high-frequency reader sets the shared register for each input bit
       if (input.test(i))
-        shared_register = true;
+        high_frequency_reader();
 
       // The low-frequency reader checks the shared register less often
       if (!(i % 5))
