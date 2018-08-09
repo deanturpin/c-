@@ -9,7 +9,7 @@ int main() {
   // reader runs first
   const std::vector<std::tuple<std::string, std::string, std::string>>
       test_cases{
-          // 0123|0123|0123|0123|0123|   expected actual
+          // 0123|0123|0123|0123|0123|  expected actual
           {"-------------------------", "-----", ""},
           {"_________________________", "_____", ""},
           {"_____-----------_________", "_---_", ""},
@@ -32,7 +32,6 @@ int main() {
     for (const auto &v : {input, expected, actual})
       std::cout << v << '\n';
 
-    size_t low_freq_index = 0;
     size_t high_freq_index = 0;
 
     for (const auto &state : input) {
@@ -45,8 +44,7 @@ int main() {
 
       // Low frequency reader reports state changes and clears flag
       if (!((high_freq_index + 1) % 5)) {
-        ++low_freq_index;
-        std::cout << (transition_detected ? '-' : previous_state);
+        std::cout << (transition_detected ? high : previous_state);
         transition_detected = false;
       }
 
