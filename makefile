@@ -9,7 +9,7 @@ FLAGS = -g --coverage \
 	-Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor
 
 %.o: %.cpp
-	$(CXX) $(FLAGS) -o $@ $< && ./$@
+	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread && ./$@
 
 clean:
 	rm -f *.o
