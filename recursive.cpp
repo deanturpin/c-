@@ -27,9 +27,9 @@ int main() {
     return res;
   };
 
-  std::function<std::string(int)> string_cat = [&string_cat](const int &count) {
-    return count == 0 ? std::string{"E"}
-                      : std::string{"F"} + string_cat(count - 1);
+  // Recursive string concatentation lambda
+  std::function<std::string(int)> string_cat = [&string_cat](const int &c) {
+    return c ? "F" + string_cat(c - 1) : "E";
   };
 
   std::cout << std::quoted(string_cat(20)) << '\n';
