@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <functional>
+#include <iomanip>
 #include <iostream>
 #include <numeric>
 #include <random>
@@ -24,6 +26,13 @@ int main() {
 
     return res;
   };
+
+  std::function<std::string(int)> string_cat = [&string_cat](const int &count) {
+    return count == 0 ? std::string{"E"}
+                      : std::string{"F"} + string_cat(count - 1);
+  };
+
+  std::cout << std::quoted(string_cat(20)) << '\n';
 
   // Create iterators
   const auto begin = blah.cbegin();
