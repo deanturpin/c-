@@ -9,7 +9,6 @@ int main() {
   // Print a list of things
   const auto print_list = [](const auto begin, const auto end,
                              const std::string title = "") {
-
     if (!title.empty())
       std::cout << title << '\n';
 

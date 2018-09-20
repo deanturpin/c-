@@ -21,7 +21,7 @@ int main() {
   std::cout << test_cases.size() << " test cases\n";
 
   // Iterate over each test pair
-  for (auto & [ input, expected, actual ] : test_cases) {
+  for (auto &[input, expected, actual] : test_cases) {
 
     const auto high = '-';
     const auto low = '_';

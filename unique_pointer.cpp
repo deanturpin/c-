@@ -12,7 +12,7 @@ public:
 
   const string name;
 };
-}
+} // namespace wood
 
 int main() {
   using namespace std;

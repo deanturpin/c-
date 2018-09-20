@@ -19,7 +19,7 @@ public:
 
   ~instrument() { delete name; }
 };
-}
+} // namespace mus
 
 int main() {
 

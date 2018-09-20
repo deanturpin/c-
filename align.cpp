@@ -2,8 +2,8 @@
 
 int main() {
 
-  using std::cout;
   using std::alignment_of;
+  using std::cout;
 
   class A {};
   class alignas(32) B {};

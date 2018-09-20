@@ -21,7 +21,7 @@ public:
   }
   bool operator<(const vector2d &rhs) const { return length() < rhs.length(); }
 };
-}
+} // namespace
 
 int main() {
   using namespace std;

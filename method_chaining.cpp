@@ -24,7 +24,7 @@ private:
   unsigned int links = 0;
   bool strong = false;
 };
-}
+} // namespace my
 
 int main() {
   my::chain c;

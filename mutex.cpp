@@ -10,7 +10,6 @@ int main() {
   // Common main for each thread
   const auto thread_main = [](const std::string &name,
                               const bool mut = true) -> void {
-
     const auto mutex_print = [&mut](const std::string &str) {
       static std::mutex printing;
       if (mut)

@@ -30,7 +30,7 @@ public:
 
   string getName() { return pimpl->name; }
 };
-}
+} // namespace wrk
 
 int main() {
 
