@@ -10,8 +10,6 @@
 // 	{
 // 	  return (... + factorial2(args - 1));
 // 	}
-//
-//
 
 // Template struct
 template <int n> struct factorial3 {
@@ -30,8 +28,8 @@ int main() {
   func factorial1 = [&factorial1](const int n) {
     return n == 1 ? 1 : n * factorial1(n - 1);
   };
-
   std::cout << factorial1(5) << " factorial1\n";
+
   std::cout << factorial3<5>::value << " factorial3\n";
   std::cout << factorial4<5>() << " factorial4\n";
 
