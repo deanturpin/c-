@@ -25,7 +25,7 @@ int main() {
     }
 
     // Postfix
-    A &operator++(int) {
+    A operator++(int) {
       cout << "A++\n";
       return *this;
     }
@@ -36,7 +36,7 @@ int main() {
   {
     A a;
     A b(a);
-    [[maybe_used]] A c = a;
+    [[maybe_unused]] A c = a;
   }
 
   cout << "\nOperator overloading\n";

@@ -2,8 +2,7 @@
 
 template <typename A, typename B> void multiply(A a, B b) {
   const auto tmp = a * b;
-  std::cout << tmp << std::'
-';
+  std::cout << tmp << '\n';
 }
 
 int main() {

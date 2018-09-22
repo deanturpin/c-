@@ -13,12 +13,10 @@ int main() {
   };
 
   // OK
-  cout << nmb1::one << '
-';
+  cout << nmb1::one << '\n';
 
-      // Error - no known conversion
-      // cout << nmb2::one << '
-';
+  // Error - no known conversion
+  // cout << nmb2::one << '
 
-      return 0;
+  return 0;
 }
