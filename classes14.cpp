@@ -2,8 +2,6 @@
 
 int main() {
 
-  using namespace std;
-
   // is_final
   struct A {
     virtual void foo() final;
@@ -19,9 +17,10 @@ int main() {
     void bar() {}
   };
 
-  cout << "Is A final? " << boolalpha << is_final<A>::value
-       << ' '; cout << "Is B final? " << boolalpha << is_final<B>::value << '
-';
+  std::cout << "Is A final? " << std::boolalpha << std::is_final<A>::value
+            << ' ';
+  std::cout << "Is B final? " << std::boolalpha << std::is_final<B>::value
+            << '\n';
 
-      return 0;
+  return 0;
 }

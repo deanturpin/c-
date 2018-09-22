@@ -13,3 +13,5 @@
 * http://www.mycppquiz.com/question.php?qid=36
 
 */
+
+int main() {}

@@ -32,10 +32,10 @@ int main() {
 
   instrument b(a);
 
-  cout
-      << "a strings " << a.number_of_strings
-      << ' '; cout << "a name " << *a.name << ' '; cout << "b strings " << b.number_of_strings << ' '; cout << "b name " << *b.name << '
-';
+  cout << "a strings " << a.number_of_strings << ' ';
+  cout << "a name " << *a.name << ' ';
+  cout << "b strings " << b.number_of_strings << ' ';
+  cout << "b name " << *b.name << '\n';
 
-      return 0;
+  return 0;
 }

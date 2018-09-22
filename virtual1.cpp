@@ -3,25 +3,20 @@
 class base {
 public:
   virtual ~base() {}
-  virtual void blah() {
-    std::cout << "base"
-              << std::'
-'; } };
+  virtual void blah() { std::cout << "base\n"; }
+};
 
-        class derived : base {
-    public:
-      ~derived() {}
-      void blah() {
-        std::cout << "derived"
-                  << std::'
-'; } };
+class derived : base {
+public:
+  ~derived() {}
+  void blah() { std::cout << "derived\n"; }
+};
 
-            int
-            main() {
+int main() {
 
-          base b;
-          derived d;
+  base b;
+  derived d;
 
-          b.blah();
-          d.blah();
-        }
+  b.blah();
+  d.blah();
+}

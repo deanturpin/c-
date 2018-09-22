@@ -3,21 +3,17 @@
 
 int main() {
 
-  using namespace std;
-
   // Simple
   try {
     throw 2;
   } catch (int e) {
-    cout << "Caught exception " << e << '
-';
+    std::cout << "Caught exception " << e << '\n';
   }
 
   try {
-    vector<int> vec(-1);
-  } catch (exception &e) {
-    cout << "Standard exception " << e.what() << '
-';
+    std::vector<int> vec(-1);
+  } catch (std::exception &e) {
+    std::cout << "Standard exception " << e.what() << '\n';
   }
 
   return 0;

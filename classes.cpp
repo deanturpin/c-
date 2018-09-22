@@ -8,6 +8,8 @@ int main() {
   struct A {
     virtual void foo() final;
     void bar();
+
+    virtual ~A() {}
   };
 
   struct B final : public A {
@@ -17,9 +19,8 @@ int main() {
     void bar(){};
   };
 
-  cout << "Is A final? " << boolalpha << is_final<A>::value
-       << ' '; cout << "Is B final? " << boolalpha << is_final<B>::value << '
-';
+  cout << "Is A final? " << boolalpha << is_final<A>::value << ' ';
+  cout << "Is B final? " << boolalpha << is_final<B>::value << '\n';
 
-      return 0;
+  return 0;
 }
