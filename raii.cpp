@@ -1,9 +1,3 @@
 #include <iostream>
 
-int main() {
-  using namespace std;
-  cout << "RAII - Resource Acquisition Is Initialisation" << '
-';
-
-      return 0;
-}
+int main() { std::cout << "RAII - Resource Acquisition Is Initialisation\n"; }
