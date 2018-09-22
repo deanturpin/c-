@@ -4,69 +4,63 @@ void order() {
 
   using namespace std;
 
-  cout << "Order" << '
-';
+  cout << "Order\n";
 
-      class A {
+  class A {
 
   public:
-    A() {
-      cout << "A" << ' '; } ~A(){cout << "~A" << '
-'; } };
+    A() { cout << "A" << ' '; }
+    ~A() { cout << "~A\n"; }
+  };
 
-          class B : public A {
+  class B : public A {
 
-      public:
-        B() {
-          cout << "B" << ' '; } ~B(){cout << "~B" << '
-'; } };
+  public:
+    B() { cout << "B" << ' '; }
+    ~B() { cout << "~B\n"; }
+  };
 
-              cout
-               << "Static allocation" << '
-'; { B b; }
+  cout << "Static allocation\n";
+  { B b; }
 
-              cout
-               << "Dynamic allocation - leak (A has non-virtual destructor)" << '
-'; A *a = new B(); delete a;
+  cout << "Dynamic allocation - leak (A has non-virtual destructor)\n";
+  A *a = new B();
+  delete a;
 
-          cout << "Array of pointers" << '
-';
+  cout << "Array of pointers\n";
 
-              A *b = new A[4];
+  A *b = new A[4];
 
-          delete[] b;
-        }
+  delete[] b;
+}
 
-        void overload() {
+void overload() {
 
-          using namespace std;
+  using namespace std;
 
-          cout << "Overload" << '
-';
+  cout << "Overload\n";
 
-              class A {
+  class A {
 
-          public:
-            void foo() {
-              cout << "foo" << '
-'; } };
+  public:
+    void foo() { cout << "foo\n"; }
+  };
 
-                  class B : public A {
+  class B : public A {
 
-              public:
-                void foo() const {
-                  cout << "bar" << '
-'; } };
+  public:
+    void foo() const { cout << "bar\n"; }
+  };
 
-                      class B b;
-                  b.foo();
-                }
+  class B b;
+  b.foo();
+}
 
-                // Order of contruction/destruction
-                int main() {
+// Order of contruction/destruction
+int main() {
 
-                  order();
-                  overload();
+  order();
+  overload();
 
-                  return 0;
-                }
+  return 0;
+}

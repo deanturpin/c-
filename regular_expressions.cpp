@@ -9,12 +9,13 @@ int main() {
   regex expression("blah");
 
   if (regex_match(search, expression))
-    cout << "Match yes" << ' '; else cout << "Match no" << '
-';
+    cout << "Match yes" << ' ';
+  else
+    cout << "Match no\n";
 
-        // mark_count()
+  // mark_count()
 
-        return 0;
+  return 0;
 }
 
 /*

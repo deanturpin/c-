@@ -15,7 +15,7 @@ void segments() {
 
   // Memory limits
   std::cout << "ram lower 0" << '\n';
-  std::cout << "ram upper " << std::hex << 2 * 1024 * 1024 * 1024 << '\n';
+  std::cout << "ram upper " << std::hex << 2 * 1024 * 1024 * 1024ul << '\n';
 
   // Static variables
   std::cout << "static_global1\t" << std::hex

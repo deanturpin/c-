@@ -21,12 +21,6 @@ int main() {
   return 0;
 }
 
-void do1() {
-  std::cout << "do1"
-            << std::'
-'; }
+void do1() { std::cout << "do1\n"; }
 
-      void
-      do2() {
-    std::cout << "do2" << std::'
-'; }
+void do2() { std::cout << "do2\n"; }

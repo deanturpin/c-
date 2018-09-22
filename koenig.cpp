@@ -3,12 +3,10 @@
 int main() {
 
   std::cout << "blah";
-  '
-'(std::cout);
-  '
-'(std::cout);
-  '
-'(std::cout);
 
-      return 0;
+  endl(std::cout);
+  endl(std::cout);
+  endl(std::cout);
+
+  return 0;
 }

@@ -14,7 +14,7 @@ int main() {
   a a2(a1);
 
   // Assignment constructor
-  a a3 = a1;
+  [[maybe_unused]] a a3 = a1;
 
   // Error - call to deleted constructor
   // a a4(1);

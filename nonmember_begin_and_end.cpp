@@ -11,13 +11,11 @@ int main() {
 
   // For each
   for (const auto &a : array)
-    cout << square(a) << '
-';
+    cout << square(a) << '\n';
 
-        // Non-member
-        for (auto i = cbegin(array); i != cend(array); ++i) cout
-         << *i << '
-';
+  // Non-member
+  for (auto i = cbegin(array); i != cend(array); ++i)
+    cout << *i << '\n';
 
-        return 0;
+  return 0;
 }

@@ -15,16 +15,16 @@ int main() {
 
   {
     const int i = 1;
-    cout << i << '
-'; consty(i); cout << i << '
-';
+    cout << i << '\n';
+    consty(i);
+    cout << i << '\n';
   }
 
   {
     int i = 1;
-    cout << i << '
-'; consty(i); cout << i << '
-';
+    cout << i << '\n';
+    consty(i);
+    cout << i << '\n';
   }
 
   return 0;

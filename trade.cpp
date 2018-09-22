@@ -12,7 +12,10 @@ struct turbo {
   const double threshold = 1.1;
 
   turbo() { std::cout << "turbo()\n"; }
-  turbo(const turbo &c) { std::cout << "turbo(const turbo&)\n"; }
+  turbo(const turbo &c) {
+    static_cast<void>(c);
+    std::cout << "turbo(const turbo&)\n";
+  }
   turbo(const turbo &&) = delete;
   turbo &operator=(const turbo &) = default;
   turbo &operator=(turbo &&) = default;
@@ -27,7 +30,10 @@ struct turbonew : public turbo {
   const double threshold = 2.1;
 
   turbonew() { std::cout << "turbonew()\n"; }
-  turbonew(const turbonew &c) { std::cout << "turbonew(const turbonew&)\n"; }
+  turbonew(const turbonew &c) {
+    static_cast<void>(c);
+    std::cout << "turbonew(const turbonew&)\n";
+  }
   turbonew(const turbonew &&) = delete;
   turbonew &operator=(const turbonew &) = delete;
   turbonew &operator=(turbonew &&) = default;

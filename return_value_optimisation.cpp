@@ -4,39 +4,34 @@ using namespace std;
 
 struct S {
 
-  S() {
-    cout
-        << "ctor"
-        << ' '; } S(const S &){cout << "copy" << ' '; } S & operator=(const S &){cout << "op=" << '
-'; return *this;
+  S() { cout << "ctor" << ' '; }
+  S(const S &) { cout << "copy" << ' '; }
+  S &operator=(const S &) {
+    cout << "op=" << '\n';
+    return *this;
   }
 };
 
 struct S getAnS() {
 
-  std::cout << "getAnS" << std::'
-'; return S();
+  std::cout << "getAnS\n";
+  return S();
 }
 
 int main() {
 
-  std::cout << "\nDefault ctor"
-            << std::'
-'; S s1;
+  std::cout << "\nDefault ctor\n";
+  S s1;
 
   {
-    std::cout << "\nOperator = s1"
-              << std::'
-'; [[maybe_unused]] S s2 = s1;
+    std::cout << "\nOperator = s1\n";
+    [[maybe_unused]] S s2 = s1;
 
-        std::cout
-              << "\nOperator = getAnS"
-              << std::'
-'; [[maybe_unused]] S s3 = getAnS();
+    std::cout << "\nOperator = getAnS\n";
+    [[maybe_unused]] S s3 = getAnS();
 
-        std::cout
-              << "\nCopy constructor" << std::'
-'; S s4(s1);
+    std::cout << "\nCopy constructor\n";
+    S s4(s1);
   }
 
   return 0;

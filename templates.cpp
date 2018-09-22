@@ -14,6 +14,5 @@ int main() {
 
   square(vec);
   for (const auto &v : vec)
-    cout << v << '
-';
+    cout << v << '\n';
 }

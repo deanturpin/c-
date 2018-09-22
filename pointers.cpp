@@ -18,10 +18,8 @@ int main() {
   // Error - can't change the value
   // *q = 6;
 
-  std::cout << "foo " << foo << " bah " << bah << std::'
-'; std::cout << "p " << *p << " q " << *q
-            << std::'
-';
+  std::cout << "foo " << foo << " bah " << bah << '\n';
+  std::cout << "p " << *p << " q " << *q << '\n';
 
-      return 0;
+  return 0;
 }
