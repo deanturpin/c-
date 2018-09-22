@@ -5,16 +5,12 @@
 
 int main() {
 
-  using namespace std;
-
-  cout << -0xfffffff << endl;
-  cout << -0xffffffff << endl;
+  std::cout << -0xfffffff << '\n';
+  std::cout << -0xffffffff << '\n';
 
   const unsigned long a = 0u;
-  std::cout << -a << std::endl;
-  std::cout << 0.0 << std::endl;
-  std::cout << -0.0 << std::endl;
-  std::cout << boolalpha << (0.0 == 0) << std::endl;
-  std::cout << boolalpha << (-0.0 == 0) << std::endl;
-  std::cout << signbit(0.0) << std::endl; // Returns a number
+  std::cout << -a << '\n';
+  std::cout << 0.0 << '\n';
+  std::cout << -0.0 << '\n';
+  std::cout << signbit(0.0) << '\n';
 }
