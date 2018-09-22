@@ -1,6 +1,7 @@
 // http://www.cplusplus.com/reference/utility/rel_ops/
 
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 #include <utility>
 
@@ -10,11 +11,11 @@ using namespace std::rel_ops;
 class vector2d {
 
 public:
-  double x, y;
+  int x, y;
 
-  vector2d(double px, double py) : x(px), y(py) {}
+  vector2d(int px, int py) : x(px), y(py) {}
 
-  double length() const { return std::sqrt(x * x + y * y); }
+  int length() const { return std::sqrt(x * x + y * y); }
 
   bool operator==(const vector2d &rhs) const {
     return length() == rhs.length();
@@ -24,16 +25,15 @@ public:
 } // namespace
 
 int main() {
-  using namespace std;
 
   vector2d a(10, 10);
   vector2d b(15, 5);
 
-  cout << boolalpha;
-  cout << "(a < b) is " << (a < b) << endl;
-  cout << "(a > b) is " << (a > b) << endl;
-  cout << "(a <= b) is " << (a <= b) << endl;
-  cout << "(a >= b) is " << (a >= b) << endl;
+  std::cout << std::boolalpha;
+  std::cout << "(a < b) is " << (a < b) << '\n';
+  std::cout << "(a > b) is " << (a > b) << '\n';
+  std::cout << "(a <= b) is " << (a <= b) << '\n';
+  std::cout << "(a >= b) is " << (a >= b) << '\n';
 
   return 0;
 }

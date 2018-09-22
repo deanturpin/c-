@@ -9,7 +9,8 @@ int main() {
 
   vector<int> blah = ints();
   for (const auto &i : blah)
-    cout << i << endl;
+    cout << i << '
+';
 
-  return 0;
+        return 0;
 }

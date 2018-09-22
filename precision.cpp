@@ -12,8 +12,8 @@ int main() {
   bitset<32> fb(*reinterpret_cast<const unsigned long *>(&f));
   bitset<64> fd(*reinterpret_cast<const unsigned long *>(&d));
 
-  cout << round(f) << "\t" << fb << endl;
-  cout << round(d) << "\t" << fd << endl;
+  cout << round(f) << "\t" << fb << ' '; cout << round(d) << "\t" << fd << '
+';
 
-  return 0;
+      return 0;
 }

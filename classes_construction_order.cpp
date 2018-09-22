@@ -4,63 +4,69 @@ void order() {
 
   using namespace std;
 
-  cout << "Order" << endl;
+  cout << "Order" << '
+';
 
-  class A {
-
-  public:
-    A() { cout << "A" << endl; }
-    ~A() { cout << "~A" << endl; }
-  };
-
-  class B : public A {
+      class A {
 
   public:
-    B() { cout << "B" << endl; }
-    ~B() { cout << "~B" << endl; }
-  };
+    A() {
+      cout << "A" << ' '; } ~A(){cout << "~A" << '
+'; } };
 
-  cout << "Static allocation" << endl;
-  { B b; }
+          class B : public A {
 
-  cout << "Dynamic allocation - leak (A has non-virtual destructor)" << endl;
-  A *a = new B();
-  delete a;
+      public:
+        B() {
+          cout << "B" << ' '; } ~B(){cout << "~B" << '
+'; } };
 
-  cout << "Array of pointers" << endl;
+              cout
+               << "Static allocation" << '
+'; { B b; }
 
-  A *b = new A[4];
+              cout
+               << "Dynamic allocation - leak (A has non-virtual destructor)" << '
+'; A *a = new B(); delete a;
 
-  delete[] b;
-}
+          cout << "Array of pointers" << '
+';
 
-void overload() {
+              A *b = new A[4];
 
-  using namespace std;
+          delete[] b;
+        }
 
-  cout << "Overload" << endl;
+        void overload() {
 
-  class A {
+          using namespace std;
 
-  public:
-    void foo() { cout << "foo" << endl; }
-  };
+          cout << "Overload" << '
+';
 
-  class B : public A {
+              class A {
 
-  public:
-    void foo() const { cout << "bar" << endl; }
-  };
+          public:
+            void foo() {
+              cout << "foo" << '
+'; } };
 
-  class B b;
-  b.foo();
-}
+                  class B : public A {
 
-// Order of contruction/destruction
-int main() {
+              public:
+                void foo() const {
+                  cout << "bar" << '
+'; } };
 
-  order();
-  overload();
+                      class B b;
+                  b.foo();
+                }
 
-  return 0;
-}
+                // Order of contruction/destruction
+                int main() {
+
+                  order();
+                  overload();
+
+                  return 0;
+                }

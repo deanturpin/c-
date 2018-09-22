@@ -4,6 +4,7 @@ static int static_global1;
 static int static_global2 = 5;
 
 void segments() {
+
   static int static_local1;
   static int static_local2 = 4;
 
@@ -13,40 +14,36 @@ void segments() {
   using namespace std;
 
   // Memory limits
-  cout << "ram lower 0" << endl;
-  cout << "ram upper " << hex << 2 * 1024 * 1024 * 1024 << endl;
+  std::cout << "ram lower 0" << '\n';
+  std::cout << "ram upper " << std::hex << 2 * 1024 * 1024 * 1024 << '\n';
 
   // Static variables
-  cout << "static_global1\t" << hex
-       << reinterpret_cast<unsigned long>(&static_global1) << endl;
-  cout << "static_global2\t" << hex
-       << reinterpret_cast<unsigned long>(&static_global2) << endl;
+  std::cout << "static_global1\t" << std::hex
+            << reinterpret_cast<unsigned long>(&static_global1) << '\n';
+  std::cout << "static_global2\t" << std::hex
+            << reinterpret_cast<unsigned long>(&static_global2) << '\n';
 
-  cout << "static_local1\t" << hex
-       << reinterpret_cast<unsigned long>(&static_local1) << endl;
-  cout << "static_local2\t" << hex
-       << reinterpret_cast<unsigned long>(&static_local2) << endl;
+  std::cout << "static_local1\t" << std::hex
+            << reinterpret_cast<unsigned long>(&static_local1) << '\n';
+  std::cout << "static_local2\t" << std::hex
+            << reinterpret_cast<unsigned long>(&static_local2) << '\n';
 
-  cout << "local_var1\t" << hex << reinterpret_cast<unsigned long>(&local_var1)
-       << endl;
-  cout << "local_var2\t" << hex << reinterpret_cast<unsigned long>(&local_var2)
-       << endl;
+  std::cout << "local_var1\t" << std::hex
+            << reinterpret_cast<unsigned long>(&local_var1) << '\n';
+  std::cout << "local_var2\t" << std::hex
+            << reinterpret_cast<unsigned long>(&local_var2) << '\n';
 
   // Dynamic variables
   int *dynamic_local = new int(4);
 
-  cout << "dynamic_local\t" << hex
-       << reinterpret_cast<unsigned long>(dynamic_local) << endl;
+  std::cout << "dynamic_local\t" << std::hex
+            << reinterpret_cast<unsigned long>(dynamic_local) << '\n';
 
   delete dynamic_local;
 
   // Function
-  cout << "function\t" << hex << reinterpret_cast<unsigned long>(&segments)
-       << endl;
+  std::cout << "function\t" << std::hex
+            << reinterpret_cast<unsigned long>(&segments) << '\n';
 }
 
-int main() {
-  segments();
-
-  return 0;
-}
+int main() { segments(); }

@@ -6,17 +6,21 @@ using namespace std;
 
 class Animal {
 public:
-  Animal(const string n) : name(n) { cout << "ctor " << name << endl; }
+  Animal(const string n) : name(n) {
+    cout << "ctor " << name << '
+'; }
 
-  ~Animal() { cout << "\tdtor " << name << endl; }
+        ~Animal() {
+      cout << "\tdtor " << name << '
+'; }
 
-  const string name;
-};
-} // namespace wood
+          const string name;
+    };
+  } // namespace wood
 
-int main() {
-  using namespace std;
-  using namespace wood;
+  int main() {
+    using namespace std;
+    using namespace wood;
 
-  const auto a = shared_ptr<Animal>(new Animal("a"));
-}
+    const auto a = shared_ptr<Animal>(new Animal("a"));
+  }

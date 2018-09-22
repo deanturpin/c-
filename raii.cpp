@@ -2,7 +2,8 @@
 
 int main() {
   using namespace std;
-  cout << "RAII - Resource Acquisition Is Initialisation" << endl;
+  cout << "RAII - Resource Acquisition Is Initialisation" << '
+';
 
-  return 0;
+      return 0;
 }

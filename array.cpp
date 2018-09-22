@@ -12,15 +12,16 @@ int main() {
   a[0][0] = 1;
   a.data()[0][0] = 1;
 
-  cout << "Rows " << a.size() << endl;
-  cout << "Cols " << a.front().size() << endl;
+  cout << "Rows " << a.size() << ' '; cout << "Cols " << a.front().size() << '
+';
 
-  // 1D array on the heap
-  auto b = unique_ptr<array<int, 5>>(new array<int, 5>);
-  cout << b.get()->at(0) << endl;
+      // 1D array on the heap
+      auto b = unique_ptr<array<int, 5>>(new array<int, 5>);
+  cout << b.get()->at(0) << '
+';
 
-  // 2D array on the heap
-  auto c = unique_ptr<array<array<int, 5>, 5>>(new array<array<int, 5>, 5>);
+      // 2D array on the heap
+      auto c = unique_ptr<array<array<int, 5>, 5>>(new array<array<int, 5>, 5>);
 
   return 0;
 }

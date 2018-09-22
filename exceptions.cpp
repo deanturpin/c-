@@ -9,13 +9,15 @@ int main() {
   try {
     throw 2;
   } catch (int e) {
-    cout << "Caught exception " << e << endl;
+    cout << "Caught exception " << e << '
+';
   }
 
   try {
     vector<int> vec(-1);
   } catch (exception &e) {
-    cout << "Standard exception " << e.what() << endl;
+    cout << "Standard exception " << e.what() << '
+';
   }
 
   return 0;

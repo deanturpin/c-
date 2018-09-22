@@ -12,5 +12,5 @@ int main() {
   std::cout << -a << '\n';
   std::cout << 0.0 << '\n';
   std::cout << -0.0 << '\n';
-  std::cout << signbit(0.0) << '\n';
+  std::cout << std::signbit(0.0) << '\n';
 }

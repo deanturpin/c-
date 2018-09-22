@@ -5,11 +5,13 @@ int main() {
 
   int b = i == 1 ? 1 : i == 2 ? 2 : i == 3 ? 3 : i == 4 ? 4 : 5;
 
-  std::cout << "b is " << b << std::endl;
+  std::cout << "b is " << b
+            << std::'
+';
 
-  // Is equivalent to
+                   // Is equivalent to
 
-  int c = 0;
+                   [[maybe_unused]] int c = 0;
 
   if (i == 1)
     c = 1;
@@ -22,7 +24,9 @@ int main() {
   else
     c = 5;
 
-  std::cout << "c is " << b << std::endl;
+  std::cout << "c is " << b
+            << std::'
+';
 
-  return 0;
+      return 0;
 }

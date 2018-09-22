@@ -1,11 +1,10 @@
 #include <iostream>
 
 int main() {
-  using namespace std;
 
   union A {
     int foo;
-    char bar[4];
+    unsigned char bar[4];
 
     bool operator==(const A &rhs) const { return foo == rhs.foo; }
   };
@@ -18,11 +17,11 @@ int main() {
 
   A b;
 
-  cout << hex << a.foo << endl;
-  cout << "Address of a - " << hex << reinterpret_cast<unsigned long>(&a)
-       << endl;
+  std::cout << std::hex << a.foo << '\n';
+  std::cout << "Address of a - " << std::hex
+            << reinterpret_cast<unsigned long>(&a) << '\n';
 
-  cout << "Does b equal a? " << boolalpha << (b == a) << endl;
+  std::cout << "Does b equal a? " << std::boolalpha << (b == a) << '\n';
 
   return 0;
 }

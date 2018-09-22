@@ -25,49 +25,51 @@ int main() {
   {
     class A {
     public:
-      void foo() { cout << "foo" << endl; }
-    };
+      void foo() {
+        cout << "foo" << '
+'; } };
 
-    class B : public A {
-    public:
-      void foo() const { cout << "bar" << endl; }
-    };
+            class B : public A {
+        public:
+          void foo() const {
+            cout << "bar" << '
+'; } };
 
-    cout << "Overload not override" << endl;
-    A a;
-    B b;
+                cout
+                 << "Overload not override" << '
+'; A a; B b;
 
-    a.foo();
-    b.foo();
-  }
+            a.foo();
+            b.foo();
+          }
 
-  // final keyword 1
-  {
-    struct A {
-      virtual void foo() final;
-      void bar();
-    };
+          // final keyword 1
+          {
+            struct A {
+              virtual void foo() final;
+              void bar();
+            };
 
-    struct B final : public A {
-      // Error - A::foo is final
-      // void foo();
+            struct B final : public A {
+              // Error - A::foo is final
+              // void foo();
 
-      void bar(){};
-    };
-  }
+              void bar(){};
+            };
+          }
 
-  // override keyword
-  {
-    class A {
-      void foo();
-      // virtual void bar();
-    };
+          // override keyword
+          {
+            class A {
+              void foo();
+              // virtual void bar();
+            };
 
-    class B : public A {
-      void foo(){};
-    };
+            class B : public A {
+              void foo(){};
+            };
 
-    // A a;
-    // B b;
-  }
-}
+            // A a;
+            // B b;
+          }
+        }

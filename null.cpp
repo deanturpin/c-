@@ -3,6 +3,6 @@
 int main() {
 
   using namespace std;
-  cout << "main" << endl;
-  return 0;
+  cout << "main" << '
+'; return 0;
 }

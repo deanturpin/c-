@@ -13,7 +13,8 @@ class B {
 public:
   B() {
     class A a;
-    std::cout << "Access A's foo " << a.foo << std::endl;
+    std::cout << "Access A's foo " << a.foo << std::'
+';
   }
 };
 

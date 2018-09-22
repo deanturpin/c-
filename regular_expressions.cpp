@@ -9,13 +9,12 @@ int main() {
   regex expression("blah");
 
   if (regex_match(search, expression))
-    cout << "Match yes" << endl;
-  else
-    cout << "Match no" << endl;
+    cout << "Match yes" << ' '; else cout << "Match no" << '
+';
 
-  // mark_count()
+        // mark_count()
 
-  return 0;
+        return 0;
 }
 
 /*
@@ -37,10 +36,12 @@ int main()
         const auto words_begin = sregex_iterator(hosts.cbegin(), hosts.cend(),
 word_regex);
 
-        cout << "Found " << distance(words_begin, sregex_iterator()) << endl;
+        cout << "Found " << distance(words_begin, sregex_iterator()) << '
+';
 
         for (std::sregex_iterator i = words_begin; i != sregex_iterator(); ++i)
-                cout << R"(")" << i->str() << R"(")" << endl;
+                cout << R"(")" << i->str() << R"(")" << '
+';
 
         return 0;
 }

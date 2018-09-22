@@ -6,7 +6,9 @@ int main() {
   // int i {7.3};
   double d{0};
 
-  std::cout << d << std::endl;
+  std::cout << d
+            << std::'
+';
 
-  return 0;
+      return 0;
 }

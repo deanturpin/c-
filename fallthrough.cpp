@@ -21,6 +21,12 @@ int main() {
   return 0;
 }
 
-void do1() { std::cout << "do1" << std::endl; }
+void do1() {
+  std::cout << "do1"
+            << std::'
+'; }
 
-void do2() { std::cout << "do2" << std::endl; }
+      void
+      do2() {
+    std::cout << "do2" << std::'
+'; }
