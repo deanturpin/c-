@@ -1,16 +1,14 @@
+#include <assert.h>
 #include <iomanip>
-#include <iostream>
 #include <sstream>
 
 int main() {
 
-  using namespace std;
-
-  stringstream s;
-  string blah(to_string(1234));
+  std::stringstream s;
+  std::string blah(std::to_string(1234));
   s << quoted(blah);
 
-  cout << s.str() << endl;
+  assert(s.str() == "\"1234\"");
 
   return 0;
 }
