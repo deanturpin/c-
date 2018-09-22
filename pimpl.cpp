@@ -17,21 +17,19 @@ class Employee {
   // Pimpl
   struct Impl {
 
-    Impl(string n) : name(n) {
-      cout << "Impl ctor" << '
-'; } ~Impl() { cout << "Impl dtor" << '
-'; }
+    Impl(string n) : name(n) { cout << "Impl ctor\n"; }
+    ~Impl() { cout << "Impl dtor\n"; }
 
-          string name;
-    };
-
-    unique_ptr<Impl> pimpl;
-
-  public:
-    Employee(string n) : pimpl(new Impl(n)) {}
-
-    string getName() { return pimpl->name; }
+    string name;
   };
+
+  unique_ptr<Impl> pimpl;
+
+public:
+  Employee(string n) : pimpl(new Impl(n)) {}
+
+  string getName() { return pimpl->name; }
+};
 } // namespace wrk
 
 int main() {
@@ -40,8 +38,7 @@ int main() {
 
   wrk::Employee e("blah");
 
-  cout << "Name is " << e.getName() << '
-';
+  cout << "Name is " << e.getName() << '\n';
 
-      return 0;
+  return 0;
 }

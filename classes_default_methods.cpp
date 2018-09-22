@@ -8,36 +8,41 @@ int main() {
   class B {
 
   public:
-    B() {
-      cout << "B ctor" << ' '; } ~B(){cout << "B dtor" << '
-'; } };
+    B() { cout << "B ctor\n"; }
+    ~B() { cout << "B dtor\n"; }
+  };
 
-          // Class with no explicit constructors nor destructor
-          class A {
+  // Class with no explicit constructors nor destructor
+  class A {
 
-        B b;
+    B b();
 
-      public:
-        // Prefix
-        A &operator++() {
-          cout << "++A" << '
-'; return *this; }
+  public:
+    // Prefix
+    A &operator++() {
+      cout << "++A\n";
+      return *this;
+    }
 
-                  // Postfix
-                  A &
-              operator++(int){cout << "A++" << '
-'; return *this; } };
+    // Postfix
+    A &operator++(int) {
+      cout << "A++\n";
+      return *this;
+    }
+  };
 
-          // Create some instances
-          cout << "Implicit constructors" << '
-'; { A a;
-          A b(a);
-          A c = a;
-        }
+  // Create some instances
+  cout << "Implicit constructors\n";
+  {
+    A a;
+    A b(a);
+    [[maybe_used]] A c = a;
+  }
 
-        cout << "\nOperator overloading" << '
-'; A d; ++d;
-        d++;
+  cout << "\nOperator overloading\n";
+  A d;
+  ++d;
+  d++;
 
-        return 0;
-      }
+  return 0;
+}
