@@ -6,7 +6,7 @@ int main() {
 
   // is_final
   struct A {
-    virtual void foo() final;
+    virtual void foo() final {}
     void bar();
 
     virtual ~A() {}

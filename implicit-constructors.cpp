@@ -11,7 +11,7 @@ int main() {
   a a1;
 
   // Copy constructor
-  a a2(a1);
+  [[maybe_unused]] a a2(a1);
 
   // Assignment constructor
   [[maybe_unused]] a a3 = a1;

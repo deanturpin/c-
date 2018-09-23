@@ -35,7 +35,7 @@ int main() {
   cout << "Implicit constructors\n";
   {
     A a;
-    A b(a);
+    [[maybe_unused]] A b(a);
     [[maybe_unused]] A c = a;
   }
 
