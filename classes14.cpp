@@ -4,7 +4,7 @@ int main() {
 
   // is_final
   struct A {
-    virtual void foo() final;
+    virtual void foo() final{};
     void bar();
 
     virtual ~A() {}
@@ -18,7 +18,7 @@ int main() {
   };
 
   std::cout << "Is A final? " << std::boolalpha << std::is_final<A>::value
-            << ' ';
+            << '\n';
   std::cout << "Is B final? " << std::boolalpha << std::is_final<B>::value
             << '\n';
 
