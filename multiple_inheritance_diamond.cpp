@@ -5,6 +5,7 @@ struct a {
   std::string identity() const { return "a"; }
 };
 
+// Note use of virtual
 struct b : virtual a {};
 struct c : virtual a {};
 
