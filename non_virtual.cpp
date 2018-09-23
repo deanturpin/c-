@@ -4,7 +4,7 @@
 // Virtual override
 struct a {
   virtual std::string identity() const { return "a"; }
-  virtual ~a() {}
+  virtual ~a() = default;
 };
 
 struct b : a {
@@ -26,11 +26,13 @@ int main() {
   c _c;
   d _d;
 
+  // Check identities
   assert(_a.identity() == "a");
   assert(_b.identity() == "b");
   assert(_c.identity() == "c");
   assert(_d.identity() == "d");
 
+  // Compare size of class with virtual declaration
   assert(sizeof _a == 8);
   assert(sizeof _b == 8);
   assert(sizeof _c == 1);
