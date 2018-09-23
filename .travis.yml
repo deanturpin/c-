@@ -4,7 +4,6 @@ script:
   - make CXX=clang++-6.0
   - make clean
   - make CXX=g++-8
-  - sloccount *.cpp
 
 matrix:
   include:
