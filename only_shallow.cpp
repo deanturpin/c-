@@ -6,20 +6,22 @@ int main() {
   class a {
   } z;
 
-  class b : public a {
-    int sdf;
+  struct b : public a {
+    int id = 1;
   } w;
 
-  const auto x = std::make_unique<a>();
-  const auto y = std::make_shared<a>();
+  const auto x1 = std::make_unique<a>();
+  const auto x2 = std::make_shared<a>();
+  const auto x3 = std::make_shared<b>();
 
   // The size of...
 
   // A unique pointer
-  assert(sizeof x == 8);
+  assert(sizeof x1 == 8);
 
   // A shared pointer
-  assert(sizeof y == 16);
+  assert(sizeof x2 == 16);
+  assert(x3->id == 1);
 
   // An empty class
   assert(sizeof z == 1);
