@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <ratio>
 
@@ -7,9 +8,11 @@ int main() {
             << "Value of third is "
             << 1.0 * std::ratio<1, 3>::num / std::ratio<1, 3>::den << '\n';
 
-  std::cout << std::boolalpha
-            << std::ratio_less<std::ratio<1, 2>, std::ratio<1, 3>>::value
-            << '\n'
-            << std::ratio_greater<std::ratio<1, 2>, std::ratio<1, 3>>::value
-            << '\n';
+  const auto test_less =
+      std::ratio_less<std::ratio<1, 2>, std::ratio<1, 3>>::value;
+  const auto test_greater =
+      std::ratio_greater<std::ratio<1, 2>, std::ratio<1, 3>>::value;
+
+  assert(test_less == false);
+  assert(test_greater == true);
 }
