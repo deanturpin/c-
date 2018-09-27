@@ -33,16 +33,16 @@ int main() {
       std::cout << x << '\n';
   };
 
-  // Lambda implementation
+  // Recursive lambda implementation
   {
     std::vector<double> average;
 
     using iter = const std::vector<double>::const_iterator &;
     using func = const std::function<void(iter, iter)>;
+
     func av = [&av, &average, &mean](iter begin, iter end) {
       if (std::distance(begin, end) > filter) {
         average.push_back(mean(begin, std::next(begin, filter)));
-
         av(std::next(begin), end);
       }
     };
@@ -51,4 +51,11 @@ int main() {
 
     dump("lambda", average);
   }
+
+  const std::function<std::string(const int n)> rec = [&rec](const int n) {
+    return n == 0 ? "" : "A" + rec(n - 1);
+  };
+
+  const std::string blah = rec(5);
+  std::cout << blah << " blah\n";
 }
