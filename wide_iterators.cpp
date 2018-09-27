@@ -1,7 +1,10 @@
 #include <cassert>
 #include <functional>
 #include <iostream>
+#include <iterator>
 #include <numeric>
+#include <ostream>
+#include <sstream>
 #include <vector>
 
 int main() {
@@ -52,10 +55,15 @@ int main() {
     dump("lambda", average);
   }
 
+  // Using strings to propagate values
   const std::function<std::string(const int n)> rec = [&rec](const int n) {
-    return n == 0 ? "" : "A" + rec(n - 1);
+    return n == 0 ? "" : std::to_string(n) + " " + rec(n - 1);
   };
 
-  const std::string blah = rec(5);
-  std::cout << blah << " blah\n";
+  std::stringstream ss(rec(5));
+  const std::vector<double> tokens{std::istream_iterator<double>{ss},
+                                   std::istream_iterator<double>{}};
+
+  for (const auto &x : tokens)
+    std::cout << x << '\n';
 }
