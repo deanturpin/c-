@@ -1,3 +1,4 @@
+#include <cassert>
 #include <functional>
 #include <iostream>
 #include <numeric>
@@ -15,37 +16,39 @@ int main() {
 
   const long int filter = 5;
 
-  // Calculate x-point average
-  {
-    std::vector<double> average;
-    for (auto i = a.cbegin(); i < std::prev(a.cend(), filter); ++i)
-      average.push_back(std::accumulate(i, std::next(i, filter), 0.0) /
-                        static_cast<double>(filter));
+  const auto mean = [](const auto begin, const auto end) {
+    return std::accumulate(begin, end, 0.0) / static_cast<double>(filter);
+  };
 
-    std::cout << "AVERAGES\n";
-    for (const auto &x : average)
+  // Golden (iterative) implementation
+  std::vector<double> golden;
+  for (auto i = a.cbegin(); i < std::prev(a.cend(), filter); ++i)
+    golden.push_back(mean(i, std::next(i, filter)));
+
+  // Dump and test
+  const auto dump = [&golden](const auto name, const auto p) {
+    assert(p == golden);
+    std::cout << name << "\n";
+    for (const auto &x : p)
       std::cout << x << '\n';
-  }
+  };
 
-  // Calculate x-point average
+  // Lambda implementation
   {
     std::vector<double> average;
 
-    using iter = std::vector<double>::const_iterator;
-    const std::function<void(iter, iter)> av = [&av, &average](iter begin,
-                                                               iter end) {
+    using iter = const std::vector<double>::const_iterator &;
+    using func = const std::function<void(iter, iter)>;
+    func av = [&av, &average, &mean](iter begin, iter end) {
       if (std::distance(begin, end) > filter) {
-        average.push_back(
-            std::accumulate(begin, std::next(begin, filter), 0.0) /
-            static_cast<double>(filter));
+        average.push_back(mean(begin, std::next(begin, filter)));
+
         av(std::next(begin), end);
       }
     };
 
     av(a.cbegin(), a.cend());
 
-    std::cout << "AVERAGES\n";
-    for (const auto &x : average)
-      std::cout << x << '\n';
+    dump("lambda", average);
   }
 }
