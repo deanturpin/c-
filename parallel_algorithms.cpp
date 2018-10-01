@@ -4,8 +4,10 @@
 #include <thread>
 #include <vector>
 
-// std::atomic<bool> ready (false);
-// std::atomic_flag winner = ATOMIC_FLAG_INIT;
+template <typename Iterator, typename Functor>
+void for_each_par(Iterator begin, Iterator end, Functor func) {
+  std::for_each(begin, end, func);
+}
 
 int main() {
 
@@ -23,17 +25,11 @@ int main() {
   std::cout << a.size() << " elements\n";
   std::cout << thread_count << " threads available\n";
 
-  const auto dump = [](const std::string title, const auto &cont) {
-    std::cout << title << '\n';
-    for (const auto &x : cont)
-      std::cout << x << '\n';
-  };
-
-  // dump("ORIGINAL", a);
-
-  const auto serial = [](auto &element) { element *= 2.0; };
+  const auto double_me = [](auto &element) { element *= 2.0; };
 
   std::vector<std::thread> threads;
+
+  /*
   const auto parallel = [&threads, thread_count = 4u](auto &i) {
     if (threads.size() >= thread_count) {
       for (auto &t : threads) {
@@ -48,39 +44,10 @@ int main() {
 
     threads.push_back(std::thread([&i]() { i *= 2.0; }));
   };
+  */
 
-  for_each(b.begin(), b.end(), serial);
-  // dump("SINGLE THREAD", b);
-  // std::cout << std::flush;
-
-  for_each(c.begin(), c.end(), parallel);
-
-  for (auto &t : threads) {
-    std::cout << "join outside\n";
-    t.join();
-  }
-
-  dump("MULTI THREAD", c);
+  for_each(b.begin(), b.end(), double_me);
+  for_each_par(c.begin(), c.end(), double_me);
 
   assert(b == c && "serial and parallel results differ");
-
-  // const unsigned deep_end = std::thread::hardware_concurrency();
-
-  // for (auto f = files.cbegin(); f < files.cend();) {
-  //   for (auto i = 0UL; i < deep_end; ++i) {
-
-  //     const auto file = *f;
-
-  //     threads.push_back(std::thread(
-  //         [](const auto &f) { std::cout << "\t" << f << " lambda\n"; },
-  //         file));
-
-  //     threads.back().join();
-  //     if (++f >= files.cend())
-  //       break;
-  //   }
-
-  //   std::cout << threads.size() << " threads cleared\n";
-  //   threads.clear();
-  // }
 }
