@@ -29,22 +29,37 @@ int main() {
       std::cout << x << '\n';
   };
 
-  dump("ORIGINAL", a);
+  // dump("ORIGINAL", a);
 
   const auto serial = [](auto &element) { element *= 2.0; };
 
-  const auto parallel = [thread_count = 1](auto &i) {
-    static std::vector<std::thread> threads;
+  std::vector<std::thread> threads;
+  const auto parallel = [&threads, thread_count = 4u](auto &i) {
+    if (threads.size() >= thread_count) {
+      for (auto &t : threads) {
+        std::cout << "join\n";
+        t.join();
+      }
 
-    // if (threads.size() < threads)
-    auto thr = std::thread([&i]() { i *= 2.0; });
-    thr.join();
+      std::cout << "clear down\n";
+      threads.clear();
+    } else
+      std::cout << threads.size() << " threads\n";
+
+    threads.push_back(std::thread([&i]() { i *= 2.0; }));
   };
 
   for_each(b.begin(), b.end(), serial);
-  dump("SINGLE THREAD", b);
+  // dump("SINGLE THREAD", b);
+  // std::cout << std::flush;
 
   for_each(c.begin(), c.end(), parallel);
+
+  for (auto &t : threads) {
+    std::cout << "join outside\n";
+    t.join();
+  }
+
   dump("MULTI THREAD", c);
 
   assert(b == c && "serial and parallel results differ");
