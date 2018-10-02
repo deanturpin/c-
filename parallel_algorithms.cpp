@@ -49,24 +49,21 @@ int main() {
 
   std::cout << "create test vector\n";
   std::vector<double> a(1e8 + 13, 1.1);
-  // std::iota(a.begin(), a.end(), 0.0);
   std::cout << "test vector complete\n";
 
   // Create copies to work with
   auto b = a;
   auto c = a;
 
-  const auto double_me = [](auto &i) {
+  // A busy routine
+  const auto get_busy = [](auto &i) {
     i = std::sqrt(std::sqrt(10.0 + i * i * i * i));
   };
 
-  // for_each(b.begin(), b.end(), double_me);
-  // for (const auto &x : b)
-  //   std::cout << x << '\n';
+  // Update one copy with standard for loop and the other with the parallel
+  // implementation
+  for_each(b.begin(), b.end(), get_busy);
+  for_each_par(c.begin(), c.end(), get_busy);
 
-  for_each_par(c.begin(), c.end(), double_me);
-  // for (const auto &x : c)
-  //   std::cout << x << '\n';
-
-  // assert(b == c && "serial and parallel results differ");
+  assert(b == c && "serial and parallel results differ");
 }
