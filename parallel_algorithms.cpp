@@ -15,42 +15,58 @@ void for_each_par(Iterator begin, Iterator end, Functor func) {
       std::ceil(1.0 * total_elements / thread_count);
 
   // Partition data for each thread
-  std::cout << thread_count << " threads\n";
-  std::cout << total_elements << " size\n";
-  std::cout << elements_per_thread << " elements per thread\n";
+  std::cerr << thread_count << " threads\n";
+  std::cerr << total_elements << " size\n";
+  std::cerr << elements_per_thread << " elements per thread\n";
 
+  thread_local std::vector<std::thread> threads;
   for (unsigned int i = 0; i < thread_count; ++i) {
 
     // Initialise iterators
-    static auto front = begin;
-    static auto back = std::min(std::next(front, elements_per_thread), end);
+    thread_local auto front = begin;
+    thread_local auto back =
+        std::min(std::next(front, elements_per_thread), end);
 
     // Process each partition
-    for_each(front, back, func);
+    threads.push_back(std::thread(
+        [&func](auto f, auto b) {
+          std::cerr << "start\n";
+          for_each(f, b, func);
+          std::cerr << "done\n";
+        },
+        front, back));
+
     front = back;
     back = std::min(std::next(front, elements_per_thread), end);
   }
+
+  for (auto &thr : threads)
+    if (thr.joinable())
+      thr.join();
 }
 
 int main() {
 
-  std::vector<double> a(9); // 1e6 + 13);
-  std::iota(a.begin(), a.end(), 0.0);
+  std::cout << "create test vector\n";
+  std::vector<double> a(1e8 + 13, 1.1);
+  // std::iota(a.begin(), a.end(), 0.0);
+  std::cout << "test vector complete\n";
 
   // Create copies to work with
   auto b = a;
   auto c = a;
 
-  const auto add_five = [](auto &element) { element += 5.0; };
-  // const auto double_me = [](auto &element) { element *= 1.0; };
+  const auto double_me = [](auto &i) {
+    i = std::sqrt(std::sqrt(10.0 + i * i * i * i));
+  };
 
-  for_each(b.begin(), b.end(), add_five);
-  for (const auto &x : b)
-    std::cout << x << '\n';
+  // for_each(b.begin(), b.end(), double_me);
+  // for (const auto &x : b)
+  //   std::cout << x << '\n';
 
-  for_each_par(c.begin(), c.end(), add_five);
-  for (const auto &x : c)
-    std::cout << x << '\n';
+  for_each_par(c.begin(), c.end(), double_me);
+  // for (const auto &x : c)
+  //   std::cout << x << '\n';
 
-  assert(b == c && "serial and parallel results differ");
+  // assert(b == c && "serial and parallel results differ");
 }
