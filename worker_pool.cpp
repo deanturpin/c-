@@ -8,49 +8,29 @@
 #include <thread>
 #include <vector>
 
-// Concatenation wrapper
-template <typename T = double> struct concat {
-
-  concat() = default;
-  concat(const T &a) { container.push_back(a); }
-
-  std::vector<T> container{};
-
-  friend concat &operator<<(concat<T> &a, const T &b) {
-    a.container.push_back(b);
-    return a;
-  }
-
-  friend concat &operator<<(concat<T> &a, const concat<T> &b) {
-    for (const auto &c : b.container)
-      a.container.push_back(c);
-    return a;
-  }
-
-  friend concat &operator<<(concat<T> &&a, const concat<T> &b) {
-    for (const auto &c : b.container)
-      a.container.push_back(c);
-    return a;
-  }
-};
-
+// VEKTOR - a concatenating vector
 template <typename T> struct vektor : public std::vector<T> {
 
-  vektor(const T &a) { (*this).push_back(a); }
+  // A constructor with a value pushes the value onto the empty vector
+  vektor(const T &a) { this->push_back(a); }
 
-  friend vektor &operator<<(vektor<T> &a, const T &b) {
-    a.push_back(b);
-    return a;
+  // Ensure the default constuctor is valid
+  vektor() = default;
+
+  // Declare the concatenation operator overloads
+  friend vektor operator+(vektor<T> &a, const T &b) {
+    a.reserve(a.size() + 1);
+    return a.push_back(b);
   }
 
-  friend vektor &operator<<(vektor<T> &a, const vektor<T> &b) {
+  friend vektor operator+(vektor<T> &a, const vektor<T> &b) {
     a.reserve(a.size() + b.size());
     for (const auto &c : b)
       a.emplace_back(c);
     return a;
   }
 
-  friend vektor &operator<<(vektor<T> &&a, const vektor<T> &b) {
+  friend vektor operator+(vektor<T> &&a, const vektor<T> &b) {
     for (const auto &c : b)
       a.push_back(c);
     return a;
@@ -68,43 +48,34 @@ void for_each(Iterator begin, Iterator end, Functor func) {
   const auto thread_count = calcs < max_threads ? 1 : max_threads;
   const unsigned long calcs_per_thread = std::ceil(1.0 * calcs / thread_count);
 
-  const vektor<double> vek5 = vektor<double>(2.1)
-                              << 1.0 << vektor<double>(10.2);
-  std::cout << "vek5\n";
-  for (const auto &x : vek5)
-    std::cout << x << '\n';
-
   struct worker_t {
     Iterator a{};
     Iterator b{};
   };
 
-  const std::function<concat<double>(const unsigned int)> generator =
-      [&generator](const unsigned int n) {
-        return n == 0 ? concat<double>()
-                      : concat<double>(n) << generator(n - 1);
-      };
+  // using vek = vektor<double>;
+  // const std::function<vek(const unsigned int)> generator =
+  //     [&generator](const unsigned int n) {
+  //       return n == 0 ? vek() : vek(n) + generator(n - 1);
+  //     };
 
-  const auto blah6 = generator(6);
-  std::cout << "blah6\n";
-  for (const auto &x : blah6.container)
-    std::cout << x << '\n';
+  // const auto vek1 = generator(5);
+  // std::copy(vek1.cbegin(), vek1.cend(),
+  //           std::ostream_iterator<double>(std::cout, "\n"));
 
   // Partition data for each thread
-  std::vector<worker_t> workers;
-  const std::function<void(Iterator, Iterator, int)> populate =
-      [&workers, &end, &calcs_per_thread,
-       &populate](const Iterator a, const Iterator b, const int n) {
-        if (n == 0)
-          return;
-
-        workers.push_back({a, b});
+  using vek = vektor<worker_t>;
+  const std::function<vek(Iterator, Iterator, double)> populate =
+      [&populate, &calcs_per_thread, &end](const Iterator a, const Iterator b,
+                                           const double n) {
         const auto c = std::min(std::next(b, calcs_per_thread), end);
-        populate(b, c, n - 1);
+        return n > 0.0 ? vek({a, b}) + populate(b, c, n - 1) : vek();
       };
 
-  populate(begin, std::min(std::next(begin, calcs_per_thread), end),
-           thread_count);
+  // populate(a, b, thread_count);
+
+  const vek workers = populate(
+      begin, std::min(std::next(begin, calcs_per_thread), end), thread_count);
 
   std::cout << "WORKERS\n";
   std::cout << workers.size() << " workers\n";
