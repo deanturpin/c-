@@ -8,11 +8,14 @@
 #include <thread>
 #include <vector>
 
-struct concat {
-  std::vector<double> container;
-  concat &append() { return *this; }
+// Concatenation wrapper
+template <typename T = double> struct concat {
+  std::vector<T> container{};
 
-  // TODO - use append routine or <<
+  friend concat &operator<<(concat &a, const double &b) {
+    a.container.push_back(b);
+    return a;
+  }
 };
 
 namespace parallel {
@@ -30,6 +33,12 @@ void for_each(Iterator begin, Iterator end, Functor func) {
     Iterator a{};
     Iterator b{};
   };
+
+  concat<double> blah;
+  blah << 5.1 << 1.1 << 2.0;
+  const auto blah2 = blah.container;
+  for (const auto &x : blah2)
+    std::cout << x << '\n';
 
   // Partition data for each thread
   std::vector<worker_t> workers;
