@@ -10,12 +10,38 @@
 
 // Concatenation wrapper
 template <typename T = double> struct concat {
+
+  concat &self() { return *this; }
+  // concat& concat (const T a) {
+  // 	container.push_back(a);
+  // 	return *this; }
+
+  concat() = default;
+
+  concat(const T &a) { container.push_back(a); }
+
   std::vector<T> container{};
 
-  friend concat &operator<<(concat &a, const double &b) {
+  friend concat &operator<<(concat<T> &a, const T &b) {
     a.container.push_back(b);
     return a;
   }
+
+  friend concat &operator<<(concat<T> &a, const concat<T> &b) {
+    for (const auto &c : b.container)
+      a.container.push_back(c);
+    return a;
+  }
+
+  friend concat &operator<<(concat<T> &&a, const concat<T> &b) {
+    for (const auto &c : b.container)
+      a.container.push_back(c);
+    return a;
+  }
+
+  // friend std::vector<T> &operator=(const concat<double> &a) {
+  //   return a.container;
+  // }
 };
 
 namespace parallel {
@@ -34,11 +60,41 @@ void for_each(Iterator begin, Iterator end, Functor func) {
     Iterator b{};
   };
 
-  concat<double> blah;
-  blah << 5.1 << 1.1 << 2.0;
-  const auto blah2 = blah.container;
-  for (const auto &x : blah2)
+  // const auto blah2 = blah.container;
+  const std::function<concat<double>(int)> generate =
+      [&generate](const unsigned int n) {
+        static concat<double> blah;
+
+        if (n == 0)
+          return blah;
+
+        return blah << generate(n - 1);
+      };
+
+  // const auto blah2 = generate(3);
+  // const auto blah2 =
+  //         concat<double>().self() << (concat<double>().self() << 1.0 << 2.1
+  //         << 4.5);
+  // std::cout << blah2.container.size() << " blah2 size\n";
+  // for (const auto &x : blah2.container) std::cout << x << '\n';
+
+  using typ = concat<double>;
+  const typ blah5 = typ(4) << typ(6) << 5.0 << typ(7);
+
+  std::cout << blah5.container.size() << " blah5 size\n";
+  for (const auto &x : blah5.container)
     std::cout << x << '\n';
+
+  const std::function<std::string(int)> string_gen =
+      [&string_gen](const int n) {
+        if (n == 0)
+          return std::string();
+
+        return std::string("A") + string_gen(n - 1);
+      };
+
+  const auto strg = string_gen(4);
+  std::cout << strg << '\n';
 
   // Partition data for each thread
   std::vector<worker_t> workers;
