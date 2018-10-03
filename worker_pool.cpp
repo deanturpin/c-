@@ -34,6 +34,29 @@ template <typename T = double> struct concat {
   }
 };
 
+template <typename T> struct vektor : public std::vector<T> {
+
+  vektor(const T &a) { (*this).push_back(a); }
+
+  friend vektor &operator<<(vektor<T> &a, const T &b) {
+    a.push_back(b);
+    return a;
+  }
+
+  friend vektor &operator<<(vektor<T> &a, const vektor<T> &b) {
+    a.reserve(a.size() + b.size());
+    for (const auto &c : b)
+      a.emplace_back(c);
+    return a;
+  }
+
+  friend vektor &operator<<(vektor<T> &&a, const vektor<T> &b) {
+    for (const auto &c : b)
+      a.push_back(c);
+    return a;
+  }
+};
+
 namespace parallel {
 
 const auto max_threads = std::thread::hardware_concurrency();
@@ -44,6 +67,12 @@ void for_each(Iterator begin, Iterator end, Functor func) {
   const auto calcs = std::distance(begin, end);
   const auto thread_count = calcs < max_threads ? 1 : max_threads;
   const unsigned long calcs_per_thread = std::ceil(1.0 * calcs / thread_count);
+
+  const vektor<double> vek5 = vektor<double>(2.1)
+                              << 1.0 << vektor<double>(10.2);
+  std::cout << "vek5\n";
+  for (const auto &x : vek5)
+    std::cout << x << '\n';
 
   struct worker_t {
     Iterator a{};
@@ -57,6 +86,7 @@ void for_each(Iterator begin, Iterator end, Functor func) {
       };
 
   const auto blah6 = generator(6);
+  std::cout << "blah6\n";
   for (const auto &x : blah6.container)
     std::cout << x << '\n';
 
