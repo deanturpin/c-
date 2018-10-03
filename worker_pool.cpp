@@ -12,7 +12,7 @@
 template <typename T> struct vektor : public std::vector<T> {
 
   // A constructor with a value pushes the value onto the empty vector
-  vektor(const T &a) { this->push_back(a); }
+  explicit vektor(const T &a) { this->push_back(a); }
 
   // Ensure the default constuctor is valid
   vektor() = default;
@@ -53,16 +53,6 @@ void for_each(Iterator begin, Iterator end, Functor func) {
     Iterator b{};
   };
 
-  // using vek = vektor<double>;
-  // const std::function<vek(const unsigned int)> generator =
-  //     [&generator](const unsigned int n) {
-  //       return n == 0 ? vek() : vek(n) + generator(n - 1);
-  //     };
-
-  // const auto vek1 = generator(5);
-  // std::copy(vek1.cbegin(), vek1.cend(),
-  //           std::ostream_iterator<double>(std::cout, "\n"));
-
   // Partition data for each thread
   using vek = vektor<worker_t>;
   const std::function<vek(Iterator, Iterator, double)> populate =
@@ -71,8 +61,6 @@ void for_each(Iterator begin, Iterator end, Functor func) {
         const auto c = std::min(std::next(b, calcs_per_thread), end);
         return n > 0.0 ? vek({a, b}) + populate(b, c, n - 1) : vek();
       };
-
-  // populate(a, b, thread_count);
 
   const vek workers = populate(
       begin, std::min(std::next(begin, calcs_per_thread), end), thread_count);
@@ -98,7 +86,7 @@ void for_each(Iterator begin, Iterator end, Functor func) {
 int main() {
 
   // Create some test data
-  std::vector<double> a(1e4);
+  std::vector<double> a(1e4 + 13);
   std::iota(a.begin(), a.end(), 1.1);
 
   // Create copies to work with
@@ -110,15 +98,9 @@ int main() {
 
   // Serial application
   std::for_each(b.begin(), b.end(), do_things);
-  // std::cout << "SERIAL\n";
-  // std::copy(b.begin(), b.end(), std::ostream_iterator<double>(std::cout,
-  // "\n"));
 
   // Parallel application
   parallel::for_each(c.begin(), c.end(), do_things);
-  // std::cout << "PARALLEL\n";
-  // std::copy(c.begin(), c.end(), std::ostream_iterator<double>(std::cout,
-  // "\n"));
 
   assert(b == c);
 }
