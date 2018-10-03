@@ -22,42 +22,33 @@ const auto max_threads = std::thread::hardware_concurrency();
 template <typename Iterator, typename Functor>
 void for_each(Iterator begin, Iterator end, Functor func) {
 
-  const auto calculations = std::distance(begin, end);
-  const auto thread_count = calculations < max_threads ? 1 : max_threads;
-
-  const unsigned long calculations_per_thread =
-      calculations < thread_count
-          ? 1
-          : std::ceil(1.0 * calculations / thread_count);
+  const auto calcs = std::distance(begin, end);
+  const auto thread_count = calcs < max_threads ? 1 : max_threads;
+  const unsigned long calcs_per_thread = std::ceil(1.0 * calcs / thread_count);
 
   struct worker_t {
     Iterator a{};
     Iterator b{};
   };
 
+  // Partition data for each thread
   std::vector<worker_t> workers;
-
   const std::function<void(Iterator, Iterator, int)> populate =
-      [&workers, &begin, &end, &calculations_per_thread,
+      [&workers, &begin, &end, &calcs_per_thread,
        &populate](const Iterator a, const Iterator b, const int n) {
         if (n == 0)
           return;
 
         workers.push_back({a, b});
-        populate(b, std::min(std::next(b, calculations_per_thread), end),
-                 n - 1);
+        const auto c = std::min(std::next(b, calcs_per_thread), end);
+        populate(b, c, n - 1);
       };
 
-  populate(begin, std::min(std::next(begin, calculations_per_thread), end),
+  populate(begin, std::min(std::next(begin, calcs_per_thread), end),
            thread_count);
 
   std::cout << "WORKERS\n";
   std::cout << workers.size() << " workers\n";
-  // for (const auto &w : workers)
-  // std::cout << std::distance(begin, w.a) << ' ' << std::distance(begin, w.b)
-  // << '\n';
-
-  // Partition data for each thread
 
   std::vector<std::thread> threads;
   for (const auto &w : workers) {
@@ -77,7 +68,7 @@ void for_each(Iterator begin, Iterator end, Functor func) {
 int main() {
 
   // Create some test data
-  std::vector<double> a(10);
+  std::vector<double> a(1e4);
   std::iota(a.begin(), a.end(), 1.1);
 
   // Create copies to work with
@@ -95,8 +86,9 @@ int main() {
 
   // Parallel application
   parallel::for_each(c.begin(), c.end(), do_things);
-  std::cout << "PARALLEL\n";
-  std::copy(c.begin(), c.end(), std::ostream_iterator<double>(std::cout, "\n"));
+  // std::cout << "PARALLEL\n";
+  // std::copy(c.begin(), c.end(), std::ostream_iterator<double>(std::cout,
+  // "\n"));
 
   assert(b == c);
 }
