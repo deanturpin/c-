@@ -73,7 +73,7 @@ void for_each(Iterator begin, Iterator end, Functor func) {
   // Partition data for each thread
   std::vector<worker_t> workers;
   const std::function<void(Iterator, Iterator, int)> populate =
-      [&workers, &begin, &end, &calcs_per_thread,
+      [&workers, &end, &calcs_per_thread,
        &populate](const Iterator a, const Iterator b, const int n) {
         if (n == 0)
           return;
