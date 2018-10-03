@@ -11,13 +11,7 @@
 // Concatenation wrapper
 template <typename T = double> struct concat {
 
-  concat &self() { return *this; }
-  // concat& concat (const T a) {
-  // 	container.push_back(a);
-  // 	return *this; }
-
   concat() = default;
-
   concat(const T &a) { container.push_back(a); }
 
   std::vector<T> container{};
@@ -38,10 +32,6 @@ template <typename T = double> struct concat {
       a.container.push_back(c);
     return a;
   }
-
-  // friend std::vector<T> &operator=(const concat<double> &a) {
-  //   return a.container;
-  // }
 };
 
 namespace parallel {
