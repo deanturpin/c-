@@ -1,16 +1,32 @@
 #include <iostream>
 #include <vector>
 
-struct copy_me {};
+unsigned default_constructor_calls = 0;
+unsigned copy_constructor_calls = 0;
+
+struct copy_me {
+  copy_me() { ++default_constructor_calls; }
+  copy_me(const copy_me &) { ++copy_constructor_calls; }
+};
 
 int main() {
 
-  std::vector<copy_me> x;
+  std::vector<std::vector<copy_me>> x;
+
+  const unsigned width = 4;
 
   // Create a 2D array of objects
-  for (int i = 0; i < 10; ++i)
-    for (int j = 0; j < 10; ++j)
-      x.push_back(copy_me());
+  for (unsigned i = 0; i < width; ++i) {
 
-  std::cout << x.size() << " entries\n";
+    // Populate a new row
+    std::vector<copy_me> y;
+    for (unsigned j = 0; j < width; ++j)
+      y.push_back(copy_me()); // Call to copy constructor
+
+    // Store the row
+    x.push_back(y);
+  }
+
+  std::cout << default_constructor_calls << " default constructor calls\n";
+  std::cout << copy_constructor_calls << " copy constructor calls\n";
 }

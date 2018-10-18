@@ -1,4 +1,3 @@
-.SILENT:
 
 objects = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 all: $(objects)
