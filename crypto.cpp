@@ -62,16 +62,13 @@ int main() {
   std::cout << s1 << " Alice's secret key\n";
   std::cout << s2 << " Bill's secret key\n";
 
-  // No encryption
   std::cout << "plaintext" << encrypt(plaintext, [](const std::string message) {
     return message;
   });
 
-  // Simple rotation
   std::cout << "rotate" << encrypt(plaintext, [](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext) {
-      // Encrypt a single character
       const auto ascii_offset = 32ul;
       const auto rotate = 1ul;
       const auto wrap = 126ul - ascii_offset;
@@ -80,4 +77,20 @@ int main() {
 
     return ciphertext;
   });
+
+  std::cout << "key schedule"
+            << encrypt(plaintext, [](const std::string message) {
+                 auto ciphertext = message;
+                 for (auto &c : ciphertext) {
+                   const auto ascii_offset = 32ul;
+                   const auto rotate = 1ul;
+                   const auto wrap = 126ul - ascii_offset;
+                   static auto n = 0;
+                   c = ascii_offset + (n + c + rotate - ascii_offset) % wrap;
+
+                   ++n;
+                 }
+
+                 return ciphertext;
+               });
 }
