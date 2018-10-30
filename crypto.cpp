@@ -56,6 +56,13 @@ int main() {
     return format(func(message));
   };
 
+  // Convert large numbers back into the printable ASCII range
+  const auto wrap_ascii = [](const unsigned i) {
+    const auto ascii_offset = 32ul;
+    const auto wrap = 126ul - ascii_offset;
+    return char(ascii_offset + (i - ascii_offset) % wrap);
+  };
+
   // assert(s1 == s2);
   std::cout << A << " Alice's public key\n";
   std::cout << B << " Bill's public key\n";
@@ -66,29 +73,32 @@ int main() {
     return message;
   });
 
-  std::cout << "rotate" << encrypt(plaintext, [](const std::string message) {
-    auto ciphertext = message;
-    for (auto &c : ciphertext) {
-      const auto ascii_offset = 32ul;
-      const auto rotate = 1ul;
-      const auto wrap = 126ul - ascii_offset;
-      c = ascii_offset + (c + rotate - ascii_offset) % wrap;
-    }
+  std::cout << "rotate"
+            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
+                 auto ciphertext = message;
+                 for (auto &c : ciphertext)
+                   c = wrap_ascii(c + 1ul);
 
-    return ciphertext;
-  });
+                 return ciphertext;
+               });
 
   std::cout << "key schedule"
-            << encrypt(plaintext, [](const std::string message) {
+            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
+                 auto ciphertext = message;
+                 auto n{1ul};
+                 for (auto &c : ciphertext)
+                   c = wrap_ascii(n++ + c);
+
+                 return ciphertext;
+               });
+
+  std::cout << "add previous"
+            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
+                 static auto previous{0ul};
                  auto ciphertext = message;
                  for (auto &c : ciphertext) {
-                   const auto ascii_offset = 32ul;
-                   const auto rotate = 1ul;
-                   const auto wrap = 126ul - ascii_offset;
-                   static auto n = 0;
-                   c = ascii_offset + (n + c + rotate - ascii_offset) % wrap;
-
-                   ++n;
+                   c = wrap_ascii(previous + c + 1ul);
+                   previous = c;
                  }
 
                  return ciphertext;
