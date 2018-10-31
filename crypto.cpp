@@ -69,38 +69,38 @@ int main() {
   std::cout << s1 << " Alice's secret key\n";
   std::cout << s2 << " Bill's secret key\n";
 
-  std::cout << "plaintext" << encrypt(plaintext, [](const std::string message) {
-    return message;
-  });
+  const auto alg1 = [](const std::string message) { return message; };
 
-  std::cout << "rotate"
-            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
-                 auto ciphertext = message;
-                 for (auto &c : ciphertext)
-                   c = wrap_ascii(c + 1ul);
+  const auto alg2 = [&wrap_ascii](const std::string message) {
+    auto ciphertext = message;
+    for (auto &c : ciphertext)
+      c = wrap_ascii(c + 1ul);
 
-                 return ciphertext;
-               });
+    return ciphertext;
+  };
 
-  std::cout << "key schedule"
-            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
-                 auto ciphertext = message;
-                 auto n{1ul};
-                 for (auto &c : ciphertext)
-                   c = wrap_ascii(n++ + c);
+  const auto alg3 = [&wrap_ascii](const std::string message) {
+    auto ciphertext = message;
+    auto n{1ul};
+    for (auto &c : ciphertext)
+      c = wrap_ascii(n++ + c);
 
-                 return ciphertext;
-               });
+    return ciphertext;
+  };
 
-  std::cout << "add previous"
-            << encrypt(plaintext, [&wrap_ascii](const std::string message) {
-                 static auto previous{0ul};
-                 auto ciphertext = message;
-                 for (auto &c : ciphertext) {
-                   c = wrap_ascii(previous + c + 1ul);
-                   previous = c;
-                 }
+  const auto alg4 = [&wrap_ascii](const std::string message) {
+    static auto previous{0ul};
+    auto ciphertext = message;
+    for (auto &c : ciphertext) {
+      c = wrap_ascii(previous + c + 1ul);
+      previous = c;
+    }
 
-                 return ciphertext;
-               });
+    return ciphertext;
+  };
+
+  std::cout << "plaintext" << encrypt(plaintext, alg1);
+  std::cout << "rotate" << encrypt(plaintext, alg2);
+  std::cout << "key schedule" << encrypt(plaintext, alg3);
+  std::cout << "add previous" << encrypt(plaintext, alg4);
 }
