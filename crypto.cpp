@@ -22,38 +22,36 @@ int main() {
 
   // The secret
   const std::string plaintext{"llllllllllllllllllllllllllllllllllllllll"
-                              "lllllllooooooooooooooooooolllllllllollll"
-                              "lllllllooooooooooooooooooolllllllllollll"
-                              "llllllllllllllollllllllllllllllllllollll"
-                              "lllllllllllllllollllllllollllllllllollll"
-                              "oolllooollllllllllolllllollllllllllollll"
-                              "lloollloollllllllllolllllllllllllllollll"
+                              "lllllll  lll  llll  llllllll  llllllllll"
+                              "llllll  lll  llllllllllllll  lllllllllll"
+                              "lllll       llll  llllllll  llllllllllll"
+                              "llll  lll  llll  lllllllllllllllllllllll"
+                              "lll  lll  llll  llllllll  llllllllllllll"
+                              "llllllllllllllllllllllllllllllllllllllll"
                               "                                        "
                               "Beautiful is better than ugly. Explicit "
                               "is better than implicit. Simple is bette"
                               "r than complex. Complex is better than c"
                               "omplicated. Flat is better than nested. "};
 
+  // Format the message for printing
+  const auto format = [](const std::string in) {
+    unsigned count{1};
+    std::stringstream out;
+    for (const auto c : in) {
+      out << c;
+      if (!(count % 40))
+        out << '\n';
+
+      ++count;
+    }
+
+    return out.str();
+  };
+
   // Encrypt a message using supplied function
   const auto encrypt = [](const auto message, const auto func) {
-    // Format the message for printing
-    const auto format = [](const std::string in) {
-      unsigned count{1};
-      std::stringstream out;
-      out << "\n\n";
-      for (const auto c : in) {
-        out << c;
-        if (!(count % 40))
-          out << '\n';
-
-        ++count;
-      }
-      out << "----------------------------------------\n";
-
-      return out.str();
-    };
-
-    return format(func(message));
+    return func(message);
   };
 
   // Convert large numbers back into the printable ASCII range
@@ -99,8 +97,20 @@ int main() {
     return ciphertext;
   };
 
-  std::cout << "plaintext" << encrypt(plaintext, alg1);
-  std::cout << "rotate" << encrypt(plaintext, alg2);
-  std::cout << "key schedule" << encrypt(plaintext, alg3);
-  std::cout << "add previous" << encrypt(plaintext, alg4);
+  const auto alg5 = [&wrap_ascii](const std::string message) {
+    auto ciphertext = message;
+    for (auto &c : ciphertext)
+      c = c - 1ul;
+
+    return ciphertext;
+  };
+
+  std::cout << "\n--- plaintext\n" << format(encrypt(plaintext, alg1));
+  std::cout << "\n--- rotate\n" << format(encrypt(plaintext, alg2));
+  std::cout << "\n--- key schedule\n" << format(encrypt(plaintext, alg3));
+  std::cout << "\n--- add previous\n" << format(encrypt(plaintext, alg4));
+  std::cout << "\n--- decrypt\n"
+            << format(encrypt(encrypt(plaintext, alg2), alg5));
+
+  assert(plaintext == encrypt(encrypt(plaintext, alg2), alg5));
 }
