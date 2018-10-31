@@ -67,8 +67,6 @@ int main() {
   std::cout << s1 << " Alice's secret key\n";
   std::cout << s2 << " Bill's secret key\n";
 
-  const auto alg1 = [](const std::string message) { return message; };
-
   const auto alg2 = [&wrap_ascii](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext)
@@ -105,7 +103,7 @@ int main() {
     return ciphertext;
   };
 
-  std::cout << "\n--- plaintext\n" << format(encrypt(plaintext, alg1));
+  std::cout << "\n--- plaintext\n" << format(plaintext);
   std::cout << "\n--- rotate\n" << format(encrypt(plaintext, alg2));
   std::cout << "\n--- key schedule\n" << format(encrypt(plaintext, alg3));
   std::cout << "\n--- add previous\n" << format(encrypt(plaintext, alg4));
