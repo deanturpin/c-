@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cctype>
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -39,15 +40,12 @@ int main() {
 
   // Format the message for printing
   const auto format = [](const std::string in) {
-    unsigned count{1};
     std::stringstream out;
-    for (const auto c : in) {
-      out << c;
-      if (!(count % 40))
-        out << '\n';
 
-      ++count;
-    }
+    // Only report printable characters and add a new line at the end of a chunk
+    unsigned n{0};
+    for (const auto c : in)
+      out << (std::isprint(c) ? c : '?') << (++n % 40 ? "" : "\n");
 
     return out.str();
   };
