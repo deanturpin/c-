@@ -21,14 +21,17 @@ int main() {
   const auto s2{generate_public_key(B, A)};
 
   // The secret
-  const std::string plaintext{"llllllllllllllllllllllllllllllllllllllll"
+  const std::string plaintext{"A few questions that I need to know. How"
+                              " you could ever hurt me so. I need to kn"
+                              "ow what I've done wrong. And how long it"
+                              "'s been going on.                       "
+                              "llllllllllllllllllllllllllllllllllllllll"
                               "lllllll  lll  llll  llllllll  llllllllll"
                               "llllll  lll  llllllllllllll  lllllllllll"
                               "lllll       llll  llllllll  llllllllllll"
                               "llll  lll  llll  lllllllllllllllllllllll"
                               "lll  lll  llll  llllllll  llllllllllllll"
                               "llllllllllllllllllllllllllllllllllllllll"
-                              "                                        "
                               "Beautiful is better than ugly. Explicit "
                               "is better than implicit. Simple is bette"
                               "r than complex. Complex is better than c"
@@ -55,11 +58,7 @@ int main() {
   };
 
   // Convert large numbers back into the printable ASCII range
-  const auto wrap_ascii = [](const unsigned i) {
-    const auto ascii_offset = 32ul;
-    const auto wrap = 126ul - ascii_offset;
-    return char(ascii_offset + (i - ascii_offset) % wrap);
-  };
+  const auto wrap_ascii = [](const unsigned i) { return char(i % 0b10000000); };
 
   // assert(s1 == s2);
   std::cout << A << " Alice's public key\n";
@@ -79,7 +78,7 @@ int main() {
     auto ciphertext = message;
     auto n{1ul};
     for (auto &c : ciphertext)
-      c = wrap_ascii(n++ + c);
+      c = wrap_ascii(c + n++);
 
     return ciphertext;
   };
@@ -95,6 +94,8 @@ int main() {
     return ciphertext;
   };
 
+  // Decrypt
+
   const auto alg5 = [&wrap_ascii](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext)
@@ -103,12 +104,24 @@ int main() {
     return ciphertext;
   };
 
+  const auto alg6 = [&wrap_ascii](const std::string message) {
+    auto plain = message;
+    unsigned count{1ul};
+    for (auto &c : plain)
+      c = wrap_ascii(c - count++);
+
+    return plain;
+  };
+
   std::cout << "\n--- plaintext\n" << format(plaintext);
   std::cout << "\n--- rotate\n" << format(encrypt(plaintext, alg2));
   std::cout << "\n--- key schedule\n" << format(encrypt(plaintext, alg3));
   std::cout << "\n--- add previous\n" << format(encrypt(plaintext, alg4));
   std::cout << "\n--- decrypt\n"
             << format(encrypt(encrypt(plaintext, alg2), alg5));
+  std::cout << "\n--- decrypt\n"
+            << format(encrypt(encrypt(plaintext, alg3), alg6));
 
   assert(plaintext == encrypt(encrypt(plaintext, alg2), alg5));
+  assert(plaintext == encrypt(encrypt(plaintext, alg3), alg6));
 }
