@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cctype>
 #include <cmath>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -93,10 +94,20 @@ int main() {
     return ciphertext;
   };
 
-  const auto mod1 = [&wrap_ascii](const std::string message) {
+  // Calculate power of 2 using 128-bit type
+  const std::function<unsigned __int128(unsigned __int128)> power =
+      [&power, base = 2 ](const unsigned n) constexpr {
+    return n == 0 ? 0 : n == 1 ? base : base * power(n - 1);
+  };
+
+  assert(power(0) == 0);
+  assert(power(2) == 4);
+  assert(power(10) == 1024);
+
+  const auto mod1 = [&wrap_ascii, &power](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext)
-      c = wrap_ascii(std::fmod(std::exp2(unsigned(c)), 127));
+      c = wrap_ascii(power(unsigned(c)) % 127);
 
     return ciphertext;
   };
