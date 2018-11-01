@@ -94,16 +94,19 @@ int main() {
     return ciphertext;
   };
 
-  const std::function<unsigned(unsigned, unsigned, unsigned)> modexp =
-      [&modexp](const unsigned b, const unsigned e, const unsigned m) {
-        // std::cout << b << ' ' << e << ' ' << m << '\n';
-        return e == 0 ? 1 : (modexp(b, e - 1, m) * b) % m;
-      };
+  const auto mod1 = [&wrap_ascii](const std::string message) {
+    // Calculate using modular exponentiation
+    const std::function<unsigned(unsigned, unsigned, unsigned)> base_exp_mod =
+        [&base_exp_mod](const unsigned b, const unsigned e, const unsigned m) {
+          return e == 0 ? 1 : (base_exp_mod(b, e - 1, m) * b) % m;
+        };
 
-  const auto mod1 = [&wrap_ascii, &modexp](const std::string message) {
+    // Create a copy of plaintext message to encrypt
     auto ciphertext = message;
+
+    // Encrypt each character
     for (auto &c : ciphertext)
-      c = wrap_ascii(modexp(4, unsigned(c), 619));
+      c = wrap_ascii(base_exp_mod(4, unsigned(c), 19991));
 
     return ciphertext;
   };
@@ -151,15 +154,4 @@ int main() {
 
   assert(plaintext == encrypt(encrypt(plaintext, alg2), alg5));
   assert(plaintext == encrypt(encrypt(plaintext, alg3), alg6));
-
-  std::string blah;
-  for (unsigned i = 0; i < 10; ++i)
-    blah.push_back(char(i));
-
-  std::cout << "\n--- blah\n" << format(blah);
-  std::cout << "\n--- blah\n" << format(encrypt(blah, mod1));
-
-  // assert(plaintext == encrypt(encrypt(plaintext, alg4), alg7));
-  // std::cout << "ten\n" << modexp(2) << '\n';
-  // std::cout << "two\n" << modexp(10) << '\n';
 }
