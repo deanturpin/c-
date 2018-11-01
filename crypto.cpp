@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cctype>
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 
@@ -26,13 +27,13 @@ int main() {
                               " you could ever hurt me so. I need to kn"
                               "ow what I've done wrong. And how long it"
                               "'s been going on.                       "
-                              "llllllllllllllllllllllllllllllllllllllll"
-                              "lllllll  lll  llll  llllllll  llllllllll"
-                              "llllll  lll  llllllllllllll  lllllllllll"
-                              "lllll       llll  llllllll  llllllllllll"
-                              "llll  lll  llll  lllllllllllllllllllllll"
-                              "lll  lll  llll  llllllll  llllllllllllll"
-                              "llllllllllllllllllllllllllllllllllllllll"
+                              " llllllllllllllllllllllllllllllllllllll "
+                              "lllllllllll  lll  llll  llll   lllllllll"
+                              "llllllllll  lll  lllllllllll  llllllllll"
+                              "lllllllll       llll  lllll  lllllllllll"
+                              "llllllll  lll  llll  lllllllllllllllllll"
+                              "lllllll  lll  llll  lllll  lllllllllllll"
+                              " llllllllllllllllllllllllllllllllllllll "
                               "Beautiful is better than ugly. Explicit "
                               "is better than implicit. Simple is bette"
                               "r than complex. Complex is better than c"
@@ -42,10 +43,10 @@ int main() {
   const auto format = [](const std::string in) {
     std::stringstream out;
 
-    // Only report printable characters and add a new line at the end of a chunk
     unsigned n{0};
     for (const auto c : in)
-      out << (std::isprint(c) ? c : '?') << (++n % 40 ? "" : "\n");
+      out << std::hex << std::setw(2) << std::setfill('.') << unsigned(c)
+          << (++n % 40 ? "" : "\n");
 
     return out.str();
   };
@@ -82,12 +83,20 @@ int main() {
   };
 
   const auto alg4 = [&wrap_ascii](const std::string message) {
-    static auto previous{0ul};
+    auto previous{0ul};
     auto ciphertext = message;
     for (auto &c : ciphertext) {
-      c = wrap_ascii(previous + c + 1ul);
+      c = wrap_ascii(c + 1ul + previous);
       previous = c;
     }
+
+    return ciphertext;
+  };
+
+  const auto mod1 = [&wrap_ascii](const std::string message) {
+    auto ciphertext = message;
+    for (auto &c : ciphertext)
+      c = wrap_ascii(std::fmod(std::exp2(unsigned(c)), 127));
 
     return ciphertext;
   };
@@ -97,7 +106,7 @@ int main() {
   const auto alg5 = [&wrap_ascii](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext)
-      c = c - 1ul;
+      c = wrap_ascii(c - 1ul);
 
     return ciphertext;
   };
@@ -111,15 +120,29 @@ int main() {
     return plain;
   };
 
+  const auto alg7 = [&wrap_ascii](const std::string message) {
+    auto previous{0ul};
+    auto ciphertext = message;
+    for (auto &c : ciphertext) {
+      c = wrap_ascii(c - 1ul - previous);
+      previous = c;
+    }
+
+    return ciphertext;
+  };
+
   std::cout << "\n--- plaintext\n" << format(plaintext);
   std::cout << "\n--- rotate\n" << format(encrypt(plaintext, alg2));
   std::cout << "\n--- key schedule\n" << format(encrypt(plaintext, alg3));
   std::cout << "\n--- add previous\n" << format(encrypt(plaintext, alg4));
+
   std::cout << "\n--- decrypt\n"
-            << format(encrypt(encrypt(plaintext, alg2), alg5));
-  std::cout << "\n--- decrypt\n"
-            << format(encrypt(encrypt(plaintext, alg3), alg6));
+            << format(encrypt(encrypt(plaintext, alg4), alg7));
+
+  std::cout << "\n--- plaintext\n" << format(plaintext);
+  std::cout << "\n--- mod exp\n" << format(encrypt(plaintext, mod1));
 
   assert(plaintext == encrypt(encrypt(plaintext, alg2), alg5));
   assert(plaintext == encrypt(encrypt(plaintext, alg3), alg6));
+  // assert(plaintext == encrypt(encrypt(plaintext, alg4), alg7));
 }
