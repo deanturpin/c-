@@ -94,20 +94,16 @@ int main() {
     return ciphertext;
   };
 
-  // Calculate power of 2 using 128-bit type
-  const std::function<unsigned __int128(unsigned __int128)> power =
-      [&power, base = 2 ](const unsigned n) constexpr {
-    return n == 0 ? 0 : n == 1 ? base : base * power(n - 1);
-  };
+  const std::function<unsigned(unsigned, unsigned, unsigned)> modexp =
+      [&modexp](const unsigned b, const unsigned e, const unsigned m) {
+        // std::cout << b << ' ' << e << ' ' << m << '\n';
+        return e == 0 ? 1 : (modexp(b, e - 1, m) * b) % m;
+      };
 
-  assert(power(0) == 0);
-  assert(power(2) == 4);
-  assert(power(10) == 1024);
-
-  const auto mod1 = [&wrap_ascii, &power](const std::string message) {
+  const auto mod1 = [&wrap_ascii, &modexp](const std::string message) {
     auto ciphertext = message;
     for (auto &c : ciphertext)
-      c = wrap_ascii(power(unsigned(c)) % 127);
+      c = wrap_ascii(modexp(4, unsigned(c), 619));
 
     return ciphertext;
   };
@@ -155,5 +151,15 @@ int main() {
 
   assert(plaintext == encrypt(encrypt(plaintext, alg2), alg5));
   assert(plaintext == encrypt(encrypt(plaintext, alg3), alg6));
+
+  std::string blah;
+  for (unsigned i = 0; i < 10; ++i)
+    blah.push_back(char(i));
+
+  std::cout << "\n--- blah\n" << format(blah);
+  std::cout << "\n--- blah\n" << format(encrypt(blah, mod1));
+
   // assert(plaintext == encrypt(encrypt(plaintext, alg4), alg7));
+  // std::cout << "ten\n" << modexp(2) << '\n';
+  // std::cout << "two\n" << modexp(10) << '\n';
 }
