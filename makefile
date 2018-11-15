@@ -1,6 +1,7 @@
-
 objects = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+
 all: $(objects)
+
 CXX = clang++-6.0
 
 FLAGS = --std=c++17 --all-warnings --extra-warnings --pedantic-errors \
