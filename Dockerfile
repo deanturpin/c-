@@ -1,2 +1,3 @@
 FROM deanturpin/cpp
-RUN /usr/bin/make
+RUN git clone https://github.com/deanturpin/cpp
+RUN /usr/bin/make -C handt
