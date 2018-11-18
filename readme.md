@@ -19,6 +19,11 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
+## Accessing the host file system
+```bash
+docker run -it -v /tmp/cpp:/cpp deanturpin/cpp
+```
+
 # Topics
 - [ ] C++ keywords - http://en.cppreference.com/w/cpp/keyword
 - [ ] https://en.wikipedia.org/wiki/C%2B%2B11
