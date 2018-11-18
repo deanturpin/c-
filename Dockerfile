@@ -1,3 +1,8 @@
 from kalilinux/kali-linux-docker
 run apt update
-run apt install -y clang++-6.0 g++-8 make git
+run apt install -y clang++-6.0
+run apt install -y clang-format
+run apt install -y g++-8
+run apt install -y make
+run apt install -y git
+run apt install -y vim
