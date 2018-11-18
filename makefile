@@ -1,6 +1,7 @@
 objects = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-all: $(objects)
+all:
+	$(MAKE) -j $(shell nproc) $(objects)
 
 CXX = clang++-6.0
 
