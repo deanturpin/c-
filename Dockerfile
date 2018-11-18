@@ -1,3 +1,3 @@
-FROM deanturpin/cpp
-RUN git clone https://github.com/deanturpin/cpp
-CMD /usr/bin/make -C cpp -j $(nproc)
+from kalilinux/kali-linux-docker
+run apt update
+run apt install -y clang++-6.0 g++-8 make git
