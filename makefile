@@ -1,13 +1,7 @@
 objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
-all: tmp build run
-
-build:
+all: tmp
 	$(MAKE) -j $(shell nproc) $(objects)
-
-run:
-	echo run
-
 
 CXX = clang++-7
 
@@ -17,6 +11,7 @@ FLAGS = --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
 
 tmp/%.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread
+	./$@
 
 tmp:
 	mkdir $@
