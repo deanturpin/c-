@@ -7,3 +7,5 @@ run apt install -y g++-8
 run apt install -y make
 run apt install -y git
 run apt install -y vim
+run git config --global user.email "you@example.com"
+run git config --global user.name "Your Name"
