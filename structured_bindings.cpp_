@@ -8,7 +8,7 @@ struct S {
 
 int main() {
 
-  auto[i, j] = S();
+  auto [i, j] = S();
 
   return 0;
 }

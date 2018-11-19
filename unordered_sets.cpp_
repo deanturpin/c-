@@ -2,18 +2,18 @@
 #include <unordered_set>
 
 struct pair_hash {
-    inline std::size_t operator()(const std::pair<int, int> &v) const {
-      return v.first * 31 + v.second;
-    }
+  inline std::size_t operator()(const std::pair<int, int> &v) const {
+    return v.first * 31 + v.second;
+  }
 };
 
 int main() {
 
-  std::unordered_set<std::pair<int, int>> s {
-    {1, 2},
-    {3, 2},
-    {6, 7},
-    {1, 5},
+  std::unordered_set<std::pair<int, int>> s{
+      {1, 2},
+      {3, 2},
+      {6, 7},
+      {1, 5},
   };
 
   std::unordered_set<std::pair<int, int>, pair_hash> s2;
@@ -23,5 +23,5 @@ int main() {
   //   std::cout << p.first << ' ' << p.second << '\n';
 
   // for (auto &p : s)
-    // p.first = 0;
+  // p.first = 0;
 }

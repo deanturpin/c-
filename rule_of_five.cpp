@@ -18,7 +18,7 @@ struct A {
 
 int main() {
   std::vector<A>().emplace_back(A()) = [a = A()]() mutable {
-	  const auto _a = a;
-	  return a = _a;
+    const auto _a = a;
+    return a      = _a;
   }();
 }

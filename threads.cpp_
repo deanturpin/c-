@@ -11,8 +11,14 @@
 int main() {
 
   std::vector<std::string> files({
-      "file0.txt", "file1.txt", "file2.txt", "file3.txt", "file4.txt",
-      "file5.txt", "file6.txt", "file7.txt",
+      "file0.txt",
+      "file1.txt",
+      "file2.txt",
+      "file3.txt",
+      "file4.txt",
+      "file5.txt",
+      "file6.txt",
+      "file7.txt",
   });
 
   std::vector<std::thread> threads;

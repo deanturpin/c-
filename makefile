@@ -1,4 +1,4 @@
-objects = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all:
 	$(MAKE) -j $(shell nproc) $(objects)
@@ -9,8 +9,11 @@ FLAGS = --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
 	-g -pg
 
-%.o: %.cpp
-	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread && echo $< && ./$@
+tmp/%.o: %.cpp tmp
+	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread && echo $<
+
+tmp:
+	mkdir $@
 
 clean:
-	rm -f *.o
+	rm -rf tmp

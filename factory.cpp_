@@ -41,7 +41,7 @@ public:
 			}
 	};
 #endif
-}
+} // namespace aml
 
 int main() {
 
