@@ -97,8 +97,8 @@ int main() {
   const auto mod1 = [&wrap_ascii](const std::string message) {
     // Calculate using modular exponentiation
     const std::function<unsigned(unsigned, unsigned, unsigned)> base_exp_mod =
-        [&base_exp_mod](const unsigned b, const unsigned e, const unsigned m) {
-          return e == 0 ? 1 : (base_exp_mod(b, e - 1, m) * b) % m;
+        [&base_exp_mod](const unsigned ba, const unsigned e, const unsigned m) {
+          return e == 0 ? 1 : (base_exp_mod(ba, e - 1, m) * ba) % m;
         };
 
     // Create a copy of plaintext message to encrypt
