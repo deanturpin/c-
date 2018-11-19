@@ -33,7 +33,7 @@ template <typename T> struct vektor : public std::vector<T> {
   friend vektor operator+(vektor<T> &&a, const vektor<T> &b) {
     for (const auto &c : b)
       a.push_back(c);
-    return a;
+    return std::move(a);
   }
 };
 
