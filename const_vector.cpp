@@ -13,6 +13,6 @@ value_type"
 static_assert(is_same<typename remove_cv<_Tp>::type, _Tp>::value,
 */
 
-  std::list<const int> v{1, 23, 3, 4, 5, 6};
+  std::list<int> v{1, 23, 3, 4, 5, 6};
   std::cout << v.size() << " size\n";
 }

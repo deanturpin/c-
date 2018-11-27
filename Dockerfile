@@ -1,11 +1,13 @@
-from kalilinux/kali-linux-docker
-run apt update
-run apt -y upgrade
-run apt install -y clang++-7
-run apt install -y clang-format
-run apt install -y g++-8
-run apt install -y make
-run apt install -y git
-run apt install -y vim
-run git config --global user.email "you@example.com"
-run git config --global user.name "Your Name"
+FROM kalilinux/kali-linux-docker
+RUN apt update
+RUN apt -y upgrade
+RUN apt install -y clang++-7
+RUN apt install -y clang-format
+RUN apt install -y g++-8
+RUN apt install -y make
+RUN apt install -y git
+RUN apt install -y vim
+RUN git config --global user.email "you@example.com"
+RUN git config --global user.name "Your Name"
+COPY . /src
+WORKDIR /src
