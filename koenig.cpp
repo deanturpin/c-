@@ -7,6 +7,4 @@ int main() {
   endl(std::cout);
   endl(std::cout);
   endl(std::cout);
-
-  return 0;
 }

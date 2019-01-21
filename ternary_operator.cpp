@@ -1,8 +1,8 @@
 #include <iostream>
 
 int main() {
-  int i = -1;
 
+  int i = -1;
   int b = i == 1 ? 1 : i == 2 ? 2 : i == 3 ? 3 : i == 4 ? 4 : 5;
 
   std::cout << "b is " << b << '\n';

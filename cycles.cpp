@@ -36,7 +36,7 @@ int main() {
 
     for (const auto &state : input) {
 
-      // Hight frequency reader records state changes
+      // High frequency reader records state changes
       if (state != previous_state) {
         transition_detected = true;
         previous_state = state;

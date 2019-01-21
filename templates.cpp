@@ -10,7 +10,7 @@ int main() {
 
   using namespace std;
 
-  vector<int> vec = {1, 2, 3};
+  vector<int> vec{1, 2, 3};
 
   square(vec);
   for (const auto &v : vec)
