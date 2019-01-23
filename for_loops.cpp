@@ -16,9 +16,9 @@ int main() {
     cout << "cont " << v << '\n';
 
   // Can't do this, tho...
-  // int i;
-  // for (i : vec)
-  //   cout << "cont " << i << '
-
-  return 0;
+  /*
+  int i;
+  for (i : vec)
+	  cout << i << '\n';
+  */
 }
