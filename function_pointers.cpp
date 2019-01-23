@@ -12,6 +12,7 @@ int multiply(int a, int b) { return a * b; }
 int operation(int a, int b, int (*func)(int, int)) { return func(a, b); }
 
 int main() {
+
   // Function pointer as an alias
   void (*f)(void) = foo;
   int (*b)(const double &) = bar;
@@ -22,6 +23,4 @@ int main() {
 
   // Pass into a function
   std::cout << operation(4, 5, multiply) << '\n';
-
-  return 0;
 }
