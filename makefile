@@ -5,13 +5,13 @@ all: tmp
 
 CXX = g++-8
 
-FLAGS = --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
+FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
-	-g -pg
+	-g -pg -O1
 
 tmp/%.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread
-	./$@
+	time ./$@
 
 tmp:
 	mkdir $@

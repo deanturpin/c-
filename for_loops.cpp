@@ -19,6 +19,6 @@ int main() {
   /*
   int i;
   for (i : vec)
-	  cout << i << '\n';
+          cout << i << '\n';
   */
 }

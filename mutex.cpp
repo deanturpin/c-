@@ -12,24 +12,24 @@ int main() {
 
   // A considerate printing routing that waits its turn
   const auto mutex_print = [&printing](const std::string &str,
-		  const bool mutex_print_enabled) { 
-
+                                       const bool mutex_print_enabled) {
     // Try to take the mutex
-    if (mutex_print_enabled) printing.lock();
+    if (mutex_print_enabled)
+      printing.lock();
 
     // Print something to the screen in a leisurely fashion
-    for (const auto &word :{str.c_str(), "is", "my", "name", "yes", "it",
-                             "is", "oh", "yes", "it", "is", "\n"})
+    for (const auto &word : {str.c_str(), "is", "my", "name", "yes", "it", "is",
+                             "oh", "yes", "it", "is", "\n"})
       std::cout << ' ' << word;
 
     // Release the mutex
-    if (mutex_print_enabled) printing.unlock();
+    if (mutex_print_enabled)
+      printing.unlock();
   };
 
   // Common main for each printing thread
   const auto thread_main = [&mutex_print](const std::string &name,
-		  const bool mutex_print_enabled) {
-
+                                          const bool mutex_print_enabled) {
     long counter = 0;
     while (counter++ < 4) {
 
@@ -46,7 +46,8 @@ int main() {
   // terminal
   for (const auto &mutex_print_enabled : {false, true}) {
 
-    std::cout << "### " << std::boolalpha << mutex_print_enabled << " mutex\n\n";
+    std::cout << "### " << std::boolalpha << mutex_print_enabled
+              << " mutex\n\n";
 
     // Launch some threads
     std::thread a(thread_main, "A", mutex_print_enabled);

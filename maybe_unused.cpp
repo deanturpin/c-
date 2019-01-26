@@ -1,3 +1,1 @@
-int main() {
-  [[maybe_unused]] int i = 0;
-}
+int main() { [[maybe_unused]] int i = 0; }
