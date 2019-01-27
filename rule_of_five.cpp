@@ -4,11 +4,11 @@
 struct A {
   A() { puts("1. A()"); }
   A(const A &) { puts("2. A(const A &)"); }
-  A(A &&) { puts("3. A(A &&)"); }
   A &operator=(const A &) {
     puts("4. A &operator=(A &)");
     return *this;
   }
+  A(A &&) { puts("3. A(A &&)"); }
   A &operator=(A &&) {
     puts("5. A &operator=(A &&)");
     return *this;
