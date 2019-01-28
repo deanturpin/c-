@@ -17,4 +17,4 @@ tmp:
 	mkdir $@
 
 clean:
-	rm -rf tmp
+	rm -rf tmp *.bin *.out
