@@ -1,4 +1,3 @@
 ```bash
-docker run -it deanturpin/cpp
-make
+docker run --rm deanturpin/cpp
 ```
