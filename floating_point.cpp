@@ -14,6 +14,4 @@ int main() {
   cout << isnormal(-1.0) << '\n';
 
   cout << fpclassify(-1.0) << '\n';
-
-  return 0;
 }
