@@ -2,13 +2,13 @@
 
 int main() {
 
-	int x = 10;
-	int &y = x;
-	auto z = y;
+  int x = 10;
+  int &y = x;
+  auto z = y;
 
-	y = 20;
+  y = 20;
 
-	std::cout << x << '\n';
-	std::cout << y << '\n';
-	std::cout << z << '\n';
+  std::cout << x << '\n';
+  std::cout << y << '\n';
+  std::cout << z << '\n';
 }
