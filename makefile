@@ -11,7 +11,7 @@ FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
 
 tmp/%.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread
-	time ./$@
+	./$@
 
 tmp:
 	mkdir $@
