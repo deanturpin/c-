@@ -4,13 +4,8 @@
 
 int main() {
 
-  std::vector<std::optional<long>> options{
-      // Some entries are not initialised to a value
-      {},
-      1,
-      2,
-      3,
-      {}};
+  // Some entries are not initialised to a value
+  std::vector<std::optional<long>> options{{}, 1, 2, 3, {}};
 
   // Print all valid options
   for (const auto &o : options)
