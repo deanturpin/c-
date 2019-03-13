@@ -11,4 +11,8 @@ int main() {
   for (const auto &o : options)
     if (o)
       std::cout << o.value() << '\n';
+
+  // Print all valid options (using a default if not initialised)
+  for (const auto &o : options)
+    std::cout << o.value_or(-1) << '\n';
 }
