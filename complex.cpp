@@ -9,6 +9,4 @@ int main() {
   const std::complex<double> c2 = 2i;
 
   std::cout << c1 << " " << c2 << '\n';
-
-  return 0;
 }
