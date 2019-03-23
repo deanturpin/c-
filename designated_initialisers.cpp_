@@ -1,0 +1,11 @@
+int main() {
+
+	struct S{
+		int a;
+		int b;
+		int c;
+	};
+
+
+	S s = {.a = 1, .b = 2, .c = 3};
+}
