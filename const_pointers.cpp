@@ -6,7 +6,7 @@ int main() {
     // Can change both value and pointer
     int f  = 4;
     int h  = 5;
-    int *i = &f;
+    int *i = std::addressof(f);
     std::cout << *i << '\n';
 
     i = &h;
@@ -20,7 +20,7 @@ int main() {
     // Can change only value
     int f = 4;
     // int h  = 5;
-    int *i = &f;
+    int *const i = std::addressof(f);
     std::cout << *i << '\n';
 
     // i = &h;
@@ -34,24 +34,10 @@ int main() {
     // Can change only pointer
     int f        = 4;
     int h        = 5;
-    int const *i = &f;
-    // const int * i = &f; // const keyword can also go before the type
+    int const *i = std::addressof(f);
     std::cout << *i << '\n';
 
-    i = &h;
-    std::cout << *i << '\n';
-
-    // *i = 6;
-    // std::cout << *i << '\n';
-  }
-  {
-    // Can change only pointer
-    int f        = 4;
-    int h        = 5;
-    int const *i = &f;
-    std::cout << *i << '\n';
-
-    i = &h;
+    i = std::addressof(h);
     std::cout << *i << '\n';
 
     // *i = 6;
@@ -62,7 +48,7 @@ int main() {
     // Can change neither value nor pointer
     int f = 4;
     // int h  = 5;
-    int const *const i = &f;
+    int const *const i = std::addressof(f);
     std::cout << *i << '\n';
 
     // i = &h;
