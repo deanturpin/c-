@@ -13,7 +13,7 @@ struct turbo {
 
   turbo() { std::cout << "turbo()\n"; }
   turbo(const turbo &c) {
-    static_cast<void>(c);
+    [[maybe_unused]] auto _c = c;
     std::cout << "turbo(const turbo&)\n";
   }
   turbo(const turbo &&) = delete;
@@ -30,7 +30,7 @@ struct turbonew : public turbo {
   const double threshold = 2.1;
 
   turbonew() { std::cout << "turbonew()\n"; }
-  turbonew(const turbonew &c) {
+  turbonew(const turbonew &c) : turbo() {
     static_cast<void>(c);
     std::cout << "turbonew(const turbonew&)\n";
   }
@@ -40,7 +40,7 @@ struct turbonew : public turbo {
   virtual ~turbonew() { std::cout << "~turbonewnew()\n"; }
 
   void buy() const override {
-    std::cout << "turbonew buy << " << threshold << "\n";
+    std::cout << "turbonew buy " << threshold << "\n";
   }
 };
 
