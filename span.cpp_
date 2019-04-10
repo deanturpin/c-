@@ -1,0 +1,5 @@
+#include <span>
+
+int main(){
+  std::span<double> blah;
+}
