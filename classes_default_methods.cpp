@@ -4,7 +4,7 @@ int main() {
 
   using namespace std;
 
-  // Class to monitor consstruction/destruction
+  // Class to monitor construction/destruction
   class B {
 
   public:
