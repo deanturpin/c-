@@ -57,10 +57,8 @@ int main() {
 
   std::cout << "\n## vector dynamic\n";
   {
-    std::vector<std::shared_ptr<turbo>> s{
-        std::move(std::shared_ptr<turbo>(new turbo())),
-        std::move(std::shared_ptr<turbo>(new turbonew())),
-    };
+    std::vector<std::shared_ptr<turbo>> s{std::make_shared<turbo>(),
+                                          std::make_shared<turbonew>()};
 
     for (const auto &i : s)
       i->buy();
