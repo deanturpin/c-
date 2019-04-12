@@ -1,0 +1,9 @@
+#include<iostream>
+#include<vector>
+
+int main(){
+
+  const std::vector<int> v{1, 6, 2, 7, 9, 3,54, 456, 345, 5, 5};
+
+  std::make_heap(std::begin(v), std::end(v));
+}
