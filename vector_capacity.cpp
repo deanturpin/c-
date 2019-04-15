@@ -1,4 +1,4 @@
-#include <cstdio>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -11,7 +11,7 @@ struct copy_me {
   copy_me(const copy_me &) { ++copy_constructor_calls; }
 };
 
-int copy_me::constructor_calls = 0;
+int copy_me::constructor_calls      = 0;
 int copy_me::copy_constructor_calls = 0;
 
 int main() {
@@ -22,9 +22,7 @@ int main() {
   for (int i = 0; i < 2049; ++i)
     vec.push_back(copy_me());
 
-  std::puts(("constructor_calls " + std::to_string(copy_me::constructor_calls))
-                .c_str());
-  std::puts(("copy_constructor_calls " +
-             std::to_string(copy_me::copy_constructor_calls))
-                .c_str());
+  std::cout << "constructor_calls " << copy_me::constructor_calls << '\n'
+            << "copy_constructor_calls " << copy_me::copy_constructor_calls
+            << '\n';
 }
