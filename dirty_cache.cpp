@@ -44,7 +44,7 @@ int main() {
   std::cout << std::addressof(values1) << " values1\n";
   std::cout << std::addressof(values2) << " values2\n";
   std::cout << std::addressof(a.data) << " member 1\n";
-  std::cout << std::addressof(b.data) << " member 2\n";
+  std::cout << std::to_address(b.data) << " member 2\n";
   std::cout << std::dec;
 
   for (auto i = 0ul; i < 8; ++i) {
