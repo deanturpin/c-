@@ -9,7 +9,7 @@
 
 int main() {
 
-  const std::function<int(int)> fib1 = [&fib1](const int &n) constexpr {
+  const std::function<int(int)> fib1 = [&fib1](const int &n) {
     if (n == 0)
       return 0;
 

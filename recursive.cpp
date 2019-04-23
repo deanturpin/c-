@@ -35,10 +35,10 @@ int main() {
   std::cout << std::quoted(string_cat(20)) << '\n';
 
   // Create iterators
-  const auto begin = blah.cbegin();
-  const auto end = std::next(blah.cbegin(), 101);
+  const auto b  = blah.cbegin();
+  const auto e = std::next(blah.cbegin(), 101);
 
   // Recursively generate results
-  for (const auto &r : process_frame(begin, end))
+  for (const auto &r : process_frame(b, e))
     std::cout << r << '\n';
 }
