@@ -46,6 +46,4 @@ int main() {
   std::cout << "a: " << *std::any_cast<std::string>(&a) //< pointer
       << "b: " << b << '\n';
 */
-
-  return 0;
 }
