@@ -1,0 +1,8 @@
+#include <iostream>
+#include <numeric>
+
+int main() {
+
+  std::cout << std::midpoint(0, 1) << '\n';
+  std::cout << std::lerp(0, 1, 2) << '\n';
+}
