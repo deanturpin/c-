@@ -1,24 +1,26 @@
 #include <iostream>
+#include <string>
 
 class A {
-public:
-  A() : foo(1) { ; }
-
 private:
-  int foo;
+  std::string name() { return "I am A"; }
   friend class B;
 };
 
 class B {
+    class A a{};
 public:
   B() {
-    class A a;
-    std::cout << "Access A's foo " << a.foo << '\n';
+    std::cout << a.name() << '\n';
+  }
+
+  std::string get_base() {
+	  return a.name();
   }
 };
 
 int main() {
   class B b;
 
-  return 0;
+  std::cout << b.get_base() << '\n';
 }
