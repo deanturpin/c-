@@ -13,7 +13,7 @@ tmp/%.o: %.cpp
 	./$@
 
 tmp:
-	mkdir $@
+	mkdir -p $@
 
 clean:
 	rm -rf tmp *.bin *.out

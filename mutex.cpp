@@ -11,7 +11,7 @@ int main() {
   std::mutex printing;
 
   // A considerate printing routing that waits its turn
-  const auto mutex_print = [&printing](const std::string &str,
+  const auto mutex_print = [&](const std::string &str,
                                        const bool mutex_print_enabled) {
     // Try to take the mutex
     if (mutex_print_enabled)
@@ -28,7 +28,7 @@ int main() {
   };
 
   // Common main for each printing thread
-  const auto thread_main = [&mutex_print](const std::string &name,
+  const auto thread_main = [&](const std::string &name,
                                           const bool mutex_print_enabled) {
     long counter = 0;
     while (counter++ < 4) {
@@ -38,7 +38,7 @@ int main() {
 
       // And wait for a bit
       using namespace std::chrono_literals;
-      std::this_thread::sleep_for(1000ms);
+      std::this_thread::sleep_for(100ms);
     }
   };
 
