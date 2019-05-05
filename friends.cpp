@@ -8,15 +8,12 @@ private:
 };
 
 class B {
-    class A a{};
-public:
-  B() {
-    std::cout << a.name() << '\n';
-  }
+  class A a {};
 
-  std::string get_base() {
-	  return a.name();
-  }
+public:
+  B() { std::cout << a.name() << '\n'; }
+
+  std::string get_base() { return a.name(); }
 };
 
 int main() {

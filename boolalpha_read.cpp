@@ -15,7 +15,7 @@ int main() {
   {
     std::cout << "FIXED\n";
     std::cout << "OUT\t" << std::setprecision(10) << one << " " << two << " "
-         << std::boolalpha << three << " " << four << "\n";
+              << std::boolalpha << three << " " << four << "\n";
 
     std::ofstream out(name);
     out.precision(10);
@@ -28,13 +28,13 @@ int main() {
     in >> one >> two >> three >> four;
 
     std::cout << "IN\t" << std::setprecision(10) << one << " " << two << " "
-         << std::boolalpha << three << " " << four << "\n";
+              << std::boolalpha << three << " " << four << "\n";
   }
 
   {
     std::cout << "\nSCIENTIFIC\n";
     std::cout << "OUT\t" << std::scientific << one << " " << two << " "
-         << std::boolalpha << three << " " << four << "\n";
+              << std::boolalpha << three << " " << four << "\n";
 
     std::ofstream out(name);
     // out.precision(10);
@@ -47,6 +47,6 @@ int main() {
     in >> std::scientific >> one >> two >> three >> four;
 
     std::cout << "IN\t" << std::setprecision(10) << one << " " << two << " "
-         << std::boolalpha << three << " " << four << "\n";
+              << std::boolalpha << three << " " << four << "\n";
   }
 }

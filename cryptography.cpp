@@ -9,8 +9,8 @@
 int main() {
 
   // Create the public key for sharing
-  const auto generate_public_key = [](const auto seed,
-                                      const auto base) constexpr {
+  const auto generate_public_key =
+      [](const auto seed, const auto base) constexpr {
     return std::lrint(std::pow(base, seed)) %
            0b11111111'11111111'11111111'11111110;
   };

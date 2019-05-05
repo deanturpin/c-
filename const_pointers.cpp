@@ -4,8 +4,8 @@ int main() {
 
   {
     // Can change both value and pointer
-    int f  = 4;
-    int h  = 5;
+    int f = 4;
+    int h = 5;
     int *i = std::addressof(f);
     std::cout << *i << '\n';
 
@@ -32,8 +32,8 @@ int main() {
 
   {
     // Can change only pointer
-    int f        = 4;
-    int h        = 5;
+    int f = 4;
+    int h = 5;
     int const *i = std::addressof(f);
     std::cout << *i << '\n';
 

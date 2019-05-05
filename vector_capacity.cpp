@@ -11,7 +11,7 @@ struct copy_me {
   copy_me(const copy_me &) { ++copy_constructor_calls; }
 };
 
-int copy_me::constructor_calls      = 0;
+int copy_me::constructor_calls = 0;
 int copy_me::copy_constructor_calls = 0;
 
 int main() {

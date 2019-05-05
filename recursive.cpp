@@ -35,7 +35,7 @@ int main() {
   std::cout << std::quoted(string_cat(20)) << '\n';
 
   // Create iterators
-  const auto b  = blah.cbegin();
+  const auto b = blah.cbegin();
   const auto e = std::next(blah.cbegin(), 101);
 
   // Recursively generate results

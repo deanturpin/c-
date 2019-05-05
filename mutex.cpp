@@ -12,7 +12,7 @@ int main() {
 
   // A considerate printing routing that waits its turn
   const auto mutex_print = [&](const std::string &str,
-                                       const bool mutex_print_enabled) {
+                               const bool mutex_print_enabled) {
     // Try to take the mutex
     if (mutex_print_enabled)
       printing.lock();
@@ -29,7 +29,7 @@ int main() {
 
   // Common main for each printing thread
   const auto thread_main = [&](const std::string &name,
-                                          const bool mutex_print_enabled) {
+                               const bool mutex_print_enabled) {
     long counter = 0;
     while (counter++ < 4) {
 

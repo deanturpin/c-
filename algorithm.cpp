@@ -1,6 +1,6 @@
 #include <algorithm>
-#include <iterator>
 #include <cassert>
+#include <iterator>
 #include <vector>
 
 int main() {

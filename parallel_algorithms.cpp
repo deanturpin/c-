@@ -9,7 +9,7 @@
 template <typename Iterator, typename Functor>
 void for_each_par(Iterator begin, Iterator end, Functor func) {
 
-  const auto thread_count   = std::thread::hardware_concurrency();
+  const auto thread_count = std::thread::hardware_concurrency();
   const auto total_elements = std::distance(begin, end);
   const unsigned long elements_per_thread =
       std::ceil(1.0 * total_elements / thread_count);
@@ -37,7 +37,7 @@ void for_each_par(Iterator begin, Iterator end, Functor func) {
         front, back));
 
     front = back;
-    back  = std::min(std::next(front, elements_per_thread), end);
+    back = std::min(std::next(front, elements_per_thread), end);
   }
 
   for (auto &thr : threads)
