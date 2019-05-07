@@ -15,6 +15,4 @@ int main() {
   } catch (std::exception &e) {
     std::cout << "Standard exception " << e.what() << '\n';
   }
-
-  return 0;
 }

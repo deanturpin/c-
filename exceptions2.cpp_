@@ -9,6 +9,4 @@ int main() {
   } catch (string name) {
     cout << "Caught " << name << endl;
   }
-
-  return 0;
 }
