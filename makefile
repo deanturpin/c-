@@ -3,7 +3,7 @@ objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 all: tmp
 	$(MAKE) -k -j $(shell nproc) $(objects)
 
-CXX = g++-9
+CXX = g++-8
 
 FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \

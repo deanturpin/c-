@@ -1,14 +1,11 @@
 language: cpp
 
-script:
-  - make CXX=g++-9
+script: make
 
 matrix:
   include:
     - os: linux
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-9
+          sources: ubuntu-toolchain-r-test
+          packages: g++-8
