@@ -1,8 +1,6 @@
 language: cpp
 
 script:
-  - make CXX=clang++-6.0
-  - make clean
   - make CXX=g++-9
 
 matrix:
@@ -12,7 +10,5 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-6.0
           packages:
-            - clang++-6.0
-            - g++-7
+            - g++-9
