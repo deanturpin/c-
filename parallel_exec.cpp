@@ -1,6 +1,8 @@
 #include <cassert>
 #include <numeric>
 #include <algorithm>
+// #include <execution>
+// #include <parallel_for_each.h>
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -10,6 +12,7 @@ int main() {
   std::vector<double> vec(500'000'000);
   std::iota(vec.begin(), vec.end(), 0);
 
+  // std::for_each(std::execution::par, vec.begin(), vec.end(), [](auto &i){
   std::for_each(vec.begin(), vec.end(), [](auto &i){
                   i = std::sqrt(std::sqrt(std::sqrt(i)));
                 });
