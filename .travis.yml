@@ -1,18 +1,11 @@
 language: cpp
 
-script:
-  - make CXX=clang++-6.0
-  - make clean
-  - make CXX=g++-8
+script: make
 
 matrix:
   include:
     - os: linux
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-6.0
-          packages:
-            - clang++-6.0
-            - g++-8
+          sources: ubuntu-toolchain-r-test
+          packages: g++-8
