@@ -1,6 +1,6 @@
-#include <iostream>
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 #include <vector>
 
 int max_items(std::vector<int> items, const int k) {
@@ -14,26 +14,27 @@ int max_items(std::vector<int> items, const int k) {
 
   for (size_t i = 0; i < items.size(); ++i) {
 
-      std::cout << "trying index " << i << "\n";
+    std::cout << "trying index " << i << "\n";
 
-      const auto val = items.at(i);
+    const auto val = items.at(i);
 
-      // If we've blown our budget then skip to next
-      if (val > k)
-        results.push_back(0);
-      else {
-        // Otherwise... create copy of list
-        auto _items = items;
+    // If we've blown our budget then skip to next
+    if (val > k)
+      results.push_back(0);
+    else {
+      // Otherwise... create copy of list
+      auto _items = items;
 
-        // Remove the current item
-        _items.erase(_items.begin() + i);
+      // Remove the current item
+      _items.erase(_items.begin() + i);
 
-        // Push back 1 greater than the results of recursing on the remainder
-        results.push_back(1 + max_items(_items, k - val));
+      // Push back 1 greater than the results of recursing on the remainder
+      results.push_back(1 + max_items(_items, k - val));
     }
   }
 
-  // return results.empty() ? 0 : *std::max_element(results.begin(), results.end());
+  // return results.empty() ? 0 : *std::max_element(results.begin(),
+  // results.end());
   return *std::max_element(results.begin(), results.end());
 }
 

@@ -20,6 +20,6 @@ int main() {
           cout << i << '\n';
   */
 
-  for (size_t i = 0; const auto &x : {1, 2,3, 4, 5})
-	  std::cout << i++ << "\t" << x << "\n";
+  for (size_t i = 0; const auto &x : {1, 2, 3, 4, 5})
+    std::cout << i++ << "\t" << x << "\n";
 }

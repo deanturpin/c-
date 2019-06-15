@@ -3,13 +3,13 @@
 
 int main() {
 
-	auto print_size = []<typename T>(std::vector<T> &p){
-		std::cout << p.size() << "\n";
-	};
+  auto print_size = []<typename T>(std::vector<T> & p) {
+    std::cout << p.size() << "\n";
+  };
 
-	std::vector<double> vec(10);
-	print_size(vec);
+  std::vector<double> vec(10);
+  print_size(vec);
 
-	std::vector<int> vec2(10);
-	print_size(vec2);
+  std::vector<int> vec2(10);
+  print_size(vec2);
 }

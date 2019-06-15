@@ -1,18 +1,37 @@
-#include <list>
-#include <iterator>
+#include <deque>
 #include <iostream>
+#include <iterator>
+#include <list>
+#include <vector>
+
+template <typename T> void print_and_erase(T container) {
+
+  // Print container
+  std::cout << "start\n";
+  std::copy(container.cbegin(), container.cend(),
+            std::ostream_iterator<int>(std::cout, "\n"));
+
+  // Erase elements
+  const auto middle = std::next(container.cbegin(), container.size() / 2);
+  container.erase(middle, std::next(middle, 2));
+
+  // Print it again
+  std::cout << "erase\n";
+  std::copy(container.cbegin(), container.cend(),
+            std::ostream_iterator<int>(std::cout, "\n"));
+}
 
 int main() {
 
   // Create list of things
-  std::list<int> l{1,2,3,4,5,6};
-  std::cout << "start\n";
-  std::copy(l.cbegin(), l.cend(), std::ostream_iterator<int>(std::cout, "\n"));
+  std::list<int> l{1, 2, 3, 4, 5, 6};
+  print_and_erase(l);
 
-  // Erase one
-  const auto middle = std::next(l.cbegin(), l.size() / 2);
-  l.erase(middle, std::next(middle, 2));
+  // Create vector of things
+  std::vector<int> v{1, 2, 3, 4, 5, 6};
+  print_and_erase(v);
 
-  std::cout << "erase\n";
-  std::copy(l.cbegin(), l.cend(), std::ostream_iterator<int>(std::cout, "\n"));
+  // Create deque of things
+  std::deque<int> d{1, 2, 3, 4, 5, 6};
+  print_and_erase(d);
 }
