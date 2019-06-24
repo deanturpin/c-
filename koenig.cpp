@@ -4,7 +4,8 @@
 
 int main() {
 
-  std::cout << "blah";
+  operator<<(std::cout, "sdf\n");
+  std::operator<<(std::cout, "sdf\n");
   endl(std::cout);
 
   std::vector<int> v{1, 2, 3, 4, 5};
