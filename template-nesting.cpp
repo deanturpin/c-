@@ -5,10 +5,7 @@
 
 template <typename T, template <typename> class CONTAINER>
 void printme(CONTAINER<T> x) {
-  // std::copy(x.cbegin(), x.cend(), std::ostream_iterator<T>(std::cout, '\n'));
-
-  for (auto i : x)
-    std::cout << i << "\n";
+  std::copy(x.cbegin(), x.cend(), std::ostream_iterator<T>(std::cout, "--\n"));
 }
 
 int main() {
