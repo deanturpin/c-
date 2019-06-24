@@ -20,6 +20,4 @@ int main() {
 
   std::cout << "foo " << foo << " bah " << bah << '\n';
   std::cout << "p " << *p << " q " << *q << '\n';
-
-  return 0;
 }

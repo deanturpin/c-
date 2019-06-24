@@ -18,6 +18,4 @@ int main() {
 
   // Error - call to deleted constructor
   // a a4(1);
-
-  return 0;
 }

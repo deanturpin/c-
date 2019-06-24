@@ -2,32 +2,30 @@
 
 void order() {
 
-  using namespace std;
-
-  cout << "Order\n";
+  std::cout << "Order\n";
 
   class A {
 
   public:
-    A() { cout << "A" << ' '; }
-    ~A() { cout << "~A\n"; }
+    A() { std::cout << "A"; }
+    ~A() { std::cout << "~A"; }
   };
 
   class B : public A {
 
   public:
-    B() { cout << "B" << ' '; }
-    ~B() { cout << "~B\n"; }
+    B() { std::cout << "B"; }
+    ~B() { std::cout << "~B"; }
   };
 
-  cout << "Static allocation\n";
+  std::cout << "\nStatic allocation\n";
   { B b; }
 
-  cout << "Dynamic allocation - leak (A has non-virtual destructor)\n";
+  std::cout << "\nDynamic allocation - leak (A has non-virtual destructor)\n";
   A *a = new B();
   delete a;
 
-  cout << "Array of pointers\n";
+  std::cout << "\nArray of pointers\n";
 
   A *b = new A[4];
 
@@ -36,20 +34,18 @@ void order() {
 
 void overload() {
 
-  using namespace std;
-
-  cout << "Overload\n";
+  std::cout << "\nOverload\n";
 
   class A {
 
   public:
-    void foo() { cout << "foo\n"; }
+    void foo() { std::cout << "foo\n"; }
   };
 
   class B : public A {
 
   public:
-    void foo() const { cout << "bar\n"; }
+    void foo() const { std::cout << "bar\n"; }
   };
 
   class B b;
@@ -61,6 +57,4 @@ int main() {
 
   order();
   overload();
-
-  return 0;
 }

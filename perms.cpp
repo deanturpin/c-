@@ -1,6 +1,6 @@
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
 
 void print_permutations(const std::vector<int> &a, const std::vector<int> &b) {
 

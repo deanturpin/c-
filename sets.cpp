@@ -8,8 +8,8 @@ int main() {
   };
 
   std::cout << s.size() << " elements\n";
-  for (const auto &p : s)
-    std::cout << p.first << ' ' << p.second << '\n';
+  for (const auto &[left, right] : s)
+    std::cout << left << ' ' << right << '\n';
 
   // for (auto &p : s)
   // p.first = 0;

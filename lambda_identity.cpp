@@ -11,9 +11,7 @@ const std::vector<std::function<int(param)>> functions{
 int main() {
 
   int sum = 0;
-  for ([[maybe_unused]] int i = 0; i < 10000; ++i)
+  for (int i = 0; i < 10000; ++i)
     for (const auto &f : functions)
       sum += f(i);
-
-  return 0 && sum;
 }

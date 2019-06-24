@@ -3,7 +3,7 @@
 int main() {
 
   struct A {
-    ~A() {}
+    virtual ~A() {}
   };
 
   A a;

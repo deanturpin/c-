@@ -9,5 +9,5 @@ int main() {
   std::vector<int> vec{std::istream_iterator<int>{in}, {}};
 
   for (const auto &p : vec)
-    std::cout << p << '\n';
+    std::cout << p << "\n";
 }

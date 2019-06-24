@@ -17,6 +17,4 @@ int main() {
 
   // Error - no known conversion
   // cout << nmb2::one << '
-
-  return 0;
 }

@@ -20,6 +20,4 @@ int main() {
   // Shift
   std::cout << (left << 1) << '\n';
   std::cout << (left >> 1) << '\n';
-
-  return 0;
 }

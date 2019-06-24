@@ -14,8 +14,6 @@ int main() {
     cout << "Match no\n";
 
   // mark_count()
-
-  return 0;
 }
 
 /*

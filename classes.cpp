@@ -21,6 +21,4 @@ int main() {
 
   cout << "Is A final? " << boolalpha << is_final<A>::value << ' ';
   cout << "Is B final? " << boolalpha << is_final<B>::value << '\n';
-
-  return 0;
 }

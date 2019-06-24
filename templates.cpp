@@ -8,11 +8,9 @@ template <typename T> void square(T &container) {
 
 int main() {
 
-  using namespace std;
-
-  vector<int> vec{1, 2, 3};
+  std::vector<int> vec{1, 2, 3};
 
   square(vec);
   for (const auto &v : vec)
-    cout << v << '\n';
+    std::cout << v << '\n';
 }

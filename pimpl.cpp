@@ -1,5 +1,4 @@
-// AKA
-// Compiler firewall
+// Pimpl AKA Compiler firewall
 // "handle body" pattern
 
 // Separate implementation from interface
@@ -34,11 +33,6 @@ public:
 
 int main() {
 
-  using namespace std;
-
   wrk::Employee e("blah");
-
-  cout << "Name is " << e.getName() << '\n';
-
-  return 0;
+  std::cout << "Name is " << e.getName() << '\n';
 }

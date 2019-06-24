@@ -15,15 +15,15 @@ int main() {
       {3, 3.0},
   };
 
-  std::cout << m.size() << " size\n";
-  std::cout << m[1] << '\n';
-  std::cout << m[2] << '\n';
-  std::cout << m[3] << '\n';
-  std::cout << m[0] << '\n';
+  std::cout << m.size() << " size\n"
+            << m[1] << '\n'
+            << m[2] << '\n'
+            << m[3] << '\n'
+            << m[0] << '\n';
 
-  std::cout << d.size() << " size\n";
-  std::cout << d[1] << '\n';
-  std::cout << d[2] << '\n';
-  std::cout << d[3] << '\n';
-  std::cout << d[0] << '\n';
+  std::cout << d.size() << " size\n"
+            << d[1] << '\n'
+            << d[2] << '\n'
+            << d[3] << '\n'
+            << d[0] << '\n';
 }

@@ -33,6 +33,4 @@ int main() {
     std::cout << "\nCopy constructor\n";
     S s4(s1);
   }
-
-  return 0;
 }

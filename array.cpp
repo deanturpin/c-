@@ -4,23 +4,20 @@
 
 int main() {
 
-  using namespace std;
-
-  const unsigned int s = 1000;
-  array<array<double, s>, s / 2> a;
+  const size_t s = 1000;
+  std::array<std::array<double, s>, s / 2> a;
 
   a[0][0] = 1;
   a.data()[0][0] = 1;
 
-  cout << "Rows " << a.size() << ' ';
-  cout << "Cols " << a.front().size() << '\n';
+  std::cout << "Rows " << a.size() << " ";
+  std::cout << "Cols " << a.front().size() << "\n";
 
   // 1D array on the heap
-  auto b = unique_ptr<array<int, 5>>(new array<int, 5>);
-  cout << b.get()->at(0) << '\n';
+  auto b = std::unique_ptr<std::array<int, 5>>(new std::array<int, 5>);
+  std::cout << b.get()->at(0) << "\n";
 
   // 2D array on the heap
-  auto c = unique_ptr<array<array<int, 5>, 5>>(new array<array<int, 5>, 5>);
-
-  return 0;
+  auto c = std::unique_ptr<std::array<std::array<int, 5>, 5>>(
+      new std::array<std::array<int, 5>, 5>);
 }

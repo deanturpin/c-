@@ -13,6 +13,4 @@ int main() {
 
   multiply(a, b);
   multiply(b, c);
-
-  return 0;
 }

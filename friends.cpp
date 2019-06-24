@@ -11,7 +11,7 @@ class B {
   class A a {};
 
 public:
-  B() { std::cout << a.name() << '\n'; }
+  B() { std::cout << a.name() << "\n"; }
 
   std::string get_base() { return a.name(); }
 };
@@ -19,5 +19,5 @@ public:
 int main() {
   class B b;
 
-  std::cout << b.get_base() << '\n';
+  std::cout << b.get_base() << "\n";
 }

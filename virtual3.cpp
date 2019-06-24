@@ -32,6 +32,4 @@ int main() {
     // Still doesn't work for this
     delete[] _b;
   }
-
-  return 0;
 }

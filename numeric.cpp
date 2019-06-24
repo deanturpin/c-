@@ -1,14 +1,14 @@
 #include <iostream>
+#include <iterator>
 #include <numeric>
 #include <vector>
 
 int main() {
 
-  using namespace std;
+  std::vector<long> vec{1, 2, 3, 4, 5};
 
-  vector<long> vec = {1, 2, 3, 4, 5};
+  std::iota(vec.begin(), vec.end(), 100);
 
-  iota(vec.begin(), vec.end(), 100);
-
-  // copy(vec.cbegin(), vec.cend(), ostream_iterator<long>(cout, "\n"));
+  std::copy(vec.cbegin(), vec.cend(),
+            std::ostream_iterator<long>(std::cout, "\n"));
 }

@@ -34,6 +34,4 @@ int main() {
   std::cout << "(a > b) is " << (a > b) << '\n';
   std::cout << "(a <= b) is " << (a <= b) << '\n';
   std::cout << "(a >= b) is " << (a >= b) << '\n';
-
-  return 0;
 }
