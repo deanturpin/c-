@@ -5,22 +5,20 @@
 // Lambda - anonymous functions
 int main() {
 
-  using namespace std;
-
-  vector<int> vec{1, 2, 3};
+  std::vector<int> vec{1, 2, 3};
 
   // Before
   for (const auto &v : vec)
-    cout << v << '\n';
+    std::cout << v << '\n';
 
   // Increment each element
-  for_each(vec.begin(), vec.end(), [](int &n) { ++n; });
+  std::for_each(vec.begin(), vec.end(), [](int &n) { ++n; });
 
   // After
   for (const auto &v : vec)
-    cout << v << '\n';
+    std::cout << v << '\n';
 
-  auto square_and_print = [](int n) { cout << n * n << '\n'; };
+  auto square_and_print = [](int n) { std::cout << n * n << '\n'; };
   square_and_print(4);
 
   int blah = 2;
@@ -28,9 +26,9 @@ int main() {
   // Lambda capture
   auto doubleit = [blah] { return blah * blah; };
   auto doubled = doubleit();
-  cout << doubled << '\n';
+  std::cout << doubled << '\n';
 
   auto doubleit2 = [blah]() -> double { return blah * blah; };
   auto doubled2 = doubleit2();
-  cout << doubled2 << '\n';
+  std::cout << doubled2 << '\n';
 }

@@ -16,6 +16,4 @@ int main() {
   // delete _a;
 
   delete[] _a;
-
-  return 0;
 }

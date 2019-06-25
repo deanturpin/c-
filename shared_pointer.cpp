@@ -2,21 +2,19 @@
 #include <memory>
 
 namespace wood {
-using namespace std;
 
 class Animal {
 public:
-  Animal(const string n) : name(n) { cout << "ctor " << name << '\n'; }
+  Animal(const std::string n) : name(n) {
+    std::cout << "ctor " << name << '\n';
+  }
 
-  ~Animal() { cout << "\tdtor " << name << '\n'; }
+  ~Animal() { std::cout << "\tdtor " << name << '\n'; }
 
-  const string name;
+  const std::string name;
 };
 } // namespace wood
 
 int main() {
-  using namespace std;
-  using namespace wood;
-
-  const auto a = shared_ptr<Animal>(new Animal("a"));
+  const auto a = std::shared_ptr<wood::Animal>(new wood::Animal("a"));
 }

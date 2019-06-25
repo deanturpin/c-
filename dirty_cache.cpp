@@ -38,7 +38,7 @@ int main() {
   std::cout << std::addressof(main) << " main\n";
   std::cout << std::addressof(b) << " stack\n";
   std::cout << std::addressof(c) << " static 2\n";
-  std::cout << std::addressof(d) << " heap\n";
+  std::cout << d << " heap\n";
   std::cout << std::addressof(routine) << " routine\n";
   std::cout << std::addressof(lambda) << " lambda\n";
   std::cout << std::addressof(values1) << " values1\n";

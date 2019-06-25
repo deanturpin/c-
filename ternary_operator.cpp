@@ -23,6 +23,4 @@ int main() {
     c = 5;
 
   std::cout << "c is " << b << '\n';
-
-  return 0;
 }

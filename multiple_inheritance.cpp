@@ -5,6 +5,7 @@
 struct a {
   const std::string id = "a";
 };
+
 struct b {
   const std::string id = "b";
 };

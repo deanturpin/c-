@@ -7,7 +7,7 @@ int main() {
   std::multimap<std::string, double> m;
 
   m.insert({"one", 1});
-  m.insert({"one", 1});
+  m.insert({"one", 2});
   m.insert({"one", 1});
   m.insert({"one", 1});
   m.insert({"two", 2});

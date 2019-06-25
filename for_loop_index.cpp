@@ -10,7 +10,7 @@ int main() {
     if (a == *blah.crbegin())
       std::cout << "*\n";
 
-    std::cout << std::addressof(a) - std::addressof(blah[0]) << '\t' << a
-              << '\n';
+    std::cout << std::addressof(a) - std::addressof(blah[0]) << "\t" << a
+              << "\n";
   }
 }

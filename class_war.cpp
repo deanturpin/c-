@@ -21,7 +21,7 @@ int main() {
 
   // Lots of calls to default constructor
   std::vector<copy_me> y;
-  for (unsigned j = 0; j < 17; ++j)
+  for (size_t j = 0; j < 17; ++j)
     y.push_back(copy_me());
 
   std::cout << default_constructor_calls << " default constructor calls\n";

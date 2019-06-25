@@ -18,9 +18,7 @@ int main() {
   };
 
   std::cout << "Is A final? " << std::boolalpha << std::is_final<A>::value
-            << '\n';
+            << "\n";
   std::cout << "Is B final? " << std::boolalpha << std::is_final<B>::value
-            << '\n';
-
-  return 0;
+            << "\n";
 }

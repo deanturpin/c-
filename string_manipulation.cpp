@@ -9,6 +9,4 @@ int main() {
   s << quoted(blah);
 
   assert(s.str() == "\"1234\"");
-
-  return 0;
 }

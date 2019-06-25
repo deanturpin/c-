@@ -2,5 +2,5 @@
 
 int main() {
   if (const int blah = 0 == 0)
-    std::cout << blah << '\n';
+    std::cout << blah << "\n";
 }
