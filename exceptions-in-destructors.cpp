@@ -24,7 +24,7 @@ struct B {
 
   ~B() noexcept(false) {
     std::cout << "B dtor\n";
-    throw 1;
+    // throw 1;
   }
 };
 
@@ -38,19 +38,24 @@ struct C {
     a.bad();
     b.bad();
   } catch (std::exception &e) {
-    std::cout << "Caught " << std::quoted(e.what()) << '\n';
+    std::cout << "C caught " << std::quoted(e.what()) << "\n";
   }
 
-  ~C() { std::cout << "C dtor\n"; }
+  // ~C() { std::cout << "C dtor\n"; }
+
+  ~C() noexcept(false) {
+    std::cout << "C dtor\n";
+    throw 2;
+  }
 };
 
 int main() try {
 
   C c;
-  c.bad();
+  // c.bad();
 
 } catch (int e) {
-  std::cout << "Caught straggler " << e << '\n';
+  std::cout << "main caught straggler " << e << "\n";
 } catch (...) {
-  std::cout << "Caught straggler\n";
+  std::cout << "main caught straggler\n";
 }

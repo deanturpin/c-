@@ -1,8 +1,8 @@
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
 
-void print_permutations(const std::vector<int> &a, const std::vector<int> &b) {
+template <typename T> void print_permutations(const T &a, const T &b) {
 
   // If we've extracted all the element then print the result
   if (a.empty()) {
@@ -26,6 +26,6 @@ void print_permutations(const std::vector<int> &a, const std::vector<int> &b) {
 }
 
 int main() {
-  std::vector<int> v{1, 2, 3, 4};
-  print_permutations(v, {});
+  // print_permutations(std::vector<int>{1, 2, 3, 4}, {});
+  print_permutations(std::string("1234"), {});
 }
