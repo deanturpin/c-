@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 template <typename T> void print_permutations(const T &a, const T &b) {
 
@@ -25,7 +26,19 @@ template <typename T> void print_permutations(const T &a, const T &b) {
   }
 }
 
+std::string perms(const int n) {
+
+  if (n == 0)
+    return "";
+
+  return std::to_string(n) + perms(n - 1);
+}
+
+std::string perm_str(std::string s) {
+  return s.empty() ? "\n" : perm_str(s.substr(1)) + s[0];
+}
+
 int main() {
-  // print_permutations(std::vector<int>{1, 2, 3, 4}, {});
-  print_permutations(std::string("1234"), {});
+  std::cout << perms(4) << "\n";
+  std::cout << perm_str("1234");
 }
