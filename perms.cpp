@@ -54,31 +54,11 @@ std::string bin_tree(const int n) {
   return v.str();
 }
 
-// template <class T>
-// class alist : public std::list {
-// 
-// };
-
-// template <class T>
-// std::list<T>::operator+(T a, std::list<T> &b) {
-// std::alist<T>& std::alist<T>::operator+(T a) {
-  // this->push_front(a);
-//   return this;
-// }
-
-template <typename T>
-std::list<T> operator+(std::list<T> a, std::list<T> b) {
-
-  a.merge(b);
-  return a;
+template <typename T, template <typename> class CONT>
+void operator<<=(T &x, CONT<T> &xs) {
+  x = xs.front();
+  xs.pop_front();
 }
-
-// template <typename T>
-// std::list<T> operator+(T &a, std::list<T> &b) {
-// 
-//   b.push_front(a);
-//   return b;
-// }
 
 template <typename T, template <typename> class CONT>
 CONT<T> operator+(CONT<T> a, const T &b) {
@@ -87,24 +67,35 @@ CONT<T> operator+(CONT<T> a, const T &b) {
   return a;
 }
 
+
 std::string perm_list(std::list<int> x) {
 
-  const std::list<int> l{1, 2, 3, 4};
-  const std::list<int> r{1, 2, 3, 4};
-  std::vector<double> m{1, 2, 3, 4};
-  m.reserve(m.size() * 10);
+  // const std::list<int> l{1, 2, 3, 4};
+  // const std::list<int> r{1, 2, 3, 4};
+  // std::vector<double> m{1, 2, 3, 4};
+  // m.reserve(m.size() * 10);
 
-  x = l + r;
-  x = r + 1;
+  // x = l + r;
+  // x = r + 1;
 
-  m + 1.0;
+  // m + 1.0;
+
+  double a;
+  std::list<double> vec{1, 2, 3, 4};
+  a <<= vec;
+
+  std::cout << a << "--\n";
+  for (auto &i : vec)
+    std::cout << i << "\n";
+
+  std::cout << "--\n";
 
   return std::to_string(x.size()) + "\n";
 }
 
 int main() {
-  std::cout << perms(4);
-  std::cout << perm_str("1234") << "\n\n";
-  std::cout << bin_tree(3);
+  // std::cout << perms(4);
+  // std::cout << perm_str("1234") << "\n\n";
+  // std::cout << bin_tree(3);
   std::cout << "\n\nPERM LIST\n" << perm_list({1, 2, 3, 4});
 }
