@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <utility>
 #include <list>
 #include <iomanip>
 
@@ -54,48 +55,41 @@ std::string bin_tree(const int n) {
   return v.str();
 }
 
-template <typename T, template <typename> class CONT>
-void operator<<=(T &x, CONT<T> &xs) {
-  x = xs.front();
-  xs.pop_front();
-}
+// template <typename T, template <typename> class CONT>
+// void operator<<=(T &x, CONT<T> &xs) {
+//   x = xs.front();
+//   xs.pop_front();
+// }
+// 
+// template <typename T, template <typename> class CONT>
+// CONT<T> operator+(CONT<T> a, const T &b) {
+// 
+//   a.push_back(b);
+//   return a;
+// }
 
-template <typename T, template <typename> class CONT>
-CONT<T> operator+(CONT<T> a, const T &b) {
+// template <typename T, template <typename> class CONTAINER>
+// CONTAINER<CONTAINER<T>>
+//   get_permutations(CONTAINER
 
-  a.push_back(b);
-  return a;
-}
+std::string perm_list(const std::list<int> &x) {
 
+  // Create list of iterators into the list
+  auto it = x.begin();
+  std::list<decltype(it)> its;
 
-std::string perm_list(std::list<int> x) {
+  for (auto i = x.begin(); i != x.end(); ++i)
+    its.push_back(i);
 
-  // const std::list<int> l{1, 2, 3, 4};
-  // const std::list<int> r{1, 2, 3, 4};
-  // std::vector<double> m{1, 2, 3, 4};
-  // m.reserve(m.size() * 10);
-
-  // x = l + r;
-  // x = r + 1;
-
-  // m + 1.0;
-
-  double a;
-  std::list<double> vec{1, 2, 3, 4};
-  a <<= vec;
-
-  std::cout << a << "--\n";
-  for (auto &i : vec)
-    std::cout << i << "\n";
-
-  std::cout << "--\n";
+  // for (auto i : its)
+  //   std::cout << reinterpret_cast<uint64_t*>(i) << "\n";
 
   return std::to_string(x.size()) + "\n";
 }
 
 int main() {
-  // std::cout << perms(4);
-  // std::cout << perm_str("1234") << "\n\n";
-  // std::cout << bin_tree(3);
+  std::cout << perms(4);
+  std::cout << perm_str("1234") << "\n\n";
+  std::cout << bin_tree(3);
   std::cout << "\n\nPERM LIST\n" << perm_list({1, 2, 3, 4});
 }
