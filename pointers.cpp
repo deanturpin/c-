@@ -20,4 +20,11 @@ int main() {
 
   std::cout << "foo " << foo << " bah " << bah << '\n';
   std::cout << "p " << *p << " q " << *q << '\n';
+
+  float f = 3.14;
+  float* fp = &f;
+  int *ip = reinterpret_cast<int*>(fp);
+
+  std::cout << *fp << "\n";
+  std::cout << *ip << "\n";
 }
