@@ -22,8 +22,8 @@ int main() {
   std::cout << "p " << *p << " q " << *q << '\n';
 
   float f = 3.14;
-  float* fp = &f;
-  int *ip = reinterpret_cast<int*>(fp);
+  float *fp = &f;
+  int *ip = reinterpret_cast<int *>(fp);
 
   std::cout << *fp << "\n";
   std::cout << *ip << "\n";

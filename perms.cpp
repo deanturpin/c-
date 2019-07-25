@@ -1,9 +1,9 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <utility>
-#include <list>
 #include <iomanip>
+#include <iostream>
+#include <list>
+#include <string>
+#include <utility>
+#include <vector>
 
 template <typename T> void print_permutations(const T &a, const T &b) {
 
@@ -46,9 +46,8 @@ std::string bin_tree(const int n) {
 
   std::stringstream v;
 
-  v << "L" << n << bin_tree(n - 1)
-    << "M" << n << bin_tree(n - 1)
-    << "R" << n << bin_tree(n - 1);
+  v << "L" << n << bin_tree(n - 1) << "M" << n << bin_tree(n - 1) << "R" << n
+    << bin_tree(n - 1);
 
   // TODO - ostream, constexpr
 
@@ -60,10 +59,10 @@ std::string bin_tree(const int n) {
 //   x = xs.front();
 //   xs.pop_front();
 // }
-// 
+//
 // template <typename T, template <typename> class CONT>
 // CONT<T> operator+(CONT<T> a, const T &b) {
-// 
+//
 //   a.push_back(b);
 //   return a;
 // }

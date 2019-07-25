@@ -1,7 +1,7 @@
+#include <algorithm>
+#include <cassert>
 #include <iostream>
 #include <vector>
-#include <cassert>
-#include <algorithm>
 
 int main() {
 
