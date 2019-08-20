@@ -1,7 +1,7 @@
 objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all: tmp
-	$(MAKE) --quiet -k -j $(shell nproc) $(objects)
+	$(MAKE) --quiet -j $(shell nproc) $(objects)
 
 CXX := g++-9
 
