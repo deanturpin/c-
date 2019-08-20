@@ -1,7 +1,7 @@
 objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all: tmp
-	@echo > readme.md
+	@echo > output.md
 	$(MAKE) --silent -j $(shell nproc) $(objects)
 
 CXX := g++-9
@@ -15,9 +15,9 @@ FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
 
 tmp/%.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread
-	@echo '```' >> readme.md
-	./$@ >> readme.md
-	@echo '```' >> readme.md
+	@echo '```' >> output.md
+	./$@ >> output.md
+	@echo '```' >> output.md
 
 tmp:
 	mkdir -p $@
