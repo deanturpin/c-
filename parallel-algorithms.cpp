@@ -15,9 +15,9 @@ void for_each_par(Iterator begin, Iterator end, Functor func) {
       std::ceil(1.0 * total_elements / thread_count);
 
   // Partition data for each thread
-  std::cerr << thread_count << " threads\n";
-  std::cerr << total_elements << " size\n";
-  std::cerr << elements_per_thread << " elements per thread\n";
+  std::cout << thread_count << " threads\n";
+  std::cout << total_elements << " size\n";
+  std::cout << elements_per_thread << " elements per thread\n";
 
   thread_local std::vector<std::thread> threads;
   for (unsigned int i = 0; i < thread_count; ++i) {
@@ -30,9 +30,9 @@ void for_each_par(Iterator begin, Iterator end, Functor func) {
     // Process each partition
     threads.push_back(std::thread(
         [&func](auto f, auto b) {
-          std::cerr << "start\n";
+          std::cout << "start\n";
           for_each(f, b, func);
-          std::cerr << "done\n";
+          std::cout << "done\n";
         },
         front, back));
 
