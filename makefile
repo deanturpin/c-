@@ -14,7 +14,7 @@ CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings -Wno-address \
 	-O1
 
 tmp/%.o: %.cpp
-	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread
+	$(CXX) $(CXXFLAGS) -o $@ $< -lstdc++fs -lpthread
 	@echo '```' >> output.md
 	./$@ >> output.md
 	@echo '```' >> output.md
