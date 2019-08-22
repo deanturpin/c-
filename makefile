@@ -4,9 +4,9 @@ all: tmp
 	@echo > output.md
 	$(MAKE) --silent -j $(shell nproc) $(objects)
 
-CXX := g++-9
+CXX ?= g++-9
 
-FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
+CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings -Wno-address \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
 	-Warray-bounds -Wattribute-alias -Wformat-overflow -Wformat-truncation \
 	-Wmissing-attributes -Wstringop-truncation \
