@@ -2,11 +2,11 @@ objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all: tmp
 	@echo > output.md
-	$(MAKE) --silent -j $(shell nproc) $(objects)
+	$(MAKE) -j $(shell nproc) $(objects)
 
 CXX ?= g++-9
 
-CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings -Wno-address \
+CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
 	-Warray-bounds -Wattribute-alias -Wformat-overflow -Wformat-truncation \
 	-Wmissing-attributes -Wstringop-truncation \
