@@ -14,7 +14,7 @@ CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
 	-O1
 
 tmp/%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $< -lstdc++fs -lpthread
+	$(CXX) $(CXXFLAGS) -o $@ $< -lpthread
 	@echo '```' >> output.md
 	./$@ >> output.md
 	@echo '```' >> output.md
