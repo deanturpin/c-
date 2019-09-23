@@ -1,10 +1,15 @@
-objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
+files := $(wildcard *.cpp)
+objects = $(files:%.cpp=tmp/%.o)
+
+ifndef CXX
+override FOO = g++-9
+else
+	@echo already set
+endif
 
 all: tmp
 	@echo > output.md
 	$(MAKE) -j $(shell nproc) $(objects)
-
-CXX ?= g++-9
 
 CXXFLAGS ?= --std=c++2a --all-warnings --extra-warnings --pedantic-errors \
 	-Werror -Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
